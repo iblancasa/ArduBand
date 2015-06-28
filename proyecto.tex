@@ -27,20 +27,16 @@
 
 \usepackage[pdfborder={000}]{hyperref} %referencia
 
-% ********************************************************************
-% Re-usable information
-% ********************************************************************
-\newcommand{\myTitle}{Título del proyecto\xspace}
-\newcommand{\myDegree}{Grado en ...\xspace}
-\newcommand{\myName}{Nombre Apllido1 Apellido2 (alumno)\xspace}
-\newcommand{\myProf}{Nombre Apllido1 Apellido2 (tutor1)\xspace}
-\newcommand{\myOtherProf}{Nombre Apllido1 Apellido2 (tutor2)\xspace}
-%\newcommand{\mySupervisor}{Put name here\xspace}
+
+\newcommand{\myTitle}{ArduBand\xspace}
+\newcommand{\myDegree}{Grado en Ingeniería Informática\xspace}
+\newcommand{\myName}{Israel Blancas Álvarez\xspace}
+\newcommand{\myProf}{Samuel Francisco Romero García\xspace}
 \newcommand{\myFaculty}{Escuela Técnica Superior de Ingenierías Informática y de
 Telecomunicación\xspace}
 \newcommand{\myFacultyShort}{E.T.S. de Ingenierías Informática y de
 Telecomunicación\xspace}
-\newcommand{\myDepartment}{Departamento de ...\xspace}
+\newcommand{\myDepartment}{Departamento de Arquitectura y Tecnología de Computadores\xspace}
 \newcommand{\myUni}{\protect{Universidad de Granada}\xspace}
 \newcommand{\myLocation}{Granada\xspace}
 \newcommand{\myTime}{\today\xspace}
@@ -48,11 +44,11 @@ Telecomunicación\xspace}
 
 
 \hypersetup{
-pdfauthor = {\myName (email (en) ugr (punto) es)},
-pdftitle = {\myTitle},
+pdfauthor = {\myName Israel Blancas Álvarez},
+pdftitle = {\myTitle ArduBand},
 pdfsubject = {},
-pdfkeywords = {palabra_clave1, palabra_clave2, palabra_clave3, ...},
-pdfcreator = {LaTeX con el paquete ....},
+pdfkeywords = {ZigBee, Metrónomo, Arduino, WSN, XBee, Android},
+pdfcreator = {LaTex},
 pdfproducer = {pdflatex}
 }
 
@@ -66,7 +62,7 @@ pdfproducer = {pdflatex}
 \usepackage[stable]{footmisc}
 %\usepackage{index}
 
-%\makeindex
+\makeindex
 %\usepackage[style=long, cols=2,border=plain,toc=true,number=none]{glossary}
 % \makeglossary
 
@@ -89,7 +85,7 @@ pdfproducer = {pdflatex}
 %simplemente poniendo \begin{teorema} \end{teorema} ...
 \newtheorem{teorema}{Teorema}[chapter]
 \newtheorem{ejemplo}{Ejemplo}[chapter]
-\newtheorem{definicion}{Definición}[chapter]
+
 
 \definecolor{gray97}{gray}{.97}
 \definecolor{gray75}{gray}{.75}
@@ -119,8 +115,7 @@ pdfproducer = {pdflatex}
      numberfirstline = false,
      breaklines=true,
    }
- 
-% minimizar fragmentado de listados
+
 \lstnewenvironment{listing}[1][]
    {\lstset{#1}\pagebreak[0]}{\pagebreak[0]}
 
@@ -131,16 +126,7 @@ pdfproducer = {pdflatex}
 	language=C,
 	numbers=left
    }
-\lstdefinestyle{CodigoC++}
-   {
-	basicstyle=\small,
-	frame=single,
-	backgroundcolor=\color{gray30},
-	language=C++,
-	numbers=left
-   }
 
- 
 \lstdefinestyle{Consola}
    {basicstyle=\scriptsize\bf\ttfamily,
     backgroundcolor=\color{gray30},
@@ -152,7 +138,7 @@ pdfproducer = {pdflatex}
 \newcommand{\bigrule}{\titlerule[0.5mm]}
 
 
-%Para conseguir que en las páginas en blanco no ponga cabecerass
+%Para conseguir que en las páginas en blanco no ponga cabeceras
 \makeatletter
 \def\clearpage{%
   \ifvmode
@@ -180,30 +166,33 @@ pdfproducer = {pdflatex}
 %\listoftables
 %
 %\mainmatter
-%\setlength{\parskip}{5pt}
+\setlength{\parskip}{5pt}
 
-%\input{capitulos/01_Introduccion}
+\input{capitulos/01_Introduccion}
 %
-%\input{capitulos/02_EspecificacionRequisitos}
+\input{capitulos/02_Objetivos}
 %
-%\input{capitulos/03_Planificacion}
+\input{capitulos/03_EspecificacionRequisitos}
 %
-%\input{capitulos/04_Analisis}
+\input{capitulos/04_Planificacion}
 %
-%\input{capitulos/05_Diseno}
+\input{capitulos/05_Analisis}
 %
-%\input{capitulos/06_Implementacion}
+\input{capitulos/06_Diseno}
 %
-%\input{capitulos/07_Pruebas}
+%\input{capitulos/07_Implementacion}
 %
-%\input{capitulos/08_Conclusiones}
+%\input{capitulos/08_Pruebas}
 %
+%\input{capitulos/09_Conclusiones}
+%
+%\input{capitulos/10_Conclusiones y trabajos futuros}
 %%\chapter{Conclusiones y Trabajos Futuros}
 %
 %
-%%\nocite{*}
-%\bibliography{bibliografia/bibliografia}\addcontentsline{toc}{chapter}{Bibliografía}
-%\bibliographystyle{miunsrturl}
+\nocite{*}
+\bibliography{bibliografia}\addcontentsline{toc}{chapter}{Bibliografía}
+\bibliographystyle{unsrt}
 %
 %\appendix
 %\input{apendices/manual_usuario/manual_usuario}
@@ -211,6 +200,10 @@ pdfproducer = {pdflatex}
 %\input{glosario/entradas_glosario}
 % \addcontentsline{toc}{chapter}{Glosario}
 % \printglossary
+
+\addcontentsline{toc}{chapter}{Lista de figuras}
+\listoffigures
+
 \chapter*{}
 \thispagestyle{empty}
 
