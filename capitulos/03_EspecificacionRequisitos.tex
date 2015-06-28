@@ -11,7 +11,9 @@ Modelado del sistema
 }
 
 \paragraph{
-El dispositivo que se desea desarrollar tiene que hacer la función básica del director de la banda de música durante una actuación, es decir, marcar el mismo pulso a los músicos.
+El dispositivo que se desea desarrollar tiene que hacer la función básica
+del director de la banda de música durante una actuación, es decir,
+marcar el mismo pulso a los músicos.
 }
 
 \paragraph{
@@ -31,7 +33,7 @@ varias decenas de integrantes.
 \end{figure}
 
 \paragraph{
-La información que se envía es la siguiente:
+El flujo de información es el mostrado en la figura \ref{fig:mensajesconceptual}
 }
   \begin{figure}[htb]
   \centering
@@ -41,8 +43,9 @@ La información que se envía es la siguiente:
 
 
 \paragraph{
-Como se puede apreciar, no es necesario guardar ningún tipo de información sobre los músicos o el director. Tan solo
-es necesario guardar el ``tempo'' (que será establecido por el director).
+Es necesario guardar el ``tempo'' (que será establecido por el director) y algún tipo
+de idenficación de los músicos, para que el director sepa con quién se tiene que
+comunicar (aunque esto se verá más adelante).
 }
 
 \title{Actores}
@@ -50,7 +53,7 @@ es necesario guardar el ``tempo'' (que será establecido por el director).
 
 \paragraph{
 Del esquema de la figura \ref{fig:mensajesconceptual} podemos sacar una conclusión clara:
-será necesaria la distinción entre dos usuarios en nuestro sistema,
+será necesaria la distinción entre dos tipos de usuarios en nuestro sistema.
 }
   \begin{itemize}
     \item Director: es el que envía el pulso al resto de actores. Solo uno por sistema
@@ -78,16 +81,49 @@ tener para satisfacer las necesidades de los usuarios.
 \section{Requisitos no funcionales}
 
 \paragraph{
-En estea sección se van a describir los distintos requisitos no funcionaels del sistema.
+En estea sección se van a describir los distintos requisitos no funcionales del sistema.
 Los requisitos no funcionales son aquellos que nos informan de restricciones que debe cumplir
 nuestro sistema.
 }
 
 \begin{itemize}
-    \item[\textbf{RNF.1}] El sistema debe ser wireless
-    \item[\textbf{RNF.2}] Debe de ser barato
-    \item[\textbf{RNF.3}] La escalabilidad no debe ser un problema
-    \item[\textbf{RNF.4}] Debe permitir que se puedan añadir funciones
-    \item[\textbf{RNF.5}] El dispositivo que se desarrolle tiene que ser discreto y cómodo
-    \item[\textbf{RNF.6}] Bajo consumo energético
+    \item[\textbf{RNF.1}] El sistema debe ser wireless: la comunicación entre los
+      dispositivos debe hacerse sin cables. Satisface el OBJ1
+    \item[\textbf{RNF.2}] Debe de ser barato: para que el usuario desee utilizar
+      el sistema, este debe tener un coste asumible. Satisface el OBJ2
+    \item[\textbf{RNF.3}] La escalabilidad no debe ser un problema: se deben poder añadir
+      muchos dispositivos al sistema y que la funcionalidad no se resienta. Satisface el
+      OBJ3
+    \item[\textbf{RNF.4}] Debe permitir que se puedan añadir funciones: para futuras mejoras.
+      Satisface el OBJ4 y, en cierta forma, el OBJ7.
+    \item[\textbf{RNF.5}] El dispositivo que se desarrolle tiene que ser discreto y cómodo:
+      ningún usuario va a querer utilizarlo si se siente mal llevándolo o si es demasiado llamativo.
+      Satisface el OBJ5
+    \item[\textbf{RNF.6}] Bajo consumo energético: se busca aprovechar la batería al máximo
+      (si el dispositivo funciona durante poco tiempo, no habrá usuarios que deseen utilizarlo).
+      Satisface el OBJ6
+    \item[\textbf{RNF.7}] Sincronización entre los músicos: ya que lo que se busca es dar unidad
+      a la interpretación de las distintas obras, el sistema debe cumplir unos requisitos de tiempo
+      importantes (a nivel de milisegundos para que, en caso de haber algo de asincronía, el usuario no lo note).
+    \item[\textbf{RNF.8}] El pulso debe mantenerse constante: el pulso, por definición
+      no cambia a lo largo de la obra y debe conseguirse que el usuario lo perciba de forma
+      constante
 \end{itemize}
+
+
+\title{Requisitos de información}
+\section{Requisitos de información}
+
+\paragraph{
+  Estos requisitos indican qué información guarda nuestro sistema.
+}
+
+  \begin{itemize}
+    \item[\textbf{RI.1}] Tempo: se guardará el tempo indicado por el director
+    para poder transmitir el pulso adecuado a los distintos músicos o, en su defecto,
+    enviar el tempo una vez que estén sincronizados
+    \item[\textbf{RI.2}] Músicos: el director deberá conocer los músicos existentes en la banda
+    para saber a quién tiene que comunicarle el tempo. Podría darse el caso de dos
+    agrupaciones musicales que se encontrasen muy próximas y utilizase en sistema:
+    hay que evitar que el pulso de una de las bandas interfiera el de la otra
+  \end{itemize}
