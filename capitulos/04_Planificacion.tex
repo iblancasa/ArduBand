@@ -1,0 +1,117 @@
+\chapter{Planificación}
+\title{Planificación}
+
+\title{Metodología de desarrollo}
+\section{Metodología de desarrollo}
+
+\paragraph{
+La metodología que se ha tratado de seguir para el desarrollo de este proyecto ha sido
+un modelo en espiral ya que lo primero que se quiere solucionar es una funcionalidad
+básica (mantener el mismo pulso entre todos los músicos). Sobre esto,
+se desea que la comunidad (o los mismos desarrolladores), introduzcan nuevas
+funcionalidades.
+}
+
+\paragraph{
+Incluso dentro del desarrollo de la funcionalidad más básica (que es
+la que se trata de implementar en este trabajo), se sigue el una metodología en espiral:
+}
+
+\begin{enumerate}
+  \item Extracción de los requisitos
+  \item Planificación
+  \item Ingeniería
+  \item Construcción
+  \item Evaluación
+\end{enumerate}
+
+\title{Fases}
+\section{Fases}
+\paragraph{
+En la anterior sección se ha comentado la metodología a utilizar y, de forma general,
+las fases a desarrollar.
+}
+
+\begin{enumerate}
+  \item Extracción de los requisitos: esto se ha hecho a lo largo del capítulo \ref{cap:EspecificaciondeRequisitos}
+  \item Planificación: es lo que se está tratando en este mismo capítulo
+  \item Ingeniería: se hablará de esto en los capítulos  \ref{cap:Analisis} y  \ref{cap:EspecificaciondeRequisitos}
+  \item Construcción
+    \begin{enumerate}
+      \item Comunicación entre los actores del sistema
+      \item Cálculo de los valores necesarios para mantener el tempo en un actor
+      \item Envío del tempo desde el director a los músicos
+      \item Posibilidad de cambiar el tempo (por parte del director)
+      \item Aplicaciones propias para cambiar el tempo
+    \end{enumerate}
+  \item Evaluación
+\end{enumerate}
+
+
+
+\title{Recursos humanos}
+\section{Recursos humanos}
+
+\paragraph{
+Gracias a que es un proyecto de software/hardware libre, todo aquel que
+desee particiar en el proyecto puede hacerlo realizando aportaciones en los
+\href{https://github.com/iblancasa/ArduBand}{repositorios del proyecto}.
+}
+
+
+\title{Recursos reutilizables}
+\section{Recursos técnicos reutilizables}
+
+\paragraph{
+Estos recursos hacen referencia a anteriores desarrollos hardware o software creados
+por otros desarrolladores o empresas.
+}
+
+\paragraph{
+En el capítulo de implementación se explicará con más detalle por qué se
+eligen los elementos que se van a describir en los dos siguientes apartados
+}
+
+
+\subsection{Recursos software reutilizables}
+\title{Recursos software reutilizable}
+
+
+\paragraph{
+En la introducción se hacía hincapié en la necesidad de crear una aplicación
+Android para ayudar al director a establecer el tempo deseado. Por tanto,
+serán recursos a tener en cuenta durante el desarrollo todas las herramientas
+que implementa el propio SDK de Android y aquellas bibliotecas con licencia
+libre que se encuentran en Internet (ya sean para añadir funcionalidad o elementos
+gráficos).
+}
+
+\paragraph{
+También se va a desarrollar un dispositivo físico que necesitará un software para estar
+controlado. Todas las bibliotecas del controlador con licencia libre, también estarán
+disponibles para su uso (en la sección de implementacion, veremos que se utilizará
+Arduino -el cual tiene muchas bibliotecas disponibles- y XBee -existiendo para este
+sistema de comunicación Wireless algunas bibliotecas desarrolladas por la comunidad-).
+}
+
+
+\subsection{Recursos hardware reutilizables}
+\title{Recursos hardware reutilizable}
+
+\paragraph{
+Como se acaba de comentar, se utilizará la plataforma Arduino. Además de poder comprar
+placas ya fabricadas, existe la posibilidad de crear una propia (es hardware libre y
+los planos y software se encuentran disponibles en GitHub \cite{arduinoRepo}).
+}
+
+\paragraph{
+Se utilizará también XBee, de la compañía Digi \cite{xbeedatasheet}.
+}
+
+
+\paragraph{
+Por otro lado, se puede considerar el dispositivo móvil Android como un elemento a
+tener en cuenta en esta sección (ya que es el elemento que hará de interfaz con el usuario,
+eliminando la necesidad de crear un dispositivo físico para que el director interactúe con
+el sistema).
+}
