@@ -7,24 +7,46 @@
 \input{portada/portada_2}
 
 
-
 \cleardoublepage
 \thispagestyle{empty}
 
 \begin{center}
-{\large\bfseries Título del Proyecto: Subtítulo del proyecto}\\
+{\large\bfseries ArduBand: sistema wearable para sincronización de bandas de música}\\
 \end{center}
 \begin{center}
-Nombre Apellido1 Apellido2 (alumno)\\
+Israel Blancas Álvarez\\
 \end{center}
 
 %\vspace{0.7cm}
-\noindent{\textbf{Palabras clave}: palabra\_clave1, palabra\_clave2, palabra\_clave3, ......}\\
+\noindent{\textbf{Palabras clave}: ZigBee, Metrónomo, Arduino, WSN, XBee, Android}\\
 
 \vspace{0.7cm}
 \noindent{\textbf{Resumen}}\\
+\paragraph{
+  En el presente trabajo, el lector podrá encontrar cómo se ha desarrollado un sistema wearable que, mediante vibración, facilita a los intérpretes de una banda de música seguir el mismo tempo. De esta forma, se ayudará a que todos los miembros del conjunto sigan el mismo pulso y puedan mantenerlo constante durante toda la ejecución.
+}
+\paragraph{
+  Esta necesidad ha despertado el interés de algunas compañías, que han desarrollado como el llamado “Body Beat”, de la marca “Peterson” que, a pesar de su gran abanico de funciones, no ha tenido el éxito esperado en el mercado al tener elevado coste. Un sistema que hiciese las veces de metrónomo wireless (característica principal y más atrayente del artículo antes mencionado) a un precio menor atraería a muchos más clientes.
+}
+\paragraph{
+Para que todos los integrantes de la agrupación puedan llevar el mismo pulso, se ha creado una red inalámbrica de sensores (WSN) que permite la sincronización de los aparatos que portan todos los músicos. La red de sensores ha sido concebida utilizando la implementación de ZigBee propuesta por la empresa “Digi International”, mientras la lógica de los circuitos se ha puesto en manos de la plataforma hardware Arduino (utilizándose diversas versiones del mismo).
+}
+\paragraph{
+El tipo de red que forman los dispositivos XBee ZigBee es de tipo malla pero, utilizando la configuración de las motas, se ha pasado a tener una topología de estrella. Dispone de dos tipos de wearables:
+}
+  \begin{itemize}
+  \item Director: su mota juega el papel de “coordinador” de la red. Es quien crea la red y establece los caminos que deben seguir las comunicaciones que haya en la red. Además de la comunicación con los otros elementos del sistema, tiene la opción de conectar, a través de Bluetooth, con un dispositivo Android.
+  \item Músico: contiene una mota del tipo “dispositivo final”. Simplemente, recibe (del dispositivo “director”) el tempo con el que el micromotor vibrador debe activarse (además, al llegar el paquete con la traza de datos, se sincroniza con el resto de dispositivos de la red, de forma que todos vibren a la vez).
+   Madrid.
+  \end{itemize}
 
-Poner aquí el resumen.
+\paragraph{
+Como se comentaba cuando se hablaba del dispositivo del director, se puede conectar con un dispositivo móvil Android. Es necesario que el director indique el tempo que el sistema debe marcar a los músicos, esta aplicación móvil es la que transfiere al controlador la velocidad a la que debe compaginar a los intérpretes (para evitar sobrecargar la red, se hace una coordinación cada cierto tiempo -por si hubiera habido retrasos en la organización inicial- y cada dispositivo subdivide en función del tempo que se le ha enviado). Buscando facilitar al usuario la utilización de esta tecnología, se ha desarrollado tanto una aplicación para teléfonos móviles, como para smartwatches que funcionen con el sistema operativo Android Wear.
+}
+
+\paragraph{
+Una vez desarrollada la base del sistema, es posible crear nuevas funcionalidades como la instalación de un sensor de vibración que permita a los percusionistas obtener retroalimentación para saber si los intérpretes están ejecutando la partitura siguiendo el tiempo marcado o la posibilidad de pasar lista (conociendo qué sensores se encuentran activos en la red).
+}
 \cleardoublepage
 
 
@@ -32,38 +54,73 @@ Poner aquí el resumen.
 
 
 \begin{center}
-{\large\bfseries Project Title: Project Subtitle}\\
+{\large\bfseries ArduBand: wearable system to synchronize music bands}\\
 \end{center}
 \begin{center}
-First name, Family name (student)\\
+Israel Blancas\\
 \end{center}
 
 %\vspace{0.7cm}
-\noindent{\textbf{Keywords}: Keyword1, Keyword2, Keyword3, ....}\\
+\noindent{\textbf{Keywords}: ZigBee, Metronome, Arduino, WSN, XBee, Android}\\
 
 \vspace{0.7cm}
 \noindent{\textbf{Abstract}}\\
 
-Write here the abstract in English.
+\paragraph{
+One of the principles of engineering is creating solutions to the problems of users. In this dissertation, the reader will be able to find how a wearable system has been developed helping musicians to go on the same “tempo” through vibration while they are playing music. This device sends the same pulse to all musicians and keep the “tempo” constant.
+}
+
+\paragraph{
+Some companies have developed similar systems. For example, Peterson created an item called “Body Beat”. It has a big range of functions and odds but it is too expensive for the majority of musicians. One device cheaper than it only with synchronization functions (the most important ability of this system) could attract more buyers. Furthermore, to create a free and open hardware platform could interest other developers to improve the functionality of this product (helping musicians, music teachers and other music professionals to play music with a better quality).
+}
+
+\paragraph{
+All music band’s components need to have the same pulse (if each instrumentalist had a different pulse, each one would read his score in a different speed and it would be a problem). It is possible because it has been created using a wireless sensor network (they enable communication with a very low energy cost). Then, when all nodes are synchronized, they know when they have to start the vibrations. But they do not have to be vibrating all time. They have to vibrate constantly as many times as the director said (for example, if compasses are of 4/4 and tempo 60 bpm -Beats Per Minute-, each node will vibrate 1 time per second).
+}
+
+\paragraph{
+This network has been deployed using ZigBee implementation of the “Digi International” company. Also, circuit logic has been put into operation using the hardware platform called Arduino (various versions of this, like Arduino Lilypad, Arduino Uno or Arduino Leonardo).
+}
+
+\paragraph{
+In the following pages , it is explained in more detail why certain decisions have been taken (some experiments in time between node's communications, explanations about XBee communication packets...)
+}
+
+\paragraph{
+XBee Zigbee’s devices are organized in mesh network but, changing each node’s configuration, we have now a network with star topology. There are two kinds of wearables:
+}
+
+\begin{itemize}
+\item Music director: it is the coordinator of network. It is who start the network and establish the paths of communication packets between all nodes. In addition, it is able to send data to every node and receive data from an Android device via Bluetooth. Only one in each network.
+\item Musician: it is composed of an “end device” node. It receives (from “music director device”) data (which contains “tempo”). Arduino takes this tempo and performs calculations to decide when it has to activate or deactivate a vibration motor (this motor helps musician to keep track of the correct pulse). There is one for each musician (in network, there will be as nodes as musicians).
+\end{itemize}
+
+\paragraph{
+Director’s device can be connected to an Android device (which could be a smartphone or a smartwatch, because one application has been developed to each one). This application allows director to indicate music’s “tempo” and each application was developed using Google’s recommendations about design (Material Design principles).
+}
+
+\paragraph{
+Taking this base, it is possible to create new functions such as installing a vibration sensors in drums to measure the tempo of the band and provide a feedback to the director. Another possibility could be rollcalling at the band (only it is necessary show what nodes are in the network at the moment).
+}
 
 \chapter*{}
 \thispagestyle{empty}
 
 \noindent\rule[-1ex]{\textwidth}{2pt}\\[4.5ex]
 
-Yo, \textbf{Nombre Apellido1 Apellido2}, alumno de la titulación TITULACIÓN de la \textbf{Escuela Técnica Superior
+Yo, \textbf Israel Blancas Álvarez, alumno de la titulación Grado de Ingeniería Informática de la \textbf{Escuela Técnica Superior
 de Ingenierías Informática y de Telecomunicación de la Universidad de Granada}, con DNI XXXXXXXXX, autorizo la
 ubicación de la siguiente copia de mi Trabajo Fin de Grado en la biblioteca del centro para que pueda ser
 consultada por las personas que lo deseen.
 
 \vspace{6cm}
 
-\noindent Fdo: Nombre Apellido1 Apellido2
+\noindent Fdo: Israel Blancas Álvarez
 
 \vspace{2cm}
 
 \begin{flushright}
-Granada a X de mes de 201 .
+Granada a 1 de julio de 2015.
 \end{flushright}
 
 
@@ -72,21 +129,19 @@ Granada a X de mes de 201 .
 
 \noindent\rule[-1ex]{\textwidth}{2pt}\\[4.5ex]
 
-D. \textbf{Nombre Apellido1 Apellido2 (tutor1)}, Profesor del Área de XXXX del Departamento YYYY de la Universidad de Granada.
+D. \textbf{Samuel Francisco Romero García}, Profesor del Área de XXXX del Departamento YYYY de la Universidad de Granada.
 
 \vspace{0.5cm}
 
-D. \textbf{Nombre Apellido1 Apellido2 (tutor2)}, Profesor del Área de XXXX del Departamento YYYY de la Universidad de Granada.
-
 
 \vspace{0.5cm}
 
-\textbf{Informan:}
+\textbf{Informa:}
 
 \vspace{0.5cm}
 
-Que el presente trabajo, titulado \textit{\textbf{Título del proyecto, Subtítulo del proyecto}},
-ha sido realizado bajo su supervisión por \textbf{Nombre Apellido1 Apellido2 (alumno)}, y autorizamos la defensa de dicho trabajo ante el tribunal
+Que el presente trabajo, titulado \textit{\textbf{ArduBand, vestible inalámbrico para coordinación de músicos en una banda}},
+ha sido realizado bajo su supervisión por \textbf{Israel Blancas Álvarez}, y autorizo la defensa de dicho trabajo ante el tribunal
 que corresponda.
 
 \vspace{0.5cm}
@@ -95,11 +150,11 @@ Y para que conste, expiden y firman el presente informe en Granada a X de mes de
 
 \vspace{1cm}
 
-\textbf{Los directores:}
+\textbf{El director:}
 
 \vspace{5cm}
 
-\noindent \textbf{Nombre Apellido1 Apellido2 (tutor1) \ \ \ \ \ Nombre Apellido1 Apellido2 (tutor2)}
+\noindent \textbf{Samuel Francisco Romero García}
 
 \chapter*{Agradecimientos}
 \thispagestyle{empty}
@@ -108,4 +163,3 @@ Y para que conste, expiden y firman el presente informe en Granada a X de mes de
 
 
 Poner aquí agradecimientos...
-
