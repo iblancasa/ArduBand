@@ -3,7 +3,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel}
 \usepackage{eurosym}
-
+\usepackage[table,xcdraw]{xcolor}
 
 \decimalpoint
 \usepackage{dcolumn}
@@ -180,9 +180,11 @@ pdfproducer = {pdflatex}
 \bibliographystyle{unsrt}
 
 
-
 \addcontentsline{toc}{chapter}{Lista de figuras}
 \listoffigures
+
+\renewcommand{\listtablename}{Índice de tablas}
+\listoftables
 
 \chapter*{}
 \thispagestyle{empty}

@@ -3,5 +3,107 @@
 \label{cap:Analisis}
 
 \paragraph{
-aasd
+En este capítulo se analizarán los requisitos del proyecto para, más tarde, poder
+realizar el diseño.
 }
+
+\title{Actores}
+\section{Actores}
+\paragraph{
+Ya en la sección \ref{sec:actoresRequisitos} se hizo alusión a la existencia de
+dos tipos de actores. Ahora se profundizará un poco más en su análisis.
+}
+
+\begin{itemize}
+  \item \textbf{Ac-1.} Director
+  \begin{itemize}
+   \item Descripción: es quien decide el tempo que debe seguir la banda y comunicar el pulso
+   a los músicos
+   \item Características: solo hay uno
+   \item Relaciones: conocerá a todos los músicos
+   \item Atributos: ninguno
+   \item Comentarios: tiene la responsabilidad del correcto funcionamiento del sistema
+  \end{itemize}
+
+  \item \textbf{Ac-1.} Músico
+  \begin{itemize}
+     \item Descripción: recibe el pulso del director
+     \item Características: hay muchos
+     \item Relaciones: conocerá al director. No necesita conocer al resto de músicos
+     \item Atributos: ninguno
+     \item Comentarios: recibirá el pulso enviado por el director con algún tipo de actuador
+  \end{itemize}
+\end{itemize}
+
+\title{Casos de uso}
+\section{Casos de uso}
+
+
+\begin{table}[!htbp]
+\centering
+\label{CU1}
+\begin{tabular}{|
+>{\columncolor[HTML]{CBCEFB}}l |l|l|}
+\hline
+{\bf Caso de uso}   & Encender sistema                                    & {\it CU.1}                             \\ \hline
+{\bf Actores}       & \multicolumn{2}{l|}{Director}                                                                \\ \hline
+{\bf Tipo}          & \multicolumn{2}{l|}{Primario, esencial}                                                      \\ \hline
+{\bf Precondición}  & \multicolumn{2}{l|}{}                                                                        \\ \hline
+{\bf Postcondición} & \multicolumn{2}{l|}{El sistema quedará listo para usarse}                                    \\ \hline
+{\bf Propósito}     & \multicolumn{2}{l|}{Iniciar el sistema}                                                      \\ \hline
+{\bf Resumen}       & \multicolumn{2}{l|}{\begin{tabular}[c]{@{}l@{}}El sistema deberá guardar el
+  tempo indicado por el \\ director de la banda\end{tabular}} \\ \hline
+{\bf Autor}         & Israel Blancas Álvarez                              & Versión 1.0                            \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[!htbp]
+\centering
+\label{CU2}
+\begin{tabular}{|
+>{\columncolor[HTML]{CBCEFB}}l |l|l|}
+\hline
+{\bf Caso de uso}   & Insertar tempo                                                          & {\it CU.2}                                                 \\ \hline
+{\bf Actores}       & \multicolumn{2}{l|}{Director}                                                                                                        \\ \hline
+{\bf Tipo}          & \multicolumn{2}{l|}{Primario, esencial}                                                                                              \\ \hline
+{\bf Precondición}  & \multicolumn{2}{l|}{El sistema debe haberse encendido}                                                                               \\ \hline
+{\bf Postcondición} & \multicolumn{2}{l|}{El sistema guardará el tempo}                                                                                    \\ \hline
+{\bf Propósito}     & \multicolumn{2}{l|}{Guardar tempo}                                                                                                   \\ \hline
+{\bf Resumen}       & \multicolumn{2}{l|}{\begin{tabular}[c]{@{}l@{}} El pulso es enviado desde el director a los músicos. \\
+De esta forma quedarán sincronizados y conociendo \\ el tempo \end{tabular}} \\ \hline
+{\bf Autor}         & Israel Blancas Álvarez                                                  & Versión 1.0                                                \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[!htbp]
+\centering
+\label{CU3}
+\begin{tabular}{|
+>{\columncolor[HTML]{CBCEFB}}l |l|l|}
+\hline
+{\bf Caso de uso}   & Enviar pulso                           & {\it CU.3}                \\ \hline
+{\bf Actores}       & \multicolumn{2}{l|}{Director, Músico}                              \\ \hline
+{\bf Tipo}          & \multicolumn{2}{l|}{Primario, esencial}                            \\ \hline
+{\bf Precondición}  & \multicolumn{2}{l|}{Debe haberse insertado un tempo en el sistema} \\ \hline
+{\bf Postcondición} & \multicolumn{2}{l|}{El pulso será comunicado a los músicos}        \\ \hline
+{\bf Propósito}     & \multicolumn{2}{l|}{Enviar pulso desde el director a los músicos}  \\ \hline
+{\bf Resumen}       & \multicolumn{2}{l|}{}                                              \\ \hline
+{\bf Autor}         & Israel Blancas Álvarez                 & Versión 1.0               \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[!htbp]
+\label{CU4}
+\begin{tabular}{|
+>{\columncolor[HTML]{CBCEFB}}l |l|l|}
+\hline
+{\bf Caso de uso}   & Atender al tempo                                 & {\it CU.4}                         \\ \hline
+{\bf Actores}       & \multicolumn{2}{l|}{Músico}                                                           \\ \hline
+{\bf Tipo}          & \multicolumn{2}{l|}{Primario, esencial}                                               \\ \hline
+{\bf Precondición}  & \multicolumn{2}{l|}{El Director debe estar transmitiendo el pulso}                    \\ \hline
+{\bf Postcondición} & \multicolumn{2}{l|}{El Músico conocerá el pulso y quedará sincronizado}               \\ \hline
+{\bf Propósito}     & \multicolumn{2}{l|}{Sincronizar al sistema}                                           \\ \hline
+{\bf Resumen}       & \multicolumn{2}{l|}{El director encenderá el sistema y todo se podrá poner en marcha} \\ \hline
+{\bf Autor}         & Israel Blancas Álvarez                           & Versión 1.0                        \\ \hline
+\end{tabular}
+\end{table}
