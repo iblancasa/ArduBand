@@ -123,10 +123,16 @@ hacer una estimación temporal del proyecto.
   \end{itemize}
 \end{itemize}
 
+\paragraph{
+Se ha hecho una estimación de la cantidad de días que ocuparían todas
+estas tareas y, para mostrarlo de una forma más gráfica,
+se ha creado un diagrama de Grantt, que se puede ver en la figura \ref{fig:grantt}.
+}
+
 \begin{figure}[htb]
 \centering
 \includegraphics[width=1\textwidth]{./imagenes/grantt}
-\caption{Representación gráfica de un pentagrama} \label{fig:pentagrama}
+\caption{Diagrama de Grantt} \label{fig:grantt}
 \end{figure}
 
 
@@ -150,7 +156,7 @@ por otros desarrolladores o empresas.
 
 \paragraph{
 En el capítulo de implementación se explicará con más detalle por qué se
-eligen los elementos que se van a describir en los dos siguientes apartados
+eligen los elementos que se van a describir en los dos siguientes apartados.
 }
 
 
@@ -189,10 +195,113 @@ los planos y software se encuentran disponibles en GitHub \cite{arduinoRepo}).
 Se utilizará también XBee, de la compañía Digi \cite{xbeedatasheet}.
 }
 
-
 \paragraph{
 Por otro lado, se puede considerar el dispositivo móvil Android como un elemento a
 tener en cuenta en esta sección (ya que es el elemento que hará de interfaz con el usuario,
 eliminando la necesidad de crear un dispositivo físico para que el director interactúe con
 el sistema).
+}
+
+\section{Presupuesto}
+\title{Presupuesto}
+
+\paragraph{En esta sección se va a proceder a estimar los costes del proyecto}.
+
+\subsection{Licencias software y hardware}
+\title{Licencias software y hardware}
+
+\paragraph{
+Gracias a la utilización de software y hardware libre, no es necesario el pago de licencias.
+}
+
+\paragraph{
+El único problema que podría plantearse viene por parte de la empresa Digi al utilizar
+el dispositivo XBee pero, debido a que este dispositivo está pensado para crear otros
+nuevos, no existe problema en cuanto a su redistribución. X-CTU, el software que se va a
+utilizar para la programación de los módulos no tiene licencia libre y se encuentra protegido
+por derechos de autor, aunque se distribuye de manera gratuita \cite{licenciaXCTU}.
+}
+
+\subsection{Material}
+\title{Material}
+
+\paragraph{A continuación se listarán los materiales necesarios y su costo aproximado.}
+
+  \begin{description}
+    \item [Arduino]\hfill \\
+      \begin{itemize}
+        \item {Función: controlar los elementos hardware}
+        \item {Precio aproximado: 7\euro}
+      \end{itemize}
+    \item [XBee]\hfill \\
+      \begin{itemize}
+        \item {Función: comunicación con el resto de dispositivos}
+        \item {Precio aproximado: 25\euro}
+      \end{itemize}
+      \item [Bluetooth]\hfill \\
+        \begin{itemize}
+          \item {Función: comunicación entre el dispositivo ArduBand y un dispositivo móvil}
+          \item {Precio aproximado: 6\euro}
+        \end{itemize}
+      \item [XBee Adapter/shield]\hfill \\
+        \begin{itemize}
+          \item {Función: permitir la conexión de XBee con Arduino}
+          \item {Precio aproximado: 10\euro}
+        \end{itemize}
+      \item [Micromotor]\hfill \\
+        \begin{itemize}
+          \item {Función: actuador. Informa al músico del pulso}
+          \item {Precio aproximado: 1.5\euro}
+        \end{itemize}
+      \item [Carcasa impresa]\hfill \\
+          \begin{itemize}
+            \item {Función: guardar los componentes de posibles golpes}
+            \item {Precio aproximado: 1\euro}
+        \end{itemize}
+      \item [Varios]\hfill \\
+        \begin{itemize}
+          \item {Función: cableado, soldadura...}
+          \item {Precio aproximado: 2\euro}
+        \end{itemize}
+  \end{description}
+
+\paragraph{
+Como Arduino es un proyecto de hardware libre, muchas empresas han decidido
+dedicarse a crear sus propias placas compatibles con las originales pero a un
+precio mucho menor. En este presupuesto se asume que se están utilizando estas
+placas derivadas.
+}
+
+\paragraph{
+A este material necesario se podría añadir las herramientas de las que se precisa
+para el desarrollo.
+}
+\begin{description}
+  \item [Teléfono Android]\hfill \\
+    \begin{itemize}
+      \item {Función: desarrollar y depurar la aplicación Android}
+      \item {Precio aproximado: 150\euro}
+    \end{itemize}
+  \item [Dispositivo Android Wear]\hfill \\
+    \begin{itemize}
+      \item {Función: desarrollar y depurar la aplicación Android Wear}
+      \item {Precio aproximado: 100\euro}
+    \end{itemize}
+\end{description}
+
+\paragraph{En el caso del teléfono móvil se ha elegido (para el presupuesto) "Motorola Moto G" por tener
+un precio basante ajustado y soportar la última versión de Android (cuando se escribe este
+trabajo, la última versión es Android 5). Para dispositivo Android Wear (también para el presupuesto)
+se ha elegido "LG G Watch" (por ser el dispositivo Android Wear más barato del momento
+y que, con las funcionalidades de las que dispone, permite llevar a cabo el desarrollo).}
+
+\subsection{Recursos humanos}
+\title{Recursos humanos}
+
+
+\subsection{Otros gastos}
+\title{Otros gastos}
+\paragraph{
+Teniendo en cuenta que se va a desarrollar una aplicación Android y otra Android Wear,
+será necesario pagar la cuota para obtener licencia de desarrollo (25USD, unos 22.5\euro) \cite{desarrollaAndroid}.
 }
