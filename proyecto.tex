@@ -1,5 +1,4 @@
 \documentclass[a4paper,11pt]{book}
-%\documentclass[a4paper,twoside,11pt,titlepage]{book}
 \usepackage{listings}
 \usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel}
@@ -50,23 +49,12 @@ pdfcreator = {LaTex},
 pdfproducer = {pdflatex}
 }
 
-%\hyphenation{}
+\hyphenation{}
 
-
-%\usepackage{doxygen/doxygen}
-%\usepackage{pdfpages}
 \usepackage{url}
 \usepackage{colortbl,longtable}
 \usepackage[stable]{footmisc}
-%\usepackage{index}
 
-
-%\usepackage[style=long, cols=2,border=plain,toc=true,number=none]{glossary}
-% \makeglossary
-
-% Definición de comandos que me son tiles:
-%\renewcommand{\indexname}{Índice alfabético}
-%\renewcommand{\glossaryname}{Glosario}
 
 \pagestyle{fancy}
 \fancyhf{}
@@ -158,16 +146,11 @@ pdfproducer = {pdflatex}
 \begin{document}
 \input{portada/portada}
 \input{prefacios/prefacio}
-%\frontmatter
-%\tableofcontents
-%\listoffigures
-%\listoftables
-%
-%\mainmatter
+
 \setlength{\parskip}{5pt}
 
 \setcounter{tocdepth}{2}
-\tableofcontents 
+\tableofcontents
 
 
 \input{capitulos/01_Introduccion}
@@ -195,13 +178,8 @@ pdfproducer = {pdflatex}
 \nocite{*}
 \bibliography{bibliografia}\addcontentsline{toc}{chapter}{Bibliografía}
 \bibliographystyle{unsrt}
-%
-%\appendix
-%\input{apendices/manual_usuario/manual_usuario}
-%%\input{apendices/paper/paper}
-%\input{glosario/entradas_glosario}
-% \addcontentsline{toc}{chapter}{Glosario}
-% \printglossary
+
+
 
 \addcontentsline{toc}{chapter}{Lista de figuras}
 \listoffigures
