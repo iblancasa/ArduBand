@@ -4,9 +4,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel}
 \usepackage{eurosym}
-% \usepackage[style=list, number=none]{glossary} %
-%\usepackage{titlesec}
-%\usepackage{pailatino}
+
 
 \decimalpoint
 \usepackage{dcolumn}
@@ -62,7 +60,7 @@ pdfproducer = {pdflatex}
 \usepackage[stable]{footmisc}
 %\usepackage{index}
 
-\makeindex
+
 %\usepackage[style=long, cols=2,border=plain,toc=true,number=none]{glossary}
 % \makeglossary
 
@@ -167,6 +165,10 @@ pdfproducer = {pdflatex}
 %
 %\mainmatter
 \setlength{\parskip}{5pt}
+
+\setcounter{tocdepth}{2}
+\tableofcontents 
+
 
 \input{capitulos/01_Introduccion}
 %
