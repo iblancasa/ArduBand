@@ -15,7 +15,7 @@ dos tipos de actores. Ahora se profundizará un poco más en su análisis.
 }
 
 \begin{itemize}
-  \item \textbf{Ac-1.} Director
+  \item \textbf{AC.1} Director
   \begin{itemize}
    \item Descripción: es quien decide el tempo que debe seguir la banda y comunicar el pulso
    a los músicos
@@ -25,7 +25,7 @@ dos tipos de actores. Ahora se profundizará un poco más en su análisis.
    \item Comentarios: tiene la responsabilidad del correcto funcionamiento del sistema
   \end{itemize}
 
-  \item \textbf{Ac-1.} Músico
+  \item \textbf{AC.2} Músico
   \begin{itemize}
      \item Descripción: recibe el pulso del director
      \item Características: hay muchos
@@ -184,7 +184,8 @@ comunicación haya finalizado por parte del director,\\ los músicos podrán apa
 \title{Módulos}
 \paragraph{Las funciones del sistema se pueden clasificar, según
 las tareas que se realicen, en módulos. Esta separación se representa gráficamente
-con un diagrama de paquetes como el de la figura \ref{fig:diagramapaquetes}}
+con un diagrama de paquetes como el de la figura \ref{fig:diagramapaquetes}, que pertenece al sistema
+que se está desarrollando en este trabajo.}
 
 \begin{figure}[!htb]
 \centering
@@ -197,7 +198,7 @@ con un diagrama de paquetes como el de la figura \ref{fig:diagramapaquetes}}
 \subsection{Diagrama de casos de uso}
 \title{Diagrama de casos de uso}
 \paragraph{
-Gracias a este diagrama, podemos tener una representación gráfica que nos
+Gracias al diagrama de la figura \ref{fig:diagramacasosdeuso}, podemos tener una representación gráfica que nos
 indica quién realiza cada caso de uso (y, según la clasificación anterior,
 comprender en qué modulo se sitúa dicha acción).
 }
@@ -209,11 +210,11 @@ comprender en qué modulo se sitúa dicha acción).
 
 \paragraph{
 Los casos de uso dentro del cuadro verde corresponden a los del módulo ``Encender".
-Aquellos que se encuentran dentro del cuadro de color crema, al módulo ``Músico" y, finalmente,
+Aquellos que se encuentran dentro del cuadro de color crema, al módulo ``Músico". Finalmente,
 los de color turquesa, al módulo ``Director".
 }
 
-\subsection{Diagrama de secuencia del sistema}
+\section{Diagrama de secuencia del sistema}
 \paragraph{
 Para ver desde otra perspectiva el funcionamiento del sistema, se ha creado el diagrama
 de secuencia de la figura \ref{fig:diagramasecuencia}
@@ -222,5 +223,42 @@ de secuencia de la figura \ref{fig:diagramasecuencia}
 \begin{figure}[!htb]
 \centering
 \includegraphics[width=1\textwidth]{./imagenes/diagramasecuencia}
-\caption{Diagrama de de secuencia} \label{fig:diagramasecuencia}
+\caption{Diagrama de secuencia} \label{fig:diagramasecuencia}
+\end{figure}
+
+\section{Diagramas de actividad}
+\title{Diagramas de actividad}
+
+\paragraph{Los diagramas de actividad nos permiten conocer cómo se realizan
+las actividades dentro del sistema. En las figuras \ref{fig:diagramaactividad1} y \ref{fig:diagramaactividad2}
+veremos las principales actividades de nuestro sistema. En el caso de la figura \ref{fig:diagramaactividad1},
+el color azul pertenece a las acciones llevadas a cabo por el ``Director" mientras que en el de la figura
+\ref{fig:diagramaactividad2} la función de encender el sistema pertenece al ``Músico" (color crema). En ambas
+figuras, el color verde pertenece a las acciones llevadas a cabo por el sistema.}
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=1\textwidth]{./imagenes/diagramaactividad1}
+\caption{Diagrama de actividad 1} \label{fig:diagramaactividad1}
+\end{figure}
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=1\textwidth]{./imagenes/diagramaactividad2}
+\caption{Diagrama de actividad 2} \label{fig:diagramaactividad2}
+\end{figure}
+
+\section{Diagrama conceptual}
+\title{Diagrama conceptual}
+\paragraph{
+Este diagrama (que podemos ver en la figura \ref{fig:modeloconceptual})
+nos da una idea de cómo se encuentran interrelacionados los diferentes
+agentes del sistema. En nuestro caso, podemos ver cómo un ``Director" está asociado
+a muchos ``Músicos" (o ninguno) y un ``Músico" solo tiene asignado un director.
+}
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=1\textwidth]{./imagenes/modeloconceptual}
+\caption{Modelo conceptual} \label{fig:modeloconceptual}
 \end{figure}
