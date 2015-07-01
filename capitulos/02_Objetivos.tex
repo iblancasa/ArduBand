@@ -5,36 +5,55 @@
 \section{
 Objetivos principales
 }
+Se desea desarrollar un \textbf{sistema que permita sincronizar a los músicos de una banda} entre sí,
+utilizando \textbf{tecnologías libres}. Debido al número de horas que puede llegar a durar una
+actuación, se quiere que tenga un \textbf{bajo consumo energético}. También se quiere que sea
+\textbf{vestible}, de forma que sea cómodo y discreto para el usuario. Por supuesto, para que
+sea competitivo, debe ser \textbf{más barato que otras soluciones} disponibles en el mercado y
+\textbf{escalable en el número de dispositivos}. Se pretente, además, que sea \textbf{posible añadir nuevas
+funciones a posteriori}.\\
+
+Se desea utilizar tecnologías libres para que cualquier desarrollador pueda aportar su conocimiento al proyecto, colaborando
+con aquellas bandas de música que utilicen el producto. Además, como ya se comenta en la introducción,
+una comunidad alrededor de este producto podría mejorar el rendimiento del mismo y añadir nuevas funcionalidades.\\
+
+El hecho de que el sistema sea vestible viene por dos razones: comodidad (los músicos llevarían mucho tiempo encima el aparato y,
+unido al instrumento y partituras, un aparato que sea demasiado grande, será un lastre) y decoro (no queda bien de cara al público que
+un músico vestido de gala lleve un aparato que sea demasiado llamativo).\\
+
+La sincronización que se pretende llevar a cabo es la solución al problema planteado durante la introducción: es complicado
+mantener acompasados a todos los músicos de una banda mientras se está realizando una actuación en la calle y el director no puede
+realizar sus funciones.\\
+
+
+\title{Consideraciones técnicas}
+\section{Consideraciones técnicas}
+
   \begin{itemize}
-    \item[\textbf{OBJ.1}] Que el sistema sea wireless: se quiere realizar un dispositivo que permita la comunicación con el resto de dispositivos del sistema sin necesidad de una conexión física entre ellos
-    \item[\textbf{OBJ.2}] Conseguir un precio menor que otras soluciones del mercado: utilizando una tecnología distinta a la que han usado otros productos, tratar de obtener un sistema con un menor costo
-    \item[\textbf{OBJ.3}] Escalable en el número de dispositivos: se quiere crear un sistema que disponga de una gran escalabilidad
-    \item[\textbf{OBJ.4}] Ampliable en funciones: posibilidad de desarrollar nuevas funcionalidades partiendo de la funcionalidad más básica del sistema
-    \item[\textbf{OBJ.5}] Vestible: debe ser un sistema discreto y cómodo para el portador
-    \item[\textbf{OBJ.6}] Bajo consumo energético: se quiere desarrollar un sistema que no consuma demasiada energía para sacar el máximo partido a la batería que se inserte
-    \item[\textbf{OBJ.7}] Tecnología lo más libre posible: se desea utilizar herramientas libres para tratar de atraer a desarrolladores para que colaboren en el proyecto. Además por la propia naturaleza del software/hardware libre, la comunidad aportará parches y soluciones a los problemas que puedan presentarse, mejorando la calidad del desarrollo
-    \item[\textbf{OBJ.8}] Suficiente para cubrir las necesidades del mercado: aunque anteriormente se mencionaba que se desea que el sistema sea ampliable en funciones, es también necesario que la versión inicial tenga unas funciones mínimas que permitan cubrir las necesidades básicas del mercado
+    \item Una posible solución al problema planteado puede ser el despliegue de una red inalámbrica de sensores,
+    más teniendo en cuenta la actual dirección de la industria respecto a este tipo de tecnología (su aplicación,
+    por ejemplo. en el “Internet de las Cosas”)
+    \item La creación de dispositivos \textit{wearables} es algo que también ha suscitado mucha atención por parte de la industria
+    (como se puede ver en la curva de Gartner -figura \ref{fig:curvaG} ).
   \end{itemize}
 
-\title{Objetivos secundarios}
-\section{
-Objetivos secundarios
-}
-  \begin{itemize}
-    \item[\textbf{obj.1}]Utilizar diversas versiones de la plataforma hardware Arduino: se tiene como objetivo utilizar distintas versiones de Arduino para poder obtener el producto con distintos formatos (Arduino Lilypad, Arduino Uno...)
-    \item[\textbf{obj.2}]Desarrollar una red inalámbrica de sensores: teniendo en cuenta la actual dirección de la industria respecto a este tipo de tecnología (su aplicación, por ejemplo. en el “Internet de las Cosas” \cite{hypeIoT} \cite{gatnercurve}) , es interesante trabajar con esta tecnología
-    \item[\textbf{obj.3}]Crear un dispositivo wearable: actualmente es uno de los sectores en los que más están trabajando las compañías. Si miramos la curva de Gatner \cite{gatnercurve}, en el año 2014 estas tecnologías se situaban en la cima del ciclo
-  \end{itemize}
+  \begin{figure}[htb]
+  \centering
+  \includegraphics[width=1\textwidth]{./imagenes/gartner}
+  \caption{Curva de Gartner (agosto de 2014). Imagen extraída de \scriptsize{http://www.gartner.com/} \cite{gartnercurve}} \label{fig:curvaG}
+  \end{figure}
+
 
 \title{Aspectos formativos previos}
-\section{
-Aspectos formativos previos
-}
+\section{Aspectos formativos previos}
 
-Aunque todo el conocimiento obtenido durante el grado ha sido importante para el desarrollo del proyecto, para el desarrollo del proyecto, hay que destacar:
-
+Aunque todo el conocimiento obtenido durante el grado ha sido importante para el desarrollo del proyecto,
+para el desarrollo del proyecto, hay que destacar:
   \begin{itemize}
-    \item Conocimientos básicos de Ingeniería del Software: para establecer los requisitos, la planificación, costes de desarrollo...
-    \item Nociones en programación: en especial las adquiridas en cuanto a la programación de dispositivos móviles
-    \item Tecnologías Emergentes: en esta asignatura se ha impartido materia sobre el uso de placas controladoras, dispositivos wearables y redes inalámbricas de sensores (también vistas en la asignatura Informática Industrial)
+    \item Fundamentos de Ingeniería del Software: para establecer los requisitos,
+    la planificación, costes de desarrollo...
+    \item Programación de Dispositivos Móviles: para realizar las aplicaciones ``Android"
+    \item Tecnologías Emergentes: en esta asignatura se ha impartido materia sobre el uso
+    de placas controladoras, dispositivos \textit{wearables} y redes inalámbricas de sensores
+    \item Informática Industrial: algunos conocimientos sobre redes inalámbricas de sensores
   \end{itemize}
