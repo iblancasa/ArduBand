@@ -4,12 +4,17 @@
 \title{Metodología de desarrollo}
 \section{Metodología de desarrollo}
 
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{./imagenes/modeloespiral}
+\caption{Metodología de desarrollo en espiral} \label{fig:modeloespiral}
+\end{figure}
 
 La metodología que se ha tratado de seguir para el desarrollo de este proyecto ha sido
 un modelo en espiral ya que lo primero que se quiere solucionar es una funcionalidad
 básica (mantener el mismo pulso entre todos los músicos). Sobre esto,
 se desea que la comunidad (o los mismos desarrolladores), introduzcan nuevas
-funcionalidades.
+funcionalidades (la espiral seguiría girando, empezando otra vez por la primera etapa).\\
 
 Incluso dentro del desarrollo de la funcionalidad más básica (que es
 la que se trata de implementar en este trabajo), se sigue el una metodología en espiral:
@@ -20,6 +25,7 @@ la que se trata de implementar en este trabajo), se sigue el una metodología en
   \item Ingeniería
   \item Construcción
 \end{enumerate}
+
 
 \title{Fases}
 \section{Fases}
@@ -50,7 +56,7 @@ las fases a desarrollar. En esta sección se va a entrar en más detalle.
 \title{Estimación temporal}
 \section{Estimación temporal}
 Teniendo en cuenta las partes detalladas en las sección anterior, es momento de
-hacer una estimación temporal del proyecto.
+hacer una estimación temporal del proyecto.\\
 
 
 \begin{itemize}
@@ -117,14 +123,43 @@ hacer una estimación temporal del proyecto.
   \end{itemize}
 \end{itemize}
 
+\begin{table}[h]
+\centering
+\label{table:estimadobruto}
+\begin{tabular}{ll}
+\hline
+\rowcolor[HTML]{9698ED}
+{\bf Tarea}                   & {\bf Tiempo estimado (horas)} \\ \hline
+Especificaciones del proyecto & 15                            \\
+Planificación                 & 20                            \\
+Análisis y diseño             & 40                            \\
+Construcción                  & 100                           \\
+Documentación                 & 40                            \\
+\rowcolor[HTML]{CBCEFB}
+{\bf Total}                   & 215                           \\ \hline
+\end{tabular}
+\caption{Estimación temporal}
+\end{table}
+
 Se ha hecho una estimación de la cantidad de días que ocuparían todas
 estas tareas y, para mostrarlo de una forma más gráfica,
-se ha creado un diagrama de Grantt, que se puede ver en la figura \ref{fig:grantt}.
+se ha creado un diagrama de Gantt, que se puede ver en la figura \ref{fig:gantt} y que sigue la siguiente leyenda:
+
+\begin{itemize}
+  \item  \textcolor{blueS}{$\blacksquare$} Especificaciones técnicas del proyecto
+  \item  \textcolor{rojoOscuroS}{$\blacksquare$} Planificación
+  \item  \textcolor{naranjaS}{$\blacksquare$} Análisis y diseño
+  \item  \textcolor{verdeS}{$\blacksquare$} Construcción
+  \item  \textcolor{pistachoS}{$\blacksquare$} Documentación
+\end{itemize}
+
+
 
 \begin{figure}[htb]
 \centering
-\includegraphics[width=1\textwidth]{./imagenes/grantt}
-\caption{Diagrama de Grantt} \label{fig:grantt}
+\includegraphics[width=1\textwidth]{./imagenes/gantt}
+\caption{Diagrama de Gantt
+} \label{fig:gantt}
 \end{figure}
 
 
@@ -133,17 +168,18 @@ se ha creado un diagrama de Grantt, que se puede ver en la figura \ref{fig:grant
 
 Gracias a que es un proyecto de software/hardware libre, todo aquel que
 desee particiar en el proyecto puede hacerlo realizando aportaciones en los
-\href{https://github.com/iblancasa/ArduBand}{repositorios del proyecto}.
+\href{https://github.com/iblancasa/ArduBand}{repositorios del proyecto}.\\
 
+Para el desarrollo del proyecto se ha contado con solo un miembro, el autor de este trabajo.\\
 
 \title{Recursos reutilizables}
 \section{Recursos técnicos reutilizables}
 
 Estos recursos hacen referencia a anteriores desarrollos hardware o software creados
-por otros desarrolladores o empresas.
+por otros desarrolladores o empresas.\\
 
 En el capítulo de implementación se explicará con más detalle por qué se
-eligen los elementos que se van a describir en los dos siguientes apartados.
+eligen los elementos que se van a describir en los dos siguientes apartados.\\
 
 
 \subsection{Recursos software reutilizables}
@@ -154,14 +190,14 @@ Android para ayudar al director a establecer el tempo deseado. Por tanto,
 serán recursos a tener en cuenta durante el desarrollo todas las herramientas
 que implementa el propio SDK de Android y aquellas bibliotecas con licencia
 libre que se encuentran en Internet (ya sean para añadir funcionalidad o elementos
-gráficos).
+gráficos).\\
 
 
 También se va a desarrollar un dispositivo físico que necesitará un software para estar
 controlado. Todas las bibliotecas del controlador con licencia libre, también estarán
 disponibles para su uso (en la sección de implementacion, veremos que se utilizará
 Arduino -el cual tiene muchas bibliotecas disponibles- y XBee -existiendo para este
-sistema de comunicación Wireless algunas bibliotecas desarrolladas por la comunidad-).
+sistema de comunicación Wireless algunas bibliotecas desarrolladas por la comunidad-).\\
 
 
 
@@ -170,43 +206,39 @@ sistema de comunicación Wireless algunas bibliotecas desarrolladas por la comun
 
 Como se acaba de comentar, se utilizará la plataforma Arduino. Además de poder comprar
 placas ya fabricadas, existe la posibilidad de crear una propia (es hardware libre y
-los planos y software se encuentran disponibles en GitHub \cite{arduinoRepo}).
+los planos y software se encuentran disponibles en GitHub \cite{arduinoRepo}).\\
 
-
-Se utilizará también XBee, de la compañía Digi \cite{xbeedatasheet}.
-
-
+Se utilizará también XBee, de la compañía Digi \cite{xbeedatasheet}.\\
 
 Por otro lado, se puede considerar el dispositivo móvil Android como un elemento a
 tener en cuenta en esta sección (ya que es el elemento que hará de interfaz con el usuario,
 eliminando la necesidad de crear un dispositivo físico para que el director interactúe con
-el sistema).
+el sistema).\\
 
 
 \section{Presupuesto}
 \title{Presupuesto}
 
-En esta sección se va a proceder a estimar los costes del proyecto.
+En esta sección se va a proceder a estimar los costes del proyecto.\\
 
 \subsection{Licencias software y hardware}
 \title{Licencias software y hardware}
 
-Gracias a la utilización de software y hardware libre, no es necesario el pago de licencias.
+Gracias a la utilización de software y hardware libre, no es necesario el pago de licencias.\\
 
 El único problema que podría plantearse viene por parte de la empresa Digi al utilizar
 el dispositivo XBee pero, debido a que este dispositivo está pensado para crear otros
 nuevos, no existe problema en cuanto a su redistribución. X-CTU, el software que se va a
 utilizar para la programación de los módulos no tiene licencia libre y se encuentra protegido
-por derechos de autor, aunque se distribuye de manera gratuita \cite{licenciaXCTU}.
+por derechos de autor, aunque se distribuye de manera gratuita \cite{licenciaXCTU}.\\
 
 
 \subsection{Material}
 \title{Material}
 
 A continuación se listarán los materiales necesarios y su costo aproximado.
-
   \begin{description}
-    \item [Arduino]\hfill \\
+    \item [Arduino(*)]\hfill \\
       \begin{itemize}
         \item {Función: controlar los elementos hardware}
         \item {Precio aproximado: 7\euro}
@@ -243,21 +275,63 @@ A continuación se listarán los materiales necesarios y su costo aproximado.
         \end{itemize}
   \end{description}
 
-Como Arduino es un proyecto de hardware libre, muchas empresas han decidido
+
+  \begin{table}[h]
+  \centering
+  \label{table:costodirector}
+  \begin{tabular}{ll}
+  \hline
+  \rowcolor[HTML]{9698ED}
+  {\bf Material}      & {\bf Precio (\euro)} \\ \hline
+  Arduino*            & 7                \\
+  XBee                & 25               \\
+  Bluetooth           & 6                \\
+  XBee Adapter/shield & 10               \\
+  Carcasa             & 1                \\
+  Varios              & 2                \\
+  \rowcolor[HTML]{CBCEFB}
+  {\bf Total}         & 51              \\ \hline
+  \end{tabular}
+      \caption{Coste de un dispositivo director}
+  \end{table}
+
+
+
+  \begin{table}[h]
+  \centering
+  \label{table:costomusico}
+  \begin{tabular}{ll}
+  \hline
+  \rowcolor[HTML]{9698ED}
+  {\bf Material}      & {\bf Precio (\euro)} \\ \hline
+  Arduino*            & 7                \\
+  XBee                & 25               \\
+  Micromotor vibrador & 1,50             \\
+  XBee Adapter/shield & 10               \\
+  Carcasa             & 1                \\
+  Varios              & 2                \\
+  \rowcolor[HTML]{CBCEFB}
+  {\bf Total}         & 46,5               \\ \hline
+  \end{tabular}
+    \caption{Coste de un dispositivo músico}
+  \end{table}
+
+
+(*)Como Arduino es un proyecto de hardware libre, muchas empresas han decidido
 dedicarse a crear sus propias placas compatibles con las originales pero a un
 precio mucho menor. En este presupuesto se asume que se están utilizando estas
-placas derivadas.
+placas derivadas.\\
 
 A este material necesario se podría añadir las herramientas de las que se precisa
-para el desarrollo.
+para el desarrollo, es decir, los costes no recurrentes en ingeniería.\\
 
 \begin{description}
-  \item [Teléfono Android]\hfill \\
+  \item [Dispositivo Android]\hfill \\
     \begin{itemize}
       \item {Función: desarrollar y depurar la aplicación Android}
       \item {Precio aproximado: 150\euro}
     \end{itemize}
-  \item [Dispositivo Android Wear]\hfill \\
+  \item [Dispositivo ``Android Wear"]\hfill \\
     \begin{itemize}
       \item {Función: desarrollar y depurar la aplicación Android Wear}
       \item {Precio aproximado: 100\euro}
@@ -274,14 +348,32 @@ para el desarrollo.
       \end{itemize}
 \end{description}
 
-En el caso del teléfono móvil se ha elegido (para el presupuesto) ``Motorola Moto G" por tener
+\begin{table}[h]
+\centering
+\begin{tabular}{ll}
+\hline
+\rowcolor[HTML]{9698ED}
+{\bf Herramienta}        & {\bf Precio (\euro)} \\ \hline
+Dispositivo Android      & 150                  \\
+Dispositivo Android Wear & 100                  \\
+Soldador                 & 10                   \\
+Ordenador                & 450                  \\
+\rowcolor[HTML]{CBCEFB}
+{\bf Total}              & 710                  \\ \hline
+\end{tabular}
+\caption{Coste de las herramientas}
+\label{costedelasherramientas}
+\end{table}
+
+
+En el caso del dispositivo Android se ha elegido (para el presupuesto) ``Motorola Moto G" por tener
 un precio basante ajustado y soportar la última versión de Android (cuando se escribe este
-trabajo, la última versión es Android 5). Para dispositivo Android Wear (también para el presupuesto)
-se ha elegido ``LG G Watch" (por ser el dispositivo Android Wear más barato del momento
+trabajo, la última versión es Android 5). Para dispositivo ``Android Wear" (también para el presupuesto)
+se ha elegido ``LG G Watch" (por ser el dispositivo ``Android Wear" más barato del momento
 y que, con las funcionalidades de las que dispone, permite llevar a cabo el desarrollo). De los dispositivos
 Android se puede prescindir al poder emularlos en un ordenador. También se podría sacar
 de este presupuesto el ordenador y el soldador (ya que son herramientas básicas y se asume
-que el desarrollador debe de tenerlas antes de empezar con el proyecto).
+que el desarrollador debe de tenerlas antes de empezar con el proyecto).\\
 
 \subsection{Recursos humanos}
 \title{Recursos humanos}
@@ -289,13 +381,13 @@ que el desarrollador debe de tenerlas antes de empezar con el proyecto).
 Como se ha comentado anteriormente en la sección dedicada a hablar de los recursos humanos disponibles,
 al ser un desarrollo libre, cualquiera que lo desee puede participar. Sin embargo, para llevar a cabo la
 construcción del sistema, es necesario que haya gente trabajando en él. Los cálculos
-se realizarán partiendo de que hay un trabajador con el título de Grado en Ingeniería Informática.
+se realizarán partiendo de que hay un trabajador con el título de Grado en Ingeniería Informática.\\
 
 Retomando los datos de la estimacióm temporal, tenemos que el número total de horas es
 de 215 horas. Pero de esas horas, no podemos tomar el 100\% fomo facturable (entrevistas,
 búsqueda de información, formación y similares no se pueden introducir en facturación),
 lo que nos lleva a tener que hacer una nueva estimación sobre el número de horas facturables
-(de las anteriormente descritas).
+(de las anteriormente descritas).\\
 
 
 \begin{itemize}
@@ -337,14 +429,34 @@ lo que nos lleva a tener que hacer una nueva estimación sobre el número de hor
   \end{itemize}
 \end{itemize}
 
-Todo esto nos hace un total de 156 horas facturables.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{ll}
+\hline
+\rowcolor[HTML]{9698ED}
+{\bf Actividad}               & {\bf Tiempo (horas)} \\ \hline
+Especificaciones del proyecto & 6                    \\
+Planificación                 & 0                    \\
+Análisis y diseño             & 40                   \\
+Construcción                  & 75                   \\
+Documentación                 & 35                   \\
+\rowcolor[HTML]{CBCEFB}
+{\bf Total}                   & 156                  \\ \hline
+\end{tabular}
+\caption{Número de horas facturables en el proyecto}
+\label{table:horasfacturables}
+\end{table}
+
 
 Debido a que, por Ley, está prohibido que los Colegios Profesionales dispongan e informen
 sobre baremos orientativos de honorarios, solo podemos obtener el sueldo medio de un Graduado
-en Ingeniería Informática a través de estudios. El Consejo General de Colegios Oficiales de Ingeniería en Informática
-elaboró en abril de 2015 un estudio \cite{estudioSalario} en el que podemos ver (gráfica 34, en la página 39) que el sueldo
-oscila entre los 12.000\euro\ y 30.000\euro\ (la mayoría de los trabajadores se encuentran en este rango). Tomaremos que un trabajador
-de estas características cobra 16.000\euro\ al año (para suponer un caso más caro intermedio dentro del rango más común).
+en Ingeniería Informática a través de estudios. El Consejo General de Colegios Oficiales de
+Ingeniería en Informática elaboró en abril de 2015 un estudio \cite{estudioSalario} en el que
+podemos ver (gráfica 34, en la página 39) que el sueldo oscila entre los 12.000\euro\ y
+30.000\euro\ (la mayoría de los trabajadores se encuentran en este rango). Tomaremos que
+un trabajador de estas características cobra 16.000\euro\ al año (para suponer un caso
+más caro intermedio dentro del rango más común).\\
 
 Teniendo esta cifra, puede parecer directo obtener cuánto cobra un trabajador a la hora. Sin
 embargo, no es así. En España, la jornada laboral es de un máximo de 40 horas a la semana (5 días
@@ -352,7 +464,8 @@ multiplicado por 8 horas diarias) y el año tiene en torno a 52 semanas, lo que 
 Pero a estas horas hay que restarle festivos, vacaciones, asuntos propios, enfermedad... en media
 son unos 38 días (21 de vacaciones, 14 de días festivos y 3 que se corresponden con asuntos propios y/o
 enfermedad), es decir, 304 horas. Las horas de trabajo se reducen a 1.776 horas por año. Por tanto, ya
-podemos calcular el gasto que nos va a suponer el trabajador.
+podemos calcular el gasto que nos va a suponer en horas de ingeniería (después habría que sumar
+las cantidades relacionadas con Seguridad Social, seguros y similares).\\
 
 
 \[
@@ -364,8 +477,8 @@ podemos calcular el gasto que nos va a suponer el trabajador.
 
 \subsection{Otros gastos}
 \title{Otros gastos}
-Teniendo en cuenta que se va a desarrollar una aplicación Android y otra Android Wear,
-será necesario pagar la cuota para obtener licencia de desarrollo (25USD, unos 22,5\euro) \cite{desarrollaAndroid}.
+Teniendo en cuenta que se va a desarrollar una aplicación ``Android" y otra ``Android Wear",
+será necesario pagar la cuota para obtener licencia de desarrollo (25USD, unos 22,5\euro) \cite{desarrollaAndroid}.\\
 
 
 \subsection{Gasto total}
@@ -375,7 +488,7 @@ Deberemos diferenciar entre varios costos.
   \begin{itemize}
     \item Material para dispositivos
       \begin{itemize}
-        \item Dispositivo director: 51.5\euro/dispositivo
+        \item Dispositivo director: 51\euro/dispositivo
         \item Dispositivo músico: 46.5\euro/dispositivo
       \end{itemize}
     \item Herramientas de desarrollo: 710\euro
@@ -385,42 +498,51 @@ Deberemos diferenciar entre varios costos.
 
 Teniendo en cuenta que para comprobar que el sistema funciona, es decir, que hay
 coordinación, hay que desarrollar un dispositivo director y,  al menos, dos de músico,
-el precio del material es de 144.5\euro.
+el precio del material es de 144.5\euro.\\
 
 El precio final del desarrollo sería de \textbf{2.281\euro}. De esta cifra podríamos
 descontar el precio de las herramientas de desarrollo (por los motivos antes comentados).
 También, al comprar al por mayor, el precio de los materiales se vería considerablemente
-reducido.
+reducido.\\
 
 En cuanto a los costos derivados de los recursos humanos, cuanto más dispositivos se produzcan,
 menor será el costo. Es decir, la inversión se verá ``más repartida". También habrá que tener en
 cuenta que, al producir nuevos dispositivos, es tiempo que hay que pagar a la mano de obra
 (pero será tiempo ensamblando el producto, por lo que no se estará gastando tiempo en análisis,
 diseño... -salvo que se desee añadir una nueva funcionalidad-). El coste estático (sin contar herramientas)
-sería de 1426\euro (los costes de cada dispositivo son gastos dinámicos).
+sería de 1426\euro (los costes de cada dispositivo son gastos dinámicos).\\
+
+Vamos a hacer un cálculo aproximado de los gastos que quedarían sin cubrir tras vender algunos dispositivos:
+
+\begin{gather*}
+  1426 + (51 * \textup{Directores} +46.5 \times \textup{Músicos}) = \textup{Gasto material} \\ \\
+  \textup{Gasto material} - ((\textup{Beneficio/dispositivo} \times \textup{Total dispositivos})+(51 * \textup{Directores}\\
+  + 46.5 \times \textup{Músicos})) = \textup{Coste final}
+\end{gather*}
 
 Supongamos que a cada dispositivo se le saca un beneficio de 10\euro: si producimos 100
 (una sola banda donde 1 es director y 99 músicos):
 
 \[
-  1426 + (51.5+46.5*99) = 6081 euros
+  1426 + (51+46.5 \times 99) = 6080.5  \textup{\euro}
 \]
 \[
-  6081 - ((10*100)+4655) = 426 euros
+  6080.5 - ((10 \times 100)+4655) = 426  \textup{\euro}
 \]
 
-Nos seguirían faltando por recuperar 426\euro. Si en vez de ser una banda, son 10 (con 1 director y 99 músicos cada una)
+Nos seguirían faltando por recuperar 426\euro. Si en vez de ser una banda, son 10
+(con 1 director y 99 músicos cada una).\\
 
 
 \[
-  1426 + (51.5*10+46.5*99*10) = 47976 euros
+  1426 + (51*10+46.5*99*10) = 47971  \textup{\euro}
 \]
 \[
-  47976 - (((10*100)*10+46550) = -8574 euros
+  47971 - (((10*100)*10+46550) = -8574  \textup{\euro}
 \]
 
 Que en este último caso la cifra sea negativa indica ganancia (ya que lo que se están
 calculando son los gastos). Como se ha apuntado unos párrafos antes, esta cifra no es
 del todo real, ya que habría que incluir la mano de obra para desarrollar cada dispositivo
 (aún así, en el segundo caso se seguirían obteniendo beneficios ya que un mismo trabajador
-podría construir muchos dispositivos a lo largo de una jornada laboral).
+podría construir muchos dispositivos a lo largo de una jornada laboral).\\

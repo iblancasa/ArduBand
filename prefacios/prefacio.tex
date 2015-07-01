@@ -39,14 +39,13 @@ La red de sensores ha sido concebida utilizando la implementación de ZigBee pro
 International”, mientras la lógica de los circuitos se ha puesto en manos de la plataforma hardware Arduino
 (utilizándose diversas versiones del mismo).\\
 
-El tipo de red que forman los dispositivos XBee ZigBee es de tipo malla pero, utilizando la configuración
+El tipo de red que forman los dispositivos ``XBee ZigBee" es de tipo malla pero, utilizando la configuración
 de las motas, se ha pasado a tener una topología de estrella. Dispone de dos tipos de  \textit{wearables}:
   \begin{itemize}
   \item Director: su mota juega el papel de ``coordinador" de la red. Es quien crea la red y establece los caminos que deben seguir las comunicaciones que haya en la red. Además de la comunicación con los otros elementos del sistema, tiene la opción de conectar, a través de Bluetooth, con un dispositivo Android.
   \item Músico: contiene una mota del tipo ``dispositivo final". Simplemente, recibe (del dispositivo ``director") el tempo con el que el micromotor vibrador debe activarse (además, al llegar el paquete con la traza de datos, se sincroniza con el resto de dispositivos de la red, de forma que todos vibren a la vez).
   \end{itemize}
 
-\\
 Como se comentaba cuando se hablaba del dispositivo del director, se puede conectar
 con un dispositivo móvil Android. Es necesario que el director indique el tempo que el
 sistema debe marcar a los músicos, esta aplicación móvil es la que transfiere al controlador la
@@ -113,7 +112,7 @@ star topology. There are two kinds of wearables:
   \item Musician: it is composed of an “end device” node. It receives (from “music director device”) data (which contains “tempo”). Arduino takes this tempo and performs calculations to decide when it has to activate or deactivate a vibration motor (this motor helps musician to keep track of the correct pulse). There is one for each musician (in network, there will be as nodes as musicians).
   \end{itemize}
 
-\\
+
 Director’s device can be connected to an Android device (which could be a smartphone or a smartwatch,
 because one application has been developed to each one). This application allows director to indicate music’s
 ``tempo" and each application was developed using Google’s recommendations about design (Material Design principles).\\
