@@ -4,18 +4,15 @@
 \title{Metodología de desarrollo}
 \section{Metodología de desarrollo}
 
-\paragraph{
+
 La metodología que se ha tratado de seguir para el desarrollo de este proyecto ha sido
 un modelo en espiral ya que lo primero que se quiere solucionar es una funcionalidad
 básica (mantener el mismo pulso entre todos los músicos). Sobre esto,
 se desea que la comunidad (o los mismos desarrolladores), introduzcan nuevas
 funcionalidades.
-}
 
-\paragraph{
 Incluso dentro del desarrollo de la funcionalidad más básica (que es
 la que se trata de implementar en este trabajo), se sigue el una metodología en espiral:
-}
 
 \begin{enumerate}
   \item Extracción de los requisitos
@@ -26,10 +23,8 @@ la que se trata de implementar en este trabajo), se sigue el una metodología en
 
 \title{Fases}
 \section{Fases}
-\paragraph{
 En la anterior sección se ha comentado la metodología a utilizar y, de forma general,
 las fases a desarrollar. En esta sección se va a entrar en más detalle.
-}
 
 \begin{description}
   \item [Extracción de los requisitos]\hfill \\
@@ -54,10 +49,9 @@ las fases a desarrollar. En esta sección se va a entrar en más detalle.
 
 \title{Estimación temporal}
 \section{Estimación temporal}
-\paragraph{
 Teniendo en cuenta las partes detalladas en las sección anterior, es momento de
 hacer una estimación temporal del proyecto.
-}
+
 
 \begin{itemize}
   \item Especificaciones del proyecto
@@ -123,11 +117,9 @@ hacer una estimación temporal del proyecto.
   \end{itemize}
 \end{itemize}
 
-\paragraph{
 Se ha hecho una estimación de la cantidad de días que ocuparían todas
 estas tareas y, para mostrarlo de una forma más gráfica,
 se ha creado un diagrama de Grantt, que se puede ver en la figura \ref{fig:grantt}.
-}
 
 \begin{figure}[htb]
 \centering
@@ -139,93 +131,79 @@ se ha creado un diagrama de Grantt, que se puede ver en la figura \ref{fig:grant
 \title{Recursos humanos}
 \section{Recursos humanos}
 
-\paragraph{
 Gracias a que es un proyecto de software/hardware libre, todo aquel que
 desee particiar en el proyecto puede hacerlo realizando aportaciones en los
 \href{https://github.com/iblancasa/ArduBand}{repositorios del proyecto}.
-}
 
 
 \title{Recursos reutilizables}
 \section{Recursos técnicos reutilizables}
 
-\paragraph{
 Estos recursos hacen referencia a anteriores desarrollos hardware o software creados
 por otros desarrolladores o empresas.
-}
 
-\paragraph{
 En el capítulo de implementación se explicará con más detalle por qué se
 eligen los elementos que se van a describir en los dos siguientes apartados.
-}
 
 
 \subsection{Recursos software reutilizables}
 \title{Recursos software reutilizable}
 
-
-\paragraph{
 En la introducción se hacía hincapié en la necesidad de crear una aplicación
 Android para ayudar al director a establecer el tempo deseado. Por tanto,
 serán recursos a tener en cuenta durante el desarrollo todas las herramientas
 que implementa el propio SDK de Android y aquellas bibliotecas con licencia
 libre que se encuentran en Internet (ya sean para añadir funcionalidad o elementos
 gráficos).
-}
 
-\paragraph{
+
 También se va a desarrollar un dispositivo físico que necesitará un software para estar
 controlado. Todas las bibliotecas del controlador con licencia libre, también estarán
 disponibles para su uso (en la sección de implementacion, veremos que se utilizará
 Arduino -el cual tiene muchas bibliotecas disponibles- y XBee -existiendo para este
 sistema de comunicación Wireless algunas bibliotecas desarrolladas por la comunidad-).
-}
+
 
 
 \subsection{Recursos hardware reutilizables}
 \title{Recursos hardware reutilizable}
 
-\paragraph{
 Como se acaba de comentar, se utilizará la plataforma Arduino. Además de poder comprar
 placas ya fabricadas, existe la posibilidad de crear una propia (es hardware libre y
 los planos y software se encuentran disponibles en GitHub \cite{arduinoRepo}).
-}
 
-\paragraph{
+
 Se utilizará también XBee, de la compañía Digi \cite{xbeedatasheet}.
-}
 
-\paragraph{
+
+
 Por otro lado, se puede considerar el dispositivo móvil Android como un elemento a
 tener en cuenta en esta sección (ya que es el elemento que hará de interfaz con el usuario,
 eliminando la necesidad de crear un dispositivo físico para que el director interactúe con
 el sistema).
-}
+
 
 \section{Presupuesto}
 \title{Presupuesto}
 
-\paragraph{En esta sección se va a proceder a estimar los costes del proyecto}.
+En esta sección se va a proceder a estimar los costes del proyecto.
 
 \subsection{Licencias software y hardware}
 \title{Licencias software y hardware}
 
-\paragraph{
 Gracias a la utilización de software y hardware libre, no es necesario el pago de licencias.
-}
 
-\paragraph{
 El único problema que podría plantearse viene por parte de la empresa Digi al utilizar
 el dispositivo XBee pero, debido a que este dispositivo está pensado para crear otros
 nuevos, no existe problema en cuanto a su redistribución. X-CTU, el software que se va a
 utilizar para la programación de los módulos no tiene licencia libre y se encuentra protegido
 por derechos de autor, aunque se distribuye de manera gratuita \cite{licenciaXCTU}.
-}
+
 
 \subsection{Material}
 \title{Material}
 
-\paragraph{A continuación se listarán los materiales necesarios y su costo aproximado.}
+A continuación se listarán los materiales necesarios y su costo aproximado.
 
   \begin{description}
     \item [Arduino]\hfill \\
@@ -265,17 +243,14 @@ por derechos de autor, aunque se distribuye de manera gratuita \cite{licenciaXCT
         \end{itemize}
   \end{description}
 
-\paragraph{
 Como Arduino es un proyecto de hardware libre, muchas empresas han decidido
 dedicarse a crear sus propias placas compatibles con las originales pero a un
 precio mucho menor. En este presupuesto se asume que se están utilizando estas
 placas derivadas.
-}
 
-\paragraph{
 A este material necesario se podría añadir las herramientas de las que se precisa
 para el desarrollo.
-}
+
 \begin{description}
   \item [Teléfono Android]\hfill \\
     \begin{itemize}
@@ -299,31 +274,29 @@ para el desarrollo.
       \end{itemize}
 \end{description}
 
-\paragraph{En el caso del teléfono móvil se ha elegido (para el presupuesto) ``Motorola Moto G" por tener
+En el caso del teléfono móvil se ha elegido (para el presupuesto) ``Motorola Moto G" por tener
 un precio basante ajustado y soportar la última versión de Android (cuando se escribe este
 trabajo, la última versión es Android 5). Para dispositivo Android Wear (también para el presupuesto)
 se ha elegido ``LG G Watch" (por ser el dispositivo Android Wear más barato del momento
 y que, con las funcionalidades de las que dispone, permite llevar a cabo el desarrollo). De los dispositivos
 Android se puede prescindir al poder emularlos en un ordenador. También se podría sacar
 de este presupuesto el ordenador y el soldador (ya que son herramientas básicas y se asume
-que el desarrollador debe de tenerlas antes de empezar con el proyecto)}
+que el desarrollador debe de tenerlas antes de empezar con el proyecto).
 
 \subsection{Recursos humanos}
 \title{Recursos humanos}
-\paragraph{
+
 Como se ha comentado anteriormente en la sección dedicada a hablar de los recursos humanos disponibles,
 al ser un desarrollo libre, cualquiera que lo desee puede participar. Sin embargo, para llevar a cabo la
 construcción del sistema, es necesario que haya gente trabajando en él. Los cálculos
 se realizarán partiendo de que hay un trabajador con el título de Grado en Ingeniería Informática.
-}
 
-\paragraph{
 Retomando los datos de la estimacióm temporal, tenemos que el número total de horas es
 de 215 horas. Pero de esas horas, no podemos tomar el 100\% fomo facturable (entrevistas,
 búsqueda de información, formación y similares no se pueden introducir en facturación),
 lo que nos lleva a tener que hacer una nueva estimación sobre el número de horas facturables
 (de las anteriormente descritas).
-}
+
 
 \begin{itemize}
   \item Especificaciones del proyecto
@@ -364,20 +337,15 @@ lo que nos lleva a tener que hacer una nueva estimación sobre el número de hor
   \end{itemize}
 \end{itemize}
 
-\paragraph{
 Todo esto nos hace un total de 156 horas facturables.
-}
 
-\paragraph{
 Debido a que, por Ley, está prohibido que los Colegios Profesionales dispongan e informen
 sobre baremos orientativos de honorarios, solo podemos obtener el sueldo medio de un Graduado
 en Ingeniería Informática a través de estudios. El Consejo General de Colegios Oficiales de Ingeniería en Informática
 elaboró en abril de 2015 un estudio \cite{estudioSalario} en el que podemos ver (gráfica 34, en la página 39) que el sueldo
 oscila entre los 12.000\euro\ y 30.000\euro\ (la mayoría de los trabajadores se encuentran en este rango). Tomaremos que un trabajador
 de estas características cobra 16.000\euro\ al año (para suponer un caso más caro intermedio dentro del rango más común).
-}
 
-\paragraph{
 Teniendo esta cifra, puede parecer directo obtener cuánto cobra un trabajador a la hora. Sin
 embargo, no es así. En España, la jornada laboral es de un máximo de 40 horas a la semana (5 días
 multiplicado por 8 horas diarias) y el año tiene en torno a 52 semanas, lo que hace un total de 2.080 horas.
@@ -385,7 +353,7 @@ Pero a estas horas hay que restarle festivos, vacaciones, asuntos propios, enfer
 son unos 38 días (21 de vacaciones, 14 de días festivos y 3 que se corresponden con asuntos propios y/o
 enfermedad), es decir, 304 horas. Las horas de trabajo se reducen a 1.776 horas por año. Por tanto, ya
 podemos calcular el gasto que nos va a suponer el trabajador.
-}
+
 
 \[
   30.000 \div 1.776 = 9 euros/hora
@@ -396,14 +364,13 @@ podemos calcular el gasto que nos va a suponer el trabajador.
 
 \subsection{Otros gastos}
 \title{Otros gastos}
-\paragraph{
 Teniendo en cuenta que se va a desarrollar una aplicación Android y otra Android Wear,
 será necesario pagar la cuota para obtener licencia de desarrollo (25USD, unos 22,5\euro) \cite{desarrollaAndroid}.
-}
+
 
 \subsection{Gasto total}
 \title{Gasto total}
-\paragraph{Deberemos diferenciar entre varios costos.}
+Deberemos diferenciar entre varios costos.
 
   \begin{itemize}
     \item Material para dispositivos
@@ -416,32 +383,25 @@ será necesario pagar la cuota para obtener licencia de desarrollo (25USD, unos 
     \item Licencia de desarrollo Android: 22,5\euro
   \end{itemize}
 
-\paragraph{
 Teniendo en cuenta que para comprobar que el sistema funciona, es decir, que hay
 coordinación, hay que desarrollar un dispositivo director y,  al menos, dos de músico,
 el precio del material es de 144.5\euro.
-}
 
-\paragraph{
 El precio final del desarrollo sería de \textbf{2.281\euro}. De esta cifra podríamos
 descontar el precio de las herramientas de desarrollo (por los motivos antes comentados).
 También, al comprar al por mayor, el precio de los materiales se vería considerablemente
 reducido.
-}
 
-\paragraph{
 En cuanto a los costos derivados de los recursos humanos, cuanto más dispositivos se produzcan,
 menor será el costo. Es decir, la inversión se verá ``más repartida". También habrá que tener en
 cuenta que, al producir nuevos dispositivos, es tiempo que hay que pagar a la mano de obra
 (pero será tiempo ensamblando el producto, por lo que no se estará gastando tiempo en análisis,
 diseño... -salvo que se desee añadir una nueva funcionalidad-). El coste estático (sin contar herramientas)
 sería de 1426\euro (los costes de cada dispositivo son gastos dinámicos).
-}
 
-\subparagraph{
 Supongamos que a cada dispositivo se le saca un beneficio de 10\euro: si producimos 100
 (una sola banda donde 1 es director y 99 músicos):
-}
+
 \[
   1426 + (51.5+46.5*99) = 6081 euros
 \]
@@ -449,9 +409,8 @@ Supongamos que a cada dispositivo se le saca un beneficio de 10\euro: si produci
   6081 - ((10*100)+4655) = 426 euros
 \]
 
-\subparagraph{
 Nos seguirían faltando por recuperar 426\euro. Si en vez de ser una banda, son 10 (con 1 director y 99 músicos cada una)
-}
+
 
 \[
   1426 + (51.5*10+46.5*99*10) = 47976 euros
@@ -460,10 +419,8 @@ Nos seguirían faltando por recuperar 426\euro. Si en vez de ser una banda, son 
   47976 - (((10*100)*10+46550) = -8574 euros
 \]
 
-\subparagraph{
 Que en este último caso la cifra sea negativa indica ganancia (ya que lo que se están
 calculando son los gastos). Como se ha apuntado unos párrafos antes, esta cifra no es
 del todo real, ya que habría que incluir la mano de obra para desarrollar cada dispositivo
 (aún así, en el segundo caso se seguirían obteniendo beneficios ya que un mismo trabajador
 podría construir muchos dispositivos a lo largo de una jornada laboral).
-}
