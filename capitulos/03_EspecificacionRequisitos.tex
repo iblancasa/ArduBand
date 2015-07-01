@@ -2,7 +2,10 @@
 \label{cap:EspecificaciondeRequisitos}
 \title{Especificación de Requisitos}
 
-Para lograr que el desarrollo de un sistema hardware o software sea un éxito, es necesario que los desarrolladores comprendan totalmente las especificaciones que requiere el proyecto. En esta sección se va a proceder a enumerar los requisitos del sistema en el que se está trabajando.
+Para lograr que el desarrollo de un sistema hardware o software sea un éxito,
+es necesario que los desarrolladores comprendan totalmente las especificaciones que
+requiere el proyecto. En esta sección se va a proceder a enumerar los requisitos del
+sistema en el que se está trabajando.\\
 
 \title{Modelado del sistema}
 \section{
@@ -11,7 +14,7 @@ Modelado del sistema
 
 El dispositivo que se desea desarrollar tiene que hacer la función básica
 del director de la banda de música durante una actuación, es decir,
-marcar el mismo pulso a los músicos.
+marcar el mismo pulso a los músicos.\\
 
 Cuando la agrupación se encuentra realizando un concierto, el
 esquema de comunicación que se sigue es el mostrado en la figura \ref{fig:modeladoconceptual}
@@ -19,7 +22,7 @@ esquema de comunicación que se sigue es el mostrado en la figura \ref{fig:model
 que hay es que que marcan las flechas (el pulso, que sigue un tempo constante). Hay que
 aclarar que en este caso, para simplificar, sólo se han dibujado 5 músicos,
 sin embargo, como se vio en la introducción, las bandas suelen contar entre sus filas con
-varias decenas de integrantes.
+varias decenas de integrantes.\\
 
 
 \begin{figure}[htb]
@@ -29,7 +32,6 @@ varias decenas de integrantes.
 \end{figure}
 
 El flujo de información es el mostrado en la figura \ref{fig:mensajesconceptual}
-
   \begin{figure}[htb]
   \centering
   \includegraphics[width=0.6\textwidth]{./imagenes/mensajesconceptual}
@@ -39,7 +41,7 @@ El flujo de información es el mostrado en la figura \ref{fig:mensajesconceptual
 
 Es necesario guardar el ``tempo'' (que será establecido por el director) y algún tipo
 de idenficación de los músicos, para que el director sepa con quién se tiene que
-comunicar (aunque esto se verá más adelante).
+comunicar (aunque esto se verá más adelante).\\
 
 
 \title{Actores}
@@ -48,7 +50,6 @@ comunicar (aunque esto se verá más adelante).
 
 Del esquema de la figura \ref{fig:mensajesconceptual} podemos sacar una conclusión clara:
 será necesaria la distinción entre dos tipos de usuarios en nuestro sistema.
-
   \begin{itemize}
     \item Director: es el que envía el pulso al resto de actores. Solo uno por sistema
     \item Músico: recibe el pulso del director. Habrá multiples
@@ -60,7 +61,7 @@ será necesaria la distinción entre dos tipos de usuarios en nuestro sistema.
 
 En este apartado se van a describir los requisitos funcionales del sistema.
 Estos requisitos son aquellas funciones o capacidades que el sitema debe
-tener para satisfacer las necesidades de los usuarios.
+tener para satisfacer las necesidades de los usuarios.\\
 
 \begin{itemize}
     \item[\textbf{RF.1}] El sistema permitirá al director insertar un tempo
@@ -74,7 +75,7 @@ tener para satisfacer las necesidades de los usuarios.
 
 En estea sección se van a describir los distintos requisitos no funcionales del sistema.
 Los requisitos no funcionales son aquellos que nos informan de restricciones que debe cumplir
-nuestro sistema.
+nuestro sistema.\\
 
 
 \begin{itemize}
@@ -105,7 +106,7 @@ nuestro sistema.
 \title{Requisitos de información}
 \section{Requisitos de información}
 
-Estos requisitos indican qué información guarda nuestro sistema.
+Estos requisitos indican qué información guarda nuestro sistema.\\
 
   \begin{itemize}
     \item[\textbf{RI.1}] Tempo: se guardará el tempo indicado por el director
