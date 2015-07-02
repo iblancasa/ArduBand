@@ -172,6 +172,7 @@ En este último punto se nos hablan de dos modos de funcionamiento:
         \item Enviar paquetes a múltiples destinos
         \item Recibir paquetes de distintos tipos
         \item Activar funciones de integridad de datos, recibir ACK...
+        \item Conocer el estado de la red
       \end{itemize}
 \end{description}
 
@@ -215,6 +216,56 @@ Gracias a ella, no tendremos que preocuparnos de generar los distintos elementos
 
 Para conocer más sobre el modo API, el lector puede consultar el capítulo 5 (\textit{API and a Sensor Network}) de \cite{faludi}.\\
 
+\subsection{XCTU: el software para manipular las motas}
+\title{XCTU: el software para manipular las motas}
+Este software es distribuido gratuitamente por Digi \cite{licenciaXCTU} y se puede descargar desde la página oficial
+de dicha empresa.
+
+Para conectar XBee a nuestro ordenador, debemos conectar las patillas de XBee del puerto serial a un
+FTDI (por ejemplo) y con una conexión serial o USB, a nuestro ordenador. Otra posibilidad es obtener
+una placa ``XBee Explorer" como la de la figura \ref{fig:xbeeexplorer}.
+
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{./imagenes/xbeeexplorer}
+\caption{XBee USB Explorer. Imagen extraída de \scriptsize{http://xbee.cl/xbee-explorer-usb/}} \label{fig:xbeeexplorer}
+\end{figure}
+
+
+En la ventana principal tenemos tres secciones: a la izquierda, la lista de los dispositivos
+que tenemos conectados a nuestro ordenador; a la derecha, un panel de administración que variará
+en función de lo que estemos haciendo con la mota; y arriba, las opciones relacionadas con el descubrimiento
+de nuevos dispositivos (izquierda) o distintas acciones sobre la mota (derecha). Podemos verlo en la figura \ref{fig:interfaz1}.\\
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{./imagenes/interfaz1}
+\caption{Interfaz XCTU} \label{fig:interfaz1}
+\end{figure}
+
+Lo primero que tendremos que hacer una vez hayamos conectado nuestra mota al ordenador, será descubrirla con XCTU
+utilizando una de las dos opciones que tenemos arriba a la izquierda (es importante mencionar que, en caso que se nos
+pida resetear la mota y, como es el caso de nuestro modelo, no tengamos un botón para resetear, deberemos unir con un
+cable la patilla \guillemotleft RST\guillemotright con \guillemotleft GND\guillemotright).\\
+
+Una vez que tengamos la mota descubierta tendremos el menú de configuración (el de la rueda dentada) abierto. En él podremos
+cambiar el firmware, volver a los ajustes de fábrica, establecer un nombre para la mota, ver la dirección de destino,
+\textit{PAN} (Personal Area Network) a la que unirse... en función del firmware que tenga instalado la mota, habrá unas opciones u otras
+(por ejemplo, en caso de tener un dispositivo final, podremos configurar cada cuánto tiempo de inactividad puede el nodo
+entrar en suspensión).\\
+
+En el siguiente menú, podremos ver qué es lo que está recibiendo (o enviando) nuestro XBee. Se monitoriza el puerto serial (ver figura \ref{fig:interfaz2}).\\
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=1\textwidth]{./imagenes/interfaz2}
+\caption{Monitorizando el puerto serial (modo API) en XCTU} \label{fig:interfaz2}
+\end{figure}
+
+Finalmente el tercer menú nos brinda algunas opciones relacionadas con la nube de Digi y la posibilidad
+de conocer qué nodos están interconectados en la red (solo disponible si el módulo está en modo API).\\
+
 \subsection{Posible problema de escalabilidad}
 \title{Posible problema de escalabilidad}
 
@@ -253,6 +304,11 @@ o placa controladora. Se han estudiado dos posibles soluciones:
       \item Programación en ensamblador, con una media de 35 instrucciones
       \item Simples pero orientados a un público muy relacionado con la programación
     \end{itemize}
+    \begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.6\textwidth]{./imagenes/pic}
+    \caption{PICPIC16F716. Imagen extraída de \scriptsize{http://www.microchip.com/}} \label{fig:pic}
+    \end{figure}
   \item[Arduino] \hfill \\
     \begin{itemize}
       \item Placa con un microcontrolador
@@ -261,31 +317,49 @@ o placa controladora. Se han estudiado dos posibles soluciones:
       \item Existe una versión Wear (Arduino Lilypad, mostrado en la figura \ref{fig:lilypad})
       \item Shields para XBee (como la que se muestra en la figura \ref{fig:lilypadxbee})
     \end{itemize}
+    \begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.6\textwidth]{./imagenes/lilypad}
+    \caption{PICPIC16F716. Imagen extraída de \scriptsize{https://www.arduino.cc}} \label{fig:lilypad}
+    \end{figure}
+    \begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.6\textwidth]{./imagenes/lilypadxbee}
+    \caption{Shield XBee Lilypad. Imagen extraída de \scriptsize{https://www.faludi.com/ \cite{faludi}}} \label{fig:lilypadxbee}
+    \end{figure}
 \end{description}
 
 
-\begin{figure}[htb]
-\centering
-\includegraphics[width=0.6\textwidth]{./imagenes/pic}
-\caption{PICPIC16F716. Imagen extraída de \scriptsize{http://www.microchip.com/}} \label{fig:pic}
-\end{figure}
-
-\begin{figure}[htb]
-\centering
-\includegraphics[width=0.6\textwidth]{./imagenes/lilypad}
-\caption{PICPIC16F716. Imagen extraída de \scriptsize{https://www.arduino.cc}} \label{fig:lilypad}
-\end{figure}
-
-
-\begin{figure}[htb]
-\centering
-\includegraphics[width=0.6\textwidth]{./imagenes/lilypadxbee}
-\caption{Shield XBee Lilypad. Imagen extraída de \scriptsize{https://www.faludi.com/ \cite{faludi}}} \label{fig:lilypadxbee}
-\end{figure}
+\clearpage
 
 Aunque las posibilidades con PIC son mayores, tenemos que tener en cuenta que se desea que la
 plataforma atraiga a un número de desarrolladores. Sabiendo que Arduino se encuentra orientado a un
 público con una menor formación en electrónica y programación (por lo tanto, accesible a una mayor comunidad), se
 adecua más al objetivo de este proyecto. También hay que tener en cuenta la cantidad de bibliotecas
 existentes en Arduino (lo que nos ayudará a abstraernos de algunas tareas). Los problemas a los que
-nos enfrentamos al elegir esta plataforma son el precio y el tamaño (ambos mayores en Arduino).\\
+nos enfrentamos al elegir esta plataforma son el precio y el tamaño (ambos superiores en Arduino).\\
+
+
+
+\section{Alimentación}
+\title{Alimentación}
+
+Gracias a la existencia de distintos tipos de placas Arduino, podemos crear dispositivos
+con una forma u otra (como otro de los objetivos es la posibilidad de aumentar la funcionalidad
+el sistema, habrá funcionalidades que necesiten de placas Arduino con un número distinto de
+entradas/salidas al que se utilice aquí), aunque tendremos que intentar que sea lo más compacto
+posible (para no ignorar aquel objetivo en el que se deseaba crear un sistema pequeño y discreto).\\
+
+Por ejemplo, en caso que nos encontremos utilizando un Arduino Lilypad, la versión vestible de Arduino,
+podremos elegir alguna de las opciones que se nos brindan para alimentar nuestro circuito, como el “LLYP-PSU”,
+en el que podremos colocar una pila AAA o el “LilyPad 20mm Coin Cell Battery Holder”, para pilas de botón (cuyos
+planos se encuentran disponibles en GitHub \cite{lilypadcoin}).\\
+
+Otra opción a contemplar (y que cobrará mayor sentido al no usar la versión de Arduino vestible)
+es la de utilizar bancos de energía (baterías externas). Estas baterías están pensadas para cargar
+dispositivos móviles con gran consumo energético. La alta capacidad de estas baterías y el bajo consumo
+de Arduino y XBee, tendrá como resultado la despreocupación del usuario en cuanto al plano energético.\\
+
+Como se ha mencionado, en función del tipo de Arduino con el que construyamos nuestro ArduBand,
+se seleccionará un tipo de alimentación u otra, quedando esto, generalmente, a opción del usuario
+(sobre todo en el caso de la batería externa).\\
