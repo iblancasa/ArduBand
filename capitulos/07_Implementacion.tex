@@ -245,15 +245,47 @@ o placa controladora. Se han estudiado dos posibles soluciones:
 
 \begin{description}
   \item[PIC] \hfill \\
-    Son microcontroladores. Tienen un precio muy bajo, gran variedad, tamaño pequeño y alta velocidad en funcionamiento.
-    Disponen de una media de 35 instrucciones y se programa en ensamblador. A pesar de su simplicidad,
-    se encuentran orientados a un público muy relacionado con el ámbito de la programación
-  \item[ZigBee] \hfill \\
-    Es una plataforma hardware de código abierto.
-    Se compone de una placa que dispone de un microcontrolador.
-    Se puede programar en múltiples lenguajes como Python, Scratch (un lenguaje visual) o, incluso, JavaScript,
-    pero el principal está basado en Processing (un lenguaje con características muy similares a C). Dispone de muchísimas
-    bibliotecas que ayudan a extender su funcionalidad. Se presenta con muchas posibilidades existiendo, incluso, una versión “wear”.
-    Existen shields para interconectar esta placa controladora y las motas XBee (incluso hay una versión especial para Lilypad,
-    el modelo wearable de Arduino).
+    \begin{itemize}
+      \item Son microcontroladores
+      \item Precio muy bajo
+      \item Gran variedad
+      \item Pequeño tamaño
+      \item Programación en ensamblador, con una media de 35 instrucciones
+      \item Simples pero orientados a un público muy relacionado con la programación
+    \end{itemize}
+  \item[Arduino] \hfill \\
+    \begin{itemize}
+      \item Placa con un microcontrolador
+      \item Programación en alto nivel (Python, Scratch, JavaScript o un derivado de Processing)
+      \item Muchas bibliotecas para extender funcionalidad
+      \item Existe una versión Wear (Arduino Lilypad, mostrado en la figura \ref{fig:lilypad})
+      \item Shields para XBee (como la que se muestra en la figura \ref{fig:lilypadxbee})
+    \end{itemize}
 \end{description}
+
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.6\textwidth]{./imagenes/pic}
+\caption{PICPIC16F716. Imagen extraída de \scriptsize{http://www.microchip.com/}} \label{fig:pic}
+\end{figure}
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.6\textwidth]{./imagenes/lilypad}
+\caption{PICPIC16F716. Imagen extraída de \scriptsize{https://www.arduino.cc}} \label{fig:lilypad}
+\end{figure}
+
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.6\textwidth]{./imagenes/lilypadxbee}
+\caption{Shield XBee Lilypad. Imagen extraída de \scriptsize{https://www.faludi.com/ \cite{faludi}}} \label{fig:lilypadxbee}
+\end{figure}
+
+Aunque las posibilidades con PIC son mayores, tenemos que tener en cuenta que se desea que la
+plataforma atraiga a un número de desarrolladores. Sabiendo que Arduino se encuentra orientado a un
+público con una menor formación en electrónica y programación (por lo tanto, accesible a una mayor comunidad), se
+adecua más al objetivo de este proyecto. También hay que tener en cuenta la cantidad de bibliotecas
+existentes en Arduino (lo que nos ayudará a abstraernos de algunas tareas). Los problemas a los que
+nos enfrentamos al elegir esta plataforma son el precio y el tamaño (ambos mayores en Arduino).\\
