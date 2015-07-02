@@ -44,17 +44,26 @@ Para poder entender algunos conceptos que se usarán a lo largo de este trabajo 
 algunos conceptos, es necesario tener unos conocimientos musicales mínimos. Se procede a definir algunos conceptos:
 
 \begin{itemize}
-\item Pentagrama: es el conjunto formado por cinco líneas paralelas entre sí y los cuatro espacios que quedan entre ellas. Aunque también puede haber líneas adicionales por encima y por debajo del pentagrama, principalmente se usan estas cinco líneas y espacios para escribir los símbolos musicales (ya sean notas, silencios...).
-  \begin{figure}[htb]
-  \centering
-  \includegraphics[width=0.8\textwidth]{./imagenes/pentagrama}
-  \caption{Representación gráfica de un pentagrama} \label{fig:pentagrama}
-  \end{figure}
-\item Pulso: es el latido constante y regular de la música, siendo la unidad temporal básica y, en comparación con esta unidad de tiempo, se mide la duración de las notas y silencios.
-\item “Tempo”: es la velocidad del pulso. Para indicar un tempo se utiliza como unidad los “bpm” (“Beats Per Minute”, es decir, los “Pulsos Por Minuto”). Así, si el tempo de una obra es de 60 bpm, tendremos que se producirá un pulso por segundo (1 bps) o lo que es lo mismo, cada un segundo, tendremos un pulso.
-\item Ritmo: es la combinación de sonidos y silencios de diferente duración.
-\item Compás: facilita la lectura de la música. En un pentagrama, los compases quedan divididos por líneas divisorias. Tomaremos que todos los compases son cuaternarios de subdivisión binaria (la mayoría de las obras para banda de música se encuentran compuestas para este tipo de compases o binarios -encajables en los anteriores- y así podremos simplificar el problema para su estudio aunque, como veremos durante la fase de implementación, esto es solo importante para entender mejor el diseño), es decir, un compás está dividido en cuatro notas negras (cada una será de un pulso de duración).
-\end{itemize}
+  \item Pentagrama: es el conjunto formado por cinco líneas paralelas entre sí y los cuatro espacios que quedan entre ellas.
+  Aunque también puede haber líneas adicionales por encima y por debajo del pentagrama, principalmente se usan estas cinco
+  líneas y espacios para escribir los símbolos musicales (ya sean notas, silencios...).
+    \begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.8\textwidth]{./imagenes/pentagrama}
+    \caption{Representación gráfica de un pentagrama} \label{fig:pentagrama}
+    \end{figure}
+  \item Pulso: es el latido constante y regular de la música, siendo la unidad temporal básica y, en comparación con
+  esta unidad de tiempo, se mide la duración de las notas y silencios.
+  \item “Tempo”: es la velocidad del pulso. Para indicar un tempo se utiliza como unidad los “bpm”
+    (“Beats Per Minute”, es decir, los “Pulsos Por Minuto”). Así, si el tempo de una obra es de 60 bpm,
+    tendremos que se producirá un pulso por segundo (1 bps) o lo que es lo mismo, cada un segundo, tendremos un pulso.
+  \item Ritmo: es la combinación de sonidos y silencios de diferente duración.
+  \item Compás: facilita la lectura de la música. En un pentagrama, los compases quedan divididos por líneas divisorias.
+    Tomaremos que todos los compases son cuaternarios de subdivisión binaria (la mayoría de las obras para banda de música se
+    encuentran compuestas para este tipo de compases o binarios -encajables en los anteriores- y así podremos simplificar el
+    problema para su estudio aunque, como veremos durante la fase de implementación, esto es solo importante para entender mejor
+    el diseño), es decir, un compás está dividido en cuatro notas negras (cada una será de un pulso de duración).
+  \end{itemize}
 
 Cabe ahora preguntarse entre qué valores se mueve el tempo, es decir, cual es el rango
 del tempo. Existen desde composiciones con menos de 20 pulsaciones por minuto hasta
