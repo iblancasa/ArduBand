@@ -249,13 +249,20 @@ utilizando una de las dos opciones que tenemos arriba a la izquierda (es importa
 pida resetear la mota y, como es el caso de nuestro modelo, no tengamos un botón para resetear, deberemos unir con un
 cable la patilla \guillemotleft RST\guillemotright con \guillemotleft GND\guillemotright).\\
 
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.5\textwidth]{./imagenes/xctureset}
+\caption{Paquete XBee en modo API} \label{fig:xctureset}
+\end{figure}
+
 Una vez que tengamos la mota descubierta tendremos el menú de configuración (el de la rueda dentada) abierto. En él podremos
 cambiar el firmware, volver a los ajustes de fábrica, establecer un nombre para la mota, ver la dirección de destino,
 \textit{PAN} (Personal Area Network) a la que unirse... en función del firmware que tenga instalado la mota, habrá unas opciones u otras
 (por ejemplo, en caso de tener un dispositivo final, podremos configurar cada cuánto tiempo de inactividad puede el nodo
 entrar en suspensión).\\
 
-En el siguiente menú, podremos ver qué es lo que está recibiendo (o enviando) nuestro XBee. Se monitoriza el puerto serial (ver figura \ref{fig:interfaz2}).\\
+En el siguiente menú, podremos ver qué es lo que está recibiendo (o enviando) nuestro XBee.
+Se monitoriza el puerto serial (ver figura \ref{fig:interfaz2}).\\
 
 \begin{figure}[!htb]
 \centering
@@ -304,7 +311,7 @@ o placa controladora. Se han estudiado dos posibles soluciones:
       \item Programación en ensamblador, con una media de 35 instrucciones
       \item Simples pero orientados a un público muy relacionado con la programación
     \end{itemize}
-    \begin{figure}[htb]
+    \begin{figure}[!htb]
     \centering
     \includegraphics[width=0.6\textwidth]{./imagenes/pic}
     \caption{PICPIC16F716. Imagen extraída de \scriptsize{http://www.microchip.com/}} \label{fig:pic}
@@ -317,7 +324,7 @@ o placa controladora. Se han estudiado dos posibles soluciones:
       \item Existe una versión Wear (Arduino Lilypad, mostrado en la figura \ref{fig:lilypad})
       \item Shields para XBee (como la que se muestra en la figura \ref{fig:lilypadxbee})
     \end{itemize}
-    \begin{figure}[htb]
+    \begin{figure}[!htb]
     \centering
     \includegraphics[width=0.6\textwidth]{./imagenes/lilypad}
     \caption{PICPIC16F716. Imagen extraída de \scriptsize{https://www.arduino.cc}} \label{fig:lilypad}
@@ -339,6 +346,59 @@ adecua más al objetivo de este proyecto. También hay que tener en cuenta la ca
 existentes en Arduino (lo que nos ayudará a abstraernos de algunas tareas). Los problemas a los que
 nos enfrentamos al elegir esta plataforma son el precio y el tamaño (ambos superiores en Arduino).\\
 
+\subsection{IDE Arduino}
+\title{IDE Arduino}
+
+El IDE de Arduino puede ser descargado de su página oficial \cite{arduinoWeb}. Es de código abierto y se
+encuentra basado, igual que el lenguaje que se utiliza, en Processing (un lenguaje basado a su vez en Java y C).
+
+En el menú superior tenemos acceso a distintas opciones como guardar nuestro proyecto, cargar un proyecto de ejemplo,
+instalar nuevas bibliotecas, seleccionar la placa para la que estamos desarrollando, el puerto en el que se encuentra dicha
+placa...\\
+
+Justo debajo tenemos una serie de opciones (``Verificar", que compilará nuestro código; ``Cargar", que lo
+subirá a nuestra placa Arduino; ``Nuevo", que creará un nuevo proyecto Arduino; ``Abrir", permite abrir un proyecto
+Arduino ya cread; ``Guardar", para guardar el actual proyecto). A la derecha del todo, tenemos un monitor para el
+puerto serial (para poder acceder a la comunicación entre nuestro equipo y la placa Arduino).\\
+
+Si el lector no está familiarizado con el entorno y desea conocerlo algo más, puede consultar la bibliografía \cite{arduinoInicia} y
+\cite{arduino24}.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=1\textwidth]{./imagenes/arduinoide}
+\caption{IDE Arduino} \label{fig:arduinoide}
+\end{figure}
+
+\section{Actuador}
+\title{Actuador}
+Para que el músico sepa qué pulso es el correcto necesita alguna señal. Para ello
+se ha decidido utilizar un micromotor vibrador. Para ser más exactos, el modelo 310-101 de la empresa
+``Precision Microdrives" (figura \ref{fig:micromotor}).\\
+
+Sus características técnicas son:
+
+\begin{itemize}
+  \item Voltage: 3V
+  \item Frame Diameter: 10mm
+  \item Body Length: 3.4mm
+  \item Weight: 1.2g
+  \item Voltage Range: 2.5~3.8 V
+  \item Rated Speed: 12000 rpm
+  \item Rated Current: 75mA
+  \item Start Voltage: 2,3V
+  \item Start Current: 85mA
+  \item Terminal Resistance: 75 Ohm
+  \item Vibration Amplitude: 0,8G
+\end{itemize}
+
+Se puede consultar su datasheet en las referencias \cite{micromotorData}.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=0.6\textwidth]{./imagenes/micromotor}
+\caption{Micromotor 310-101. Imagen extraída de \scriptsize{https://catalog.precisionmicrodrives.com}} \label{fig:micromotor}
+\end{figure}
 
 
 \section{Alimentación}
@@ -363,3 +423,242 @@ de Arduino y XBee, tendrá como resultado la despreocupación del usuario en cua
 Como se ha mencionado, en función del tipo de Arduino con el que construyamos nuestro ArduBand,
 se seleccionará un tipo de alimentación u otra, quedando esto, generalmente, a opción del usuario
 (sobre todo en el caso de la batería externa).\\
+
+\section{Comunicación uno a muchos: estudio preliminar}
+\title{Comunicación uno a muchos: estudio preliminar}
+
+En los capítulos de \ref{cap:Diseno} y \ref{cap:Analisis} se ha ido viendo que es necesario
+que un dispositivo emita un mensaje al resto de nodos de la red. Teniendo en cuenta que el
+sistema se va a implementar como una red, la solución técnica que parece más adecuada
+es realizar un \textit{broadcast} (un nodo envía una trama de datos a una dirección
+especial, llamada dirección de broadcast, y todos los nodos reciben la trama de datos). Al querer
+realizar una red con topología de estrella, es claro que el dispositivo central de
+la red, y que interconecta al resto, será el que haga las veces de emisor.\\
+
+ZigBee como tal permite conectar en estrella, malla o árbol. Según \cite{faludi} (tabla 1.1), se
+puede configurar el XBee Series 2 (el que se está utilizando) para utilizar cualquiera de estar
+topologías por defecto. Sin embargo no hay documentación sobre la forma de cambiar el comportamiento
+por defecto (red de tipo malla).
+
+En las redes formadas por dispositivos XBee tenemos tres tipos de dispositivos:
+\begin{itemize}
+  \item Coordinador: debe existir, al menos, uno por red. En caso de haber más, solo uno
+  toma este rol (en caso de haber más de uno, se ponen de acuerdo y solo uno de ellos toma
+  este rol, mientras que el otro pasa a ejercer de router). Se encarga de dirigir la red,
+  estableciendo las rutas que deben seguir los paquetes. Puede comunicarse con todos los nodos
+  \item Router: permite conectar nodos finales u otros routers con el coordinador. Puede
+  comunicarse solo con el nodo coordinador (y sirve como puente para el traspaso de información
+  entre el nodo coordinador y un nodo cualquiera)
+  \item Dispositivo final: solo puede enviar información al coordinador (pudiendo utilizar
+  los routers para hacer llegar la trama hasta su destino). Pasan la mayor parte del tiempo
+  durmiendo, es decir, en un estado de bajo consumo energético
+\end{itemize}
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=0.6\textwidth]{./imagenes/mesh}
+\caption{Red de tipo \textit{mesh}} \label{fig:mesh}
+\end{figure}
+
+En la figura \ref{fig:mesh} podemos ver un ejemplo de red XBee ZigBee.
+\begin{itemize}
+  \item  \textcolor{blueS}{$\blacksquare$} Coordinador
+  \item  \textcolor{rojoOscuroS}{$\blacksquare$} Router
+  \item  \textcolor{naranjaS}{$\blacksquare$} Dispositivo final
+\end{itemize}
+
+Teniendo en cuenta los tipos de nodos que tenemos, podemos crear una topología en estrella
+(la que más encaja con nuestro proyecto) a partir de la topología en malla: no tendremos
+disposivios de tipo router. De esta forma evitaremos que haya saltos intermedios entre
+el dispositivo final (músico) y el director.\\
+
+Esto puede parecer un inconveniente en bandas largas (no disponemos de routers
+que hagan de puente con dispositivos finales que se encuentren demasiado lejos)
+pero si volvemos a mirar la tabla 1.1 de \cite{faludi}, veremos que el rango
+de alcance se sitúa entre los 40 y 120 metros. Teniendo en cuenta que en la
+formación de una banda de música la separación entre dos filas de músicos es de
+1 metro aproximadamente, en el peor de los casos, estaríamos llegando a 80 metros
+(si situamos el dispositivo en el centro de la banda). Si establecemos una media de
+4 músicos por fila, en una banda de 80 metros de largo tendríamos 320 músicos.
+Teniendo en cuenta que la banda de la que se hablaba en la introducción \cite{cigarreras}
+es una de las más numerosas con alrededor de 140 músicos, es claro que esto no es
+un problema.\\
+
+\subsection{Problema en broadcast}
+\title{Problema en broadcast}
+
+En el apartado anterior se explicaba que la solución que parece más directa es realizar
+un \textit{broadcast}. Pero es una idea que se desecha rápidamente al hacer el siguiente experimento:
+
+\begin{enumerate}
+  \item Se configura una mota como coordinador (instalándo el firmware oportuno, eligiendo el modo API)
+  \item A esta mota se le inserta la dirección de \textit{broadcast} como
+  dirección de destino (0x0 para la DH y 0xFFFF para DL)
+  \item Se le inserta un \textit{PAN ID}
+  \item Se configura otra mota como dispositivo final (con firmware en modo API
+  y con el mismo \textit{PAN ID})
+  \item Pulsamos sobre el menú para controlar el puerto serial (en la mota coordinadora)
+  (la descrita en la figgura \ref{fig:interfaz2})
+  \item Creamos un paquete con un solo carácter y ponemos que se envíe infinitas veces
+  cada 500ms
+  \item Comprobamos, en el dispositivo final, la traza y comprobamos lo tiempos
+\end{enumerate}
+
+El configurar ambas motas en modo API es por los siguientes motivos:
+\begin{itemize}
+  \item Nodo final: XCTU muestra el tiempo de llegada de los paquetes. En modo AT
+    (transparente), no
+  \item Nodo director: para poder modificar los datos del paquete
+\end{itemize}
+
+Este experimento se ha realizado varias veces. Un ejemplo de lo que ocurre se muestra
+en la figura \ref{fig:pruebasxctu_broadcast}. En la figura \ref{fig:graficabroadcast}
+se muestra de una forma distinta la misma información (el eje X está en segundos y en
+el eje Y se muestra la llegada de un paquete).\\
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=0.4\textwidth]{./imagenes/pruebasxctu_broadcast}
+\caption{Traza temporal de llegada de paquetes en X-CTU con \textit{broadcast}} \label{fig:pruebasxctu_broadcast}
+\end{figure}
+
+
+\begin{figure}[!htb]
+\centering
+\begin{tikzpicture}
+\draw[latex-latex, thin, draw=gray] (-1,0)--(12,0) node [right] {$x$};
+\draw[latex-latex, thin, draw=gray] (0,-1)--(0,4) node [above] {$y$};
+
+\foreach \Point in { (0.246,3),(0.612,3),(1.118,3),(10.310,3),(10.675,3),(11.228,3),(11.672,3) }{
+   \node at \Point {\textbullet};
+}
+
+\draw [blue,solid] (0,0) -- (0.246,3);
+\draw [blue,solid] (0.246,3) -- (0.246,0);
+\draw [blue,solid] (0.246,0) -- (0.612,3);
+\draw [blue,solid] (0.612,3) -- (0.612,0);
+\draw [blue,solid] (0.612,0) -- (1.118,3);
+\draw [blue,solid] (1.118,3) -- (1.118,0);
+\draw [blue,solid] (1.118,0) -- (10.310,0);
+\draw [blue,solid] (10.160,0) -- (10.310,3);
+\draw [blue,solid] (10.310,3) -- (10.310,0);
+\draw [blue,solid] (10.310,0) -- (10.675,3);
+\draw [blue,solid] (10.675,3) -- (10.675,0);
+\draw [blue,solid] (10.675,0) -- (11.228,3);
+\draw [blue,solid] (11.228,3) -- (11.228,0);
+\draw [blue,solid] (11.228,0) -- (11.672,3);
+
+\draw [dotted, gray] (-1,-1) grid (12,5);
+
+\foreach \x in {0,1,2,3,4,5,6,7,8,9,10,11,12}
+    \draw (\x cm,1pt) -- (\x cm,-1pt) node[anchor=north] {$\x$};
+
+\node[draw] at (-1,3) {LLegada};
+\end{tikzpicture}
+
+
+\caption{Representación temporal de la llegada de paquetes (X está en segundos)} \label{fig:graficabroadcast}
+\end{figure}
+
+Aunque parece al principio que la recepción de paquetes es regular, después hay un largo
+periodo de tiempo (unos 9 segundos) donde no se recibe nada.\\
+
+Si modificamos el paquete en el nodo director para que no envíe ACK de la capa de
+aplicación (que podría ser el culpable), se obtienen similares resultados. Para modificar el paquete simplemente
+hay que crearlo de la misma forma que antes y, en el editor de paquetes que provee XCTU
+(en el mismo lugar donde se crean), se cambia el segundo \textit{byte} de la traza por 0. Si
+por ejemplo tenemos el siguiente paquete:  \texttt{7E 01 0F 90 00 7D 33 A2 00 40 A0 9B EC 00 00 01 78 DC},
+deberemos convertirlo en este otro  \texttt{7E 00 0F 90 00 7D 33 A2 00 40 A0 9B EC 00 00 01 78 DC}
+(solo cambia el segundo \textit{byte}).
+
+Este problema podríamos achacarlo a la capa firmware de la mota (que podría contener mecanismos
+para comprobar la integridad de los paquetes y evitar que lleguen trazas corruptas).
+Sin embargo, es demasiado tiempo como para que este sea el problema (además, en una comunicación \text{unicast}
+(con un solo nodo), el problema no existe -como podemos ver en la figura \ref{fig:xctu_comunicacionunoauno}-, ya
+que la tasa de llegada de paquetes se mantiene constante -aunque con cierto retardo-).
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=0.4\textwidth]{./imagenes/xctu_comunicacionunoauno}
+\caption{Traza temporal de llegada de paquetes en X-CTU con \textit{unicast}} \label{fig:xctu_comunicacionunoauno}
+\end{figure}
+
+El problema viene por la forma en la que está implementado el \textit{broadcast}:
+los nodos se encuentran en una topología de malla y, cada vez que reciben un broadcast,
+lo repiten hasta tres veces. Esto no sería un problema si no fuera por que la red
+permite un número máximo de broadcast a la vez. Al llegar a ese límite, la mota
+coordinadora deja de poder seguir enviando paquetes (no solo hasta que terminen los
+\textit{broadcast} existentes, sino hasta que cada mota termine de reenviar 3 veces
+cada uno de los paquetes que ha recibido). Es por eso que ha tenido que pasar un tiempo
+hasta que la red se sature. Si esto ha pasado con un solo nodo receptor, el problema
+se agravaría cuanto mayor fuese la cantidad de nodos en la red. \\
+
+En otras versiones de la mota existe la posibilidad de crear un \textit{multicast},
+pero no en esta, por lo que no es una solución viable.\\
+
+La solución que se propone es enviar individualmente a cada dispositivo el paquete, es decir,
+hacer un \textit{broadcast} a base de \textit{unicast}. Facilitar esta tarea, es mejor
+utilizar el modo API (en el modo AT se puede, pero habría que estar entrando constantemente
+al modo comando y, a veces, cuando se entra en este modo, la mota necesita ser reinicia -y,
+al no poder reiniciarla, dejaría de funcionar ese nodo-.)\\
+
+Nace ahora una nueva contrariedad: existe un retardo inevitable (de unos pocos milisegundos)
+cada vez que se envía un paquete. Entre dos envíos no es problema ya que, cuando
+se sincronicen los nodos, los músicos no notarán diferencia. Cuando se envíen 50, sí lo será.\\
+
+Supongamos que hay 50 músicos y cada envío produce un retardo de 15ms. Cuando se llegue al músico
+50, habrá habido 49 envíos, luego:
+\[
+  49 \times 15 = 735ms
+\]
+
+Es un retardo de casi un segundo. Como remedio, se propone lo siguiente: en vez de
+sincronizar siempre todos los nodos, se sincronizan por turnos. Para entenderlo mejor se
+va a recurrir a un poco de notación musical. En la introducción se vió el concepto de \textit{compás}
+(una forma de separar los pentagramas para facilitar la lectura de la música). En el desarrollo
+del proyecto, se ha tomado que los compases son de 4/4 (esto significa que en un compás se pueden introducir
+cuatro notas negras, que tienen un pulso cada una, es decir, que por cada compás,
+habrá cuatro pulsos). Entoncesen vez de sincronizar a todos los músicos en todos los pulsos,
+a cada pulso se puede sincronizar un músico y su dispositivo, internamente, que mantenga el tempo hasta
+que reciba otra señal desde el nodo del director. Esta división puede entenderse mejor viendo
+la figura \ref{fig:sincronotas} donde se sincroniza a un músico distinto en cada pulso.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=1\textwidth]{./imagenes/sincronotas}
+\caption{Sincronización en cada pulso a un músico diferente} \label{fig:sincronotas}
+\end{figure}
+
+En la figura \ref{fig:sincronotas} se está sincronizando a un músico por pulso. En
+la figura del ejemplo habría cuatro músicos (por eso hay cuatro colores).\\
+
+Al sincronizarse a un músico en cada pulso y que él mantenga el mismo tempo que los demás,
+la sincronización no se pierde (salvo que, por algún motivo), una recepción tarde más de
+la cuenta.\\
+
+Esto tal vez haga que la red tenga demasiadas tareas y la fiabilidad disminuya. Para
+cubrir este aspecto, no se sincroniza en cada pulso, si no en cada compás (como hay
+cuatro pulsos en cada compás, las comunicaciones se reducen a una cuarta parte).
+En la figura \ref{fig:sincrocompas} se puede ver de forma gráfica.\\
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=1\textwidth]{./imagenes/sincrocompas}
+\caption{Sincronización en cada compás a un músico diferente} \label{fig:sincrocompas}
+\end{figure}
+
+Cada flecha de un color es un músico sincronizado. Al igual que en el ejemplo anterior,
+deberá mantener el tempo de forma local, hasta que llegue otra señal por parte del director.\\
+
+Que el director envíe constantemente el pulso permite que, en caso que uno de los
+paquetes haya llegado más tarde de la cuenta, se pueda corregir.\\
+
+
+\section{Modalidades del dispositivo}
+\title{Modalidades del dispositivo}
+
+Tras el análisis realizado sobre la estructura de la red, toca hablar de los dos tipos
+de nodos de los que se disponen: director y músico.
+
+\subsection{Director}
+\title{Director}

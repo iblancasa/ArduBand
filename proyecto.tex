@@ -6,6 +6,7 @@
 \usepackage[table,xcdraw]{xcolor}
 \usepackage{amssymb}
 \usepackage{amsmath}
+\usepackage{tikz}
 
 \decimalpoint
 \usepackage{dcolumn}
@@ -60,6 +61,14 @@ pdfproducer = {pdflatex}
 \addto\captionsspanish{
 \def\tablename{Tabla}
 }
+
+\tikzset{
+every picture/.append style={
+  execute at begin picture={\deactivatequoting},
+  execute at end picture={\activatequoting}
+  }
+}
+
 
 \pagestyle{fancy}
 \fancyhf{}
