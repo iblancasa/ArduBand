@@ -660,5 +660,136 @@ paquetes haya llegado más tarde de la cuenta, se pueda corregir.\\
 Tras el análisis realizado sobre la estructura de la red, toca hablar de los dos tipos
 de nodos de los que se disponen: director y músico.
 
-\subsection{Director}
-\title{Director}
+\subsection{El dispositivo director}
+\title{El dispositivo director}
+
+El dispositivo del director tiene que comunicarse con el resto de dispositivos (los
+de los músicos) y con el dispositivo Android. Para enlazar con los otros músicos
+se va a utilizar la red inalámbrica de sensores mientras que, para la conexión
+con el dispositivo Android se ha elegido utilizar Bluetooth (HC05 \cite{bthc05}) ya que es un sistema
+de comunicación que tienen todos los dispositivos móviles (tanto \textit{tablets} como
+\textit{smartphones}). Además (ya se estudió al principio de este capítulo), la versión
+4 de Bluetooth tiene mecanismos para ahorro de energía (y como la comunicación va a durar
+poco tiempo, no se necesita más).\\
+
+
+\subsection{Controlador del dispositivo director}
+\title{Controlador del dispositivo director}
+
+Para llevar a cabo todo el proceso que se ha ido describiendo, es necesario programar
+la placa Arduino. Teniendo en cuenta que hay que cumplir unos requisitos de tiempo bastante
+fuertes, se ha elegido trabajar con timers. Arduino cuenta con dos timers: uno reservado
+a la ejecución del propio código y otro que puede ser utilizado por el desarrollador.
+La biblioteca ``Timer1" \cite{timeronearduino} facilita la manipulación de esta característica.\\
+
+Por otra parte, es necesaria la utilización de dos puertos serial (uno pra XBee y otro para el Bluetooth).
+La mayoría de versiones de Arduino (Lilypad, por ejemplo), no tienen más de un puerto.
+Por ello se utiliza la biblioteca ``Software Serial" \cite{softwareserial} que, mediante software, consigue
+que unos puertos que no son puerto serial, actúen como tal.\\
+
+A continuación se muestra un pseudocódigo de lo que se ha implementado.\\
+
+\begin{lstlisting}[style=codigoC]
+  void setup(){
+      xbee = iniciarSerialXBee();
+      bt = iniciarSerialBluetooth();
+  }
+
+  xbeeDir[]={addr1,addr2,addr3};
+  pack[]={};
+
+  tiempo = 0;
+  periodo = 0;
+
+  leer = true;
+
+  void Envio(){
+    if(now() - tiempo > periodo){
+      xbee.send(pack[i]);
+      i++;
+      i=i%pack.size();
+      tiempo = now();
+    }
+
+    void loop(){
+      if(leer){
+        if(bt.data()){
+          tempo = bt.getdata();
+          leer = false;
+          createPack(pack,tempo);
+          disableBT();
+          au1 = tempo/ 60;
+          periodo = (1000 / au1) * 4
+
+          timer(500);
+          timer.setFunction(Envio);
+        }
+      }
+    }
+
+    void createPack(pack,tempo){
+      for(i = 0 ; i < xbeeDir.size(); i++){
+        pack[i] = createPackete(tempo,xbeeDir[i]);
+      }
+    }
+  }
+\end{lstlisting}
+
+\begin{enumerate}
+  \item Se inicializan los pines de los puertos serial.
+  \item Se declara la función que ejecutará el timer. Esta función comprueba cuánto
+   tiempo ha pasado desde la última vez que se ejecutó
+    \begin{itemize}
+      \item Si ha pasado suficiente, enviará un mensaje al nodo que le toque sincronizar.
+    \end{itemize}
+  \item En el bucle que se ejecuta continuamente, si leer(*) es verdadero:
+    \begin{itemize}
+      \item Se lee del Bluetooth el tempo y se generan los paquetes para cada dirección XBee
+      \item Se desactiva el Bluetooth (para ahorrar energía)
+      \item Se calculan los pulsos por segundo, después el tiempo entre pulso y se multiplica
+      por 4 (para sincronizar cada 4 pulsos, es decir, cada compás de 4/4)
+      \item Se activa el timer (cada medio milisegundo para mantenerlo en activo -aunque haya momentos que se llame
+      al timer para nada, esto provoca que sea más preciso que si lo ajustásemos al tiempo entre pulsos y, de todas formas,
+      va a quedar en el bucle de espera activa, la función ``loop"-).
+    \end{itemize}
+\end{enumerate}
+
+(*)Esta variable ``leer" permite que, una vez que se apaga el Bluetooth no se vuelva a intentar leer
+(ya que no se conseguirán datos -y la lectura de serial es más lenta- o estos serán erróneos
+-lo que nos llevará a un fallo en el sistema-).
+
+\subsection{Esquema de conexionado del dispositivo director}
+\title{Esquema de conexionado del dispositivo director}
+
+Este esquema se puede consultar en la figura \ref{fig:director_esquema}. Falta
+la mota XBee, que iría sobre la shield, y la alimentación que se realizaría mediante un
+dispositivo FTDI-USB.\\
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=1\textwidth]{./imagenes/director_esquema}
+\caption{Esquema de conexionado del director} \label{fig:director_esquema}
+\end{figure}
+
+\clearpage
+
+\section{Carcasa}
+\title{Carcasa}
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=1\textwidth]{./imagenes/carcasa_base}
+\caption{Base de la carcasa} \label{fig:carcasa_base}
+\end{figure}
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=1\textwidth]{./imagenes/carcasa_tapa}
+\caption{Tapa de la carcasa} \label{fig:carcasa_tapa}
+\end{figure}
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=1\textwidth]{./imagenes/carcasa_modelo}
+\caption{Modelo 3D de la carcasa} \label{fig:carcasa_modelo}
+\end{figure}
