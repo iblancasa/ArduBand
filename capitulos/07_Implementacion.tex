@@ -32,7 +32,7 @@ y tienen un costo energético bajo (siendo posible su alimentación a través de
 
 \begin{figure}[htb]
 \centering
-\includegraphics[width=0.8\textwidth]{./imagenes/estrella}
+\includegraphics[width=0.6\textwidth]{./imagenes/estrella}
 \caption{Topología en estrella} \label{fig:estrella}
 \end{figure}
 
@@ -85,22 +85,26 @@ Teniendo en cuenta el análisis anterior se concluye que:
 
 \begin{figure}[htb]
 \centering
+\captionsetup{justification=centering}
 \includegraphics[width=1\textwidth]{./imagenes/zigbeestack}
-\caption{ZigBee Stack. Imagen extraída de \cite{faludi} (figura 8.1) } \label{fig:stackzigbee}
+\caption{ZigBee Stack \\
+\scriptsize{Imagen extraída de \cite{faludi} (figura 8.1)} } \label{fig:stackzigbee}
 \end{figure}
 
 Finalmente se ha elegido trabajar con ZigBee aunque, probablemente, con 802.15.4 sería suficiente (incluso
 mejor al tener una menor latencia). El motivo de esta selección viene determinado porque las motas disponibles
 en el laboratorio son de tipo ZigBee, no habiendo de la otra variedad.\\
 
-Para ser más específicos, se va a utilizar el modelo “XBee 2mW Wire Antenna - Series 2 (ZigBee Mesh)”, cuya referencia es
-“XB24-Z7WIT-004” (ID: OUR XBEE2 e IC: 4214A-XBEE2) y que es la implementación de la compañía “Digi” \cite{productdetaildigi}.
+Para ser más específicos, se va a utilizar el modelo ``XBee 2mW Wire Antenna - Series 2 (ZigBee Mesh)", cuya referencia es
+``XB24-Z7WIT-004" (ID: OUR XBEE2 e IC: 4214A-XBEE2) y que es la implementación de la compañía ``Digi" \cite{productdetaildigi}.
 
 
 \begin{figure}[htb]
 \centering
+\captionsetup{justification=centering}
 \includegraphics[width=1\textwidth]{./imagenes/xbeequarter}
-\caption{Una mota XBee junto a un cuarto de dólar. Imagen extraída de \scriptsize{https://en.wikipedia.org/wiki/XBee} } \label{fig:xbeequarter}
+\caption{Una mota XBee junto a un cuarto de dólar\\
+\scriptsize{Imagen extraída de https://en.wikipedia.org/wiki/XBee} } \label{fig:xbeequarter}
 \end{figure}
 
 \begin{figure}[htb]
@@ -138,19 +142,18 @@ En la figura \ref{fig:xbeepinout} podemos ver el esquema de XBee Series 2.
   \item AD0/DIO0/COM: triple funcionalidad (entrada/salida digital o analógica o puesta en servicio)
 \end{itemize}
 
-Sus características técnicas son:
+Sus características técnicas (que se pueden consultar en \cite{xbeedatasheet}) son:
 \begin{itemize}
   \item 3.3V @ 40mA
-  \item 250kbps Max data rate
-  \item 2mW output (+3dBm)
-  \item 400ft (120m) range
-  \item Built-in antenna
-  \item Fully FCC certified
-  \item 6 10-bit ADC input pins
-  \item 8 digital IO pins
-  \item 128-bit encryption
-  \item Local or over-air configuration
-  \item AT or API command set
+  \item Velocidad máxima: 250kbps
+  \item 2mW salida (+3dBm)
+  \item 400ft (120m) rango
+  \item Antena incorporada
+  \item Certificado por FCC
+  \item 6 10-bit ADC pines de entrada
+  \item 8 pines digitales de entrada/salida
+  \item 128-bit encriptación
+  \item Modo AT o API
 \end{itemize}
 
 En este último punto se nos hablan de dos modos de funcionamiento:
@@ -228,7 +231,7 @@ una placa ``XBee Explorer" como la de la figura \ref{fig:xbeeexplorer}.
 
 \begin{figure}[htb]
 \centering
-\includegraphics[width=1\textwidth]{./imagenes/xbeeexplorer}
+\includegraphics[width=0.8\textwidth]{./imagenes/xbeeexplorer}
 \caption{XBee USB Explorer. Imagen extraída de \scriptsize{http://xbee.cl/xbee-explorer-usb/}} \label{fig:xbeeexplorer}
 \end{figure}
 
@@ -238,7 +241,7 @@ que tenemos conectados a nuestro ordenador; a la derecha, un panel de administra
 en función de lo que estemos haciendo con la mota; y arriba, las opciones relacionadas con el descubrimiento
 de nuevos dispositivos (izquierda) o distintas acciones sobre la mota (derecha). Podemos verlo en la figura \ref{fig:interfaz1}.\\
 
-\begin{figure}[htb]
+\begin{figure}[!htb]
 \centering
 \includegraphics[width=1\textwidth]{./imagenes/interfaz1}
 \caption{Interfaz XCTU} \label{fig:interfaz1}
@@ -249,7 +252,7 @@ utilizando una de las dos opciones que tenemos arriba a la izquierda (es importa
 pida resetear la mota y, como es el caso de nuestro modelo, no tengamos un botón para resetear, deberemos unir con un
 cable la patilla \guillemotleft RST\guillemotright con \guillemotleft GND\guillemotright).\\
 
-\begin{figure}[htb]
+\begin{figure}[!htb]
 \centering
 \includegraphics[width=0.5\textwidth]{./imagenes/xctureset}
 \caption{Paquete XBee en modo API} \label{fig:xctureset}
@@ -313,8 +316,8 @@ o placa controladora. Se han estudiado dos posibles soluciones:
     \end{itemize}
     \begin{figure}[!htb]
     \centering
-    \includegraphics[width=0.6\textwidth]{./imagenes/pic}
-    \caption{PICPIC16F716. Imagen extraída de \scriptsize{http://www.microchip.com/}} \label{fig:pic}
+    \includegraphics[width=0.5\textwidth]{./imagenes/pic}
+    \caption{PIC16F716\\  \scriptsize{Imagen extraída de http://www.microchip.com/}} \label{fig:pic}
     \end{figure}
   \item[Arduino] \hfill \\
     \begin{itemize}
@@ -326,25 +329,29 @@ o placa controladora. Se han estudiado dos posibles soluciones:
     \end{itemize}
     \begin{figure}[!htb]
     \centering
-    \includegraphics[width=0.6\textwidth]{./imagenes/lilypad}
-    \caption{PICPIC16F716. Imagen extraída de \scriptsize{https://www.arduino.cc}} \label{fig:lilypad}
+    \captionsetup{justification=centering}
+    \includegraphics[width=0.5\textwidth]{./imagenes/lilypad}
+    \caption{Arduino Lilypad\\
+     \scriptsize{Imagen extraída de https://www.arduino.cc}} \label{fig:lilypad}
     \end{figure}
+
     \begin{figure}[htb]
     \centering
-    \includegraphics[width=0.6\textwidth]{./imagenes/lilypadxbee}
-    \caption{Shield XBee Lilypad. Imagen extraída de \scriptsize{https://www.faludi.com/ \cite{faludi}}} \label{fig:lilypadxbee}
+    \captionsetup{justification=centering}
+    \includegraphics[width=0.5\textwidth]{./imagenes/lilypadxbee}
+    \caption{Shield XBee Lilypad\\
+      \scriptsize{Imagen extraída de https://www.faludi.com/ \cite{faludi}}} \label{fig:lilypadxbee}
     \end{figure}
 \end{description}
 
 
 \clearpage
 
-Aunque las posibilidades con PIC son mayores, tenemos que tener en cuenta que se desea que la
-plataforma atraiga a un número de desarrolladores. Sabiendo que Arduino se encuentra orientado a un
-público con una menor formación en electrónica y programación (por lo tanto, accesible a una mayor comunidad), se
-adecua más al objetivo de este proyecto. También hay que tener en cuenta la cantidad de bibliotecas
-existentes en Arduino (lo que nos ayudará a abstraernos de algunas tareas). Los problemas a los que
-nos enfrentamos al elegir esta plataforma son el precio y el tamaño (ambos superiores en Arduino).\\
+Sabiendo que Arduino se encuentra orientado a un público con una menor formación en electrónica y
+programación (por lo tanto, accesible a una mayor comunidad), se adecua más al objetivo de este proyecto.
+También hay que tener en cuenta la cantidad de bibliotecas
+existentes en Arduino (lo que nos ayudará a abstraernos de algunas tareas). Por contra,
+PIC es más competitivo en tamaño y precio.\\
 
 \subsection{IDE Arduino}
 \title{IDE Arduino}
@@ -356,6 +363,13 @@ En el menú superior tenemos acceso a distintas opciones como guardar nuestro pr
 instalar nuevas bibliotecas, seleccionar la placa para la que estamos desarrollando, el puerto en el que se encuentra dicha
 placa...\\
 
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=0.6\textwidth]{./imagenes/arduinoide}
+\caption{IDE Arduino} \label{fig:arduinoide}
+\end{figure}
+
+
 Justo debajo tenemos una serie de opciones (``Verificar", que compilará nuestro código; ``Cargar", que lo
 subirá a nuestra placa Arduino; ``Nuevo", que creará un nuevo proyecto Arduino; ``Abrir", permite abrir un proyecto
 Arduino ya cread; ``Guardar", para guardar el actual proyecto). A la derecha del todo, tenemos un monitor para el
@@ -364,11 +378,6 @@ puerto serial (para poder acceder a la comunicación entre nuestro equipo y la p
 Si el lector no está familiarizado con el entorno y desea conocerlo algo más, puede consultar la bibliografía \cite{arduinoInicia} y
 \cite{arduino24}.
 
-\begin{figure}[!htb]
-\centering
-\includegraphics[width=1\textwidth]{./imagenes/arduinoide}
-\caption{IDE Arduino} \label{fig:arduinoide}
-\end{figure}
 
 \section{Actuador}
 \title{Actuador}
@@ -376,29 +385,30 @@ Para que el músico sepa qué pulso es el correcto necesita alguna señal. Para 
 se ha decidido utilizar un micromotor vibrador. Para ser más exactos, el modelo 310-101 de la empresa
 ``Precision Microdrives" (figura \ref{fig:micromotor}).\\
 
+\begin{figure}[!htb]
+\centering
+\captionsetup{justification=centering}
+\includegraphics[width=0.5\textwidth]{./imagenes/micromotor}
+\caption{Micromotor 310-101\\
+\scriptsize{Imagen extraída de https://catalog.precisionmicrodrives.com}} \label{fig:micromotor}
+\end{figure}
+
+
 Sus características técnicas son:
 
 \begin{itemize}
-  \item Voltage: 3V
-  \item Frame Diameter: 10mm
-  \item Body Length: 3.4mm
-  \item Weight: 1.2g
-  \item Voltage Range: 2.5~3.8 V
-  \item Rated Speed: 12000 rpm
-  \item Rated Current: 75mA
-  \item Start Voltage: 2,3V
-  \item Start Current: 85mA
-  \item Terminal Resistance: 75 Ohm
-  \item Vibration Amplitude: 0,8G
+  \item Voltaje: 3V
+  \item Diámetro: 10mm
+  \item Longitud del cuerpo 3.4mm
+  \item Peso: 1.2g
+  \item Velocidad: 12000 rpm
+  \item Intensidad: 85mA
+  \item Resistencia: 75 Ohm
+  \item Amplitud de vibración: 0,8G
 \end{itemize}
 
-Se puede consultar su datasheet en las referencias \cite{micromotorData}.
+Se puede consultar su datasheet en la bibliografía \cite{micromotorData}.
 
-\begin{figure}[!htb]
-\centering
-\includegraphics[width=0.6\textwidth]{./imagenes/micromotor}
-\caption{Micromotor 310-101. Imagen extraída de \scriptsize{https://catalog.precisionmicrodrives.com}} \label{fig:micromotor}
-\end{figure}
 
 
 \section{Alimentación}
@@ -525,6 +535,7 @@ el eje Y se muestra la llegada de un paquete).\\
 
 \begin{figure}[!htb]
 \centering
+\captionsetup{justification=centering}
 \begin{tikzpicture}
 \draw[latex-latex, thin, draw=gray] (-1,0)--(12,0) node [right] {$x$};
 \draw[latex-latex, thin, draw=gray] (0,-1)--(0,4) node [above] {$y$};
@@ -553,11 +564,12 @@ el eje Y se muestra la llegada de un paquete).\\
 \foreach \x in {0,1,2,3,4,5,6,7,8,9,10,11,12}
     \draw (\x cm,1pt) -- (\x cm,-1pt) node[anchor=north] {$\x$};
 
-\node[draw] at (-1,3) {LLegada};
+\node[draw] at (-1,3) {INPUT};
 \end{tikzpicture}
 
 
-\caption{Representación temporal de la llegada de paquetes (X está en segundos)} \label{fig:graficabroadcast}
+\caption{Representación temporal de la llegada de paquetes utilizando \textit{broadcast}\\
+ (X está en segundos)} \label{fig:graficabroadcast}
 \end{figure}
 
 Aunque parece al principio que la recepción de paquetes es regular, después hay un largo
@@ -574,14 +586,57 @@ deberemos convertirlo en este otro  \texttt{7E 00 0F 90 00 7D 33 A2 00 40 A0 9B 
 Este problema podríamos achacarlo a la capa firmware de la mota (que podría contener mecanismos
 para comprobar la integridad de los paquetes y evitar que lleguen trazas corruptas).
 Sin embargo, es demasiado tiempo como para que este sea el problema (además, en una comunicación \text{unicast}
-(con un solo nodo), el problema no existe -como podemos ver en la figura \ref{fig:xctu_comunicacionunoauno}-, ya
-que la tasa de llegada de paquetes se mantiene constante -aunque con cierto retardo-).
+(con un solo nodo), el problema no existe -como podemos ver en la figura \ref{fig:xctu_comunicacionunoauno}- y en la gráfica
+\ref{fig:graficaunicast}, ya que la tasa de llegada de paquetes se mantiene constante -aproximadamente-).
 
 \begin{figure}[!htb]
 \centering
 \includegraphics[width=0.4\textwidth]{./imagenes/xctu_comunicacionunoauno}
 \caption{Traza temporal de llegada de paquetes en X-CTU con \textit{unicast}} \label{fig:xctu_comunicacionunoauno}
 \end{figure}
+
+
+\begin{figure}[!htb]
+\centering
+\captionsetup{justification=centering}
+\begin{tikzpicture}
+\draw[latex-latex, thin, draw=gray] (-1,0)--(6,0) node [right] {$x$};
+\draw[latex-latex, thin, draw=gray] (0,-1)--(0,4) node [above] {$y$};
+
+\foreach \Point in { (0,3),(0.563,3),(1.125,3),(1.641,3),(2.203,3),(2.750,3),(3.313,3),(3.875,3) }{
+   \node at \Point {\textbullet};
+}
+
+\draw [blue,solid] (0,0) -- (0,3);
+\draw [blue,solid] (0,3) -- (0.2,0);
+\draw [blue,solid] (0.2,0) -- (0.563,3);
+\draw [blue,solid] (0.563,3) -- (0.563,0);
+\draw [blue,solid] (0.563,0) -- (1.125,3);
+\draw [blue,solid] (1.125,3) -- (1.125,0);
+\draw [blue,solid] (1.125,0) -- (1.641,3);
+\draw [blue,solid] (1.641,3) -- (1.641,0);
+\draw [blue,solid] (1.641,0) -- (2.203,3);
+\draw [blue,solid] (2.203,3) -- (2.203,0);
+\draw [blue,solid] (2.203,0) -- (2.750,3);
+\draw [blue,solid] (2.750,3) -- (2.750,0);
+\draw [blue,solid] (2.750,0) -- (3.313,3);
+\draw [blue,solid] (3.313,3) -- (3.313,0);
+\draw [blue,solid] (3.313,0) -- (3.875,3);
+\draw [blue,solid] (3.875,3) -- (3.875,0);
+
+\draw [dotted, gray] (-1,-1) grid (6,5);
+
+\foreach \x in {0,1,2,3,4,5}
+    \draw (\x cm,1pt) -- (\x cm,-1pt) node[anchor=north] {$\x$};
+
+\node[draw] at (-1,3) {INPUT};
+\end{tikzpicture}
+
+\caption{Representación temporal de la llegada de paquetes utilizando \textit{unicast}\\
+(X está en segundos)} \label{fig:graficaunicast}
+\end{figure}
+
+Cabe destacar que se recibe un paquete más en menos tiempo.\\
 
 El problema viene por la forma en la que está implementado el \textit{broadcast}:
 los nodos se encuentran en una topología de malla y, cada vez que reciben un broadcast,
@@ -653,6 +708,97 @@ deberá mantener el tempo de forma local, hasta que llegue otra señal por parte
 Que el director envíe constantemente el pulso permite que, en caso que uno de los
 paquetes haya llegado más tarde de la cuenta, se pueda corregir.\\
 
+Para comprobar que funciona, se hace un experimento similar al de los casos anteriores pero,
+esta vez, midiendo tiempos en dos dispositivos receptores.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=0.7\textwidth]{./imagenes/sincronizacion}
+\caption{Sincronización en cada compás a un músico diferente} \label{fig:sincronizacion}
+\end{figure}
+
+
+
+  \begin{figure}[!htb]
+  \centering
+  \captionsetup{justification=centering}
+  \resizebox{0.9\textwidth}{!}{
+  \begin{tikzpicture}
+  \draw[latex-latex, thin, draw=gray] (-1,0)--(6,0) node [right] {$x$};
+  \draw[latex-latex, thin, draw=gray] (0,-1)--(0,4) node [above] {$y$};
+
+
+%Primero el izquierdo
+  \foreach \Point in {(0.174,3),(2.174,3),(4.190,3),(6.221,3),(8.206,3),(10.237,3),
+  (12.337,3),(14.237,3)}{
+     \node at \Point {\textbullet};
+  }
+
+  \draw [blue,solid] (0,0) -- (0.174,3);
+  \draw [blue,solid]  (0.174,3) -- (0.174,0);
+  \draw [blue,solid]  (0.174,0) -- (2.174,3);
+  \draw [blue,solid]  (2.174,3) -- (2.174,0);
+  \draw [blue,solid]  (2.174,0) -- (4.190,3);
+  \draw [blue,solid]  (4.190,3) -- (4.190,0);
+  \draw [blue,solid]  (4.190,0) -- (6.221,3);
+  \draw [blue,solid]  (6.221,3) -- (6.221,0);
+  \draw [blue,solid]  (6.221,0) -- (8.206,3);
+  \draw [blue,solid]  (8.206,3) -- (8.206,0);
+  \draw [blue,solid]  (8.206,0) -- (10.237,3);
+  \draw [blue,solid]  (10.237,3) -- (10.237,0);
+  \draw [blue,solid]  (10.237,0) -- (12.337,3);
+  \draw [blue,solid]  (12.337,3) -- (12.337,0);
+  \draw [blue,solid]  (12.337,0) -- (14.237,3);
+
+%Ahora el derecho
+\foreach \Point in {(1.174,3),(3.174,3),(5.190,3),(7.237,3),(9.237,3),(11.237,3),(13.237,3),(15.225,3)}{
+   \node at \Point {\textbullet};
+}
+
+\draw [red,solid] (0,0) -- (1.174,3);
+\draw [red,solid] (1.174,3) -- (1.174,0);
+\draw [red,solid] (1.174,0) -- (3.174,3);
+\draw [red,solid] (3.174,3) -- (3.174,0);
+\draw [red,solid] (3.174,0) -- (5.190,3);
+\draw [red,solid] (5.190,3) -- (5.190,0);
+\draw [red,solid] (5.190,0) -- (7.237,3);
+\draw [red,solid] (7.237,3) -- (7.237,0);
+\draw [red,solid] (7.237,0) -- (9.237,3);
+\draw [red,solid] (9.237,3) -- (9.237,0);
+\draw [red,solid] (9.237,0) -- (11.237,3);
+\draw [red,solid] (11.237,3) -- (11.237,0);
+\draw [red,solid] (11.237,0) -- (13.237,3);
+\draw [red,solid] (13.237,3) -- (13.237,0);
+\draw [red,solid] (13.237,0) -- (15.225,3);
+
+
+  \draw [dotted, gray] (-1,-1) grid (18,5);
+
+  \foreach \x in {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17}
+      \draw (\x cm,1pt) -- (\x cm,-1pt) node[anchor=north] {$\x$};
+
+  \node[draw] at (-1,3) {INPUT};
+  \end{tikzpicture}
+  }
+
+
+  \caption{Representación temporal de la llegada de paquetes utilizando \textit{unicast}\\
+  (X está en segundos)} \label{fig:graficasincronizados}
+  \end{figure}
+
+Como se puede ver en \ref{fig:sincronizacion} y \ref{fig:graficasincronizados},
+la sincronización que se ha obtenido es bastante buena. Cada uno de los dispositivos
+es sincronizado cada un segundo (por eso, si miramos una de las trazas,
+vemos que hay en torno a dos segundo de espera entre la llegada de un paquete y otro
+-1 segundo para sincronizar al otro XBee y 1 para sincronizar al que estamos monitorizando-).\\
+
+Si examinamos las trazas, se observa cómo hay, en algunas ocasiones, sincronización
+a nivel de milisegundos. También es interesante ver que en muchas ocasiones (como en los
+paquetes de la traza de la derecha con ID comprendidas entre 423 y 426 -inclusive-) la
+llegada de paquetes es en el mismo milisegundo de segundos distintos, por ejemplo: en el
+momento 10:42:45.237 (ID:425) y 10:42:47.237 (ID:426). Cuando esto no ocurre, el error es asumible.\\
+
+
 
 \section{Modalidades del dispositivo}
 \title{Modalidades del dispositivo}
@@ -688,75 +834,63 @@ Por ello se utiliza la biblioteca ``Software Serial" \cite{softwareserial} que, 
 que unos puertos que no son puerto serial, actúen como tal.\\
 
 A continuación se muestra un pseudocódigo de lo que se ha implementado.\\
+\floatname{algorithm}{Algoritmo}
+\begin{algorithm}
+  \begin{algorithmic}[1]
+     \State $tiempo\gets 0$
+     \State $i\gets 0$
+     \State $leer \gets true$\\
 
-\begin{lstlisting}[style=codigoC]
-  void setup(){
-      xbee = iniciarSerialXBee();
-      bt = iniciarSerialBluetooth();
-  }
+     \Function{Envio}{}
+      \If {$ahora - i\geq periodo $}
+        \State enviarPaquete($i$)
+        \State $i \gets i+1(mod(numeroXBee))$
+        \State $tiempo \gets ahora$
+      \EndIf
+      \EndFunction\\
 
-  xbeeDir[]={addr1,addr2,addr3};
-  pack[]={};
+    \While{true}
+    \If{$leer$}
+      \If{Hay datos del Bluetooth}
+        \State $leer \gets false$
+        \State $tiempo\gets tiempoEntrePulso(leerBluetooth())*4$
+        \State Se generan los paquetes
+        \State Se inicia el timer con la funcion envio
+      \EndIf
+     \EndIf
+    \EndWhile
+  \caption{Algoritmo utilizando por el controlador del director}
+  \end{algorithmic}
+\end{algorithm}
 
-  tiempo = 0;
-  periodo = 0;
 
-  leer = true;
-
-  void Envio(){
-    if(now() - tiempo > periodo){
-      xbee.send(pack[i]);
-      i++;
-      i=i%pack.size();
-      tiempo = now();
-    }
-
-    void loop(){
-      if(leer){
-        if(bt.data()){
-          tempo = bt.getdata();
-          leer = false;
-          createPack(pack,tempo);
-          disableBT();
-          au1 = tempo/ 60;
-          periodo = (1000 / au1) * 4
-
-          timer(500);
-          timer.setFunction(Envio);
-        }
-      }
-    }
-
-    void createPack(pack,tempo){
-      for(i = 0 ; i < xbeeDir.size(); i++){
-        pack[i] = createPackete(tempo,xbeeDir[i]);
-      }
-    }
-  }
-\end{lstlisting}
 
 \begin{enumerate}
-  \item Se inicializan los pines de los puertos serial.
   \item Se declara la función que ejecutará el timer. Esta función comprueba cuánto
    tiempo ha pasado desde la última vez que se ejecutó
     \begin{itemize}
-      \item Si ha pasado suficiente, enviará un mensaje al nodo que le toque sincronizar.
+      \item Si ha pasado suficiente, enviará un mensaje al nodo que le toque sincronizar
     \end{itemize}
   \item En el bucle que se ejecuta continuamente, si leer(*) es verdadero:
-    \begin{itemize}
+    \begin{enumerate}
       \item Se lee del Bluetooth el tempo y se generan los paquetes para cada dirección XBee
-      \item Se desactiva el Bluetooth (para ahorrar energía)
       \item Se calculan los pulsos por segundo, después el tiempo entre pulso y se multiplica
       por 4 (para sincronizar cada 4 pulsos, es decir, cada compás de 4/4)
+      \item Se generan los paquetes a enviar
       \item Se activa el timer (cada medio milisegundo para mantenerlo en activo -aunque haya momentos que se llame
       al timer para nada, esto provoca que sea más preciso que si lo ajustásemos al tiempo entre pulsos y, de todas formas,
       va a quedar en el bucle de espera activa, la función ``loop"-).
-    \end{itemize}
+    \end{enumerate}
 \end{enumerate}
 
-(*)Esta variable ``leer" permite que, una vez que se apaga el Bluetooth no se vuelva a intentar leer
+Lo que se acaba de explicar es el algoritmo. En la implementación en Arduino, se necesitan
+declarar los pines, inicializar algunas variables... También se desactiva el Bluetooth para
+ahorrar energía.\\
+
+(*)Esta variable ``leer"\ permite que, una vez que se apaga el Bluetooth, no se vuelva a intentar leer
 (ya que no se conseguirán datos -y la lectura de serial es más lenta- o estos serán erróneos
--lo que nos llevará a un fallo en el sistema-).
+-lo que nos llevará a un fallo en el sistema-).\\
+
 
 \subsection{Esquema de conexionado del dispositivo director}
 \title{Esquema de conexionado del dispositivo director}
@@ -775,6 +909,16 @@ dispositivo FTDI-USB.\\
 
 \section{Carcasa}
 \title{Carcasa}
+
+La carcasa que se propone tiene dos partes:
+\begin{itemize}
+  \item Base: dentro de esta parte van todos los componentes. En la parte inferior pone ``Director"
+  para poder diferenciarlo de los dispositivos de los músicos
+  \item Tapa: permite dejar todos los componentes dentro para que no se salgan. LLeva el logotipo
+  de ArduBand. Se une a la base utilizando algún adhesivo.
+\end{itemize}
+
+El hueco que queda libre es para colocar ahí la salida a MiniUSB del FTDI (para conectar la alimentación).\\
 
 \begin{figure}[!htb]
 \centering

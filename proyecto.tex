@@ -8,6 +8,7 @@
 \usepackage{amsmath}
 \usepackage{tikz}
 \usepackage{caption}
+\usepackage{algorithm,algpseudocode}
 
 
 \decimalpoint
@@ -28,6 +29,7 @@
 \usepackage{longtable}
 
 \usepackage[pdfborder={000}]{hyperref} %referencia
+
 
 
 \newcommand{\myTitle}{ArduBand\xspace}
@@ -203,11 +205,16 @@ every picture/.append style={
 \bibliographystyle{unsrt}
 
 
-\addcontentsline{toc}{chapter}{Lista de figuras}
+\renewcommand*\listfigurename{Lista de figuras}
 \listoffigures
 
 \renewcommand{\listtablename}{Índice de tablas}
 \listoftables
+
+
+\renewcommand{\listalgorithmname}{Lista de algoritmos}
+\listofalgorithms
+
 
 \chapter*{}
 \thispagestyle{empty}
