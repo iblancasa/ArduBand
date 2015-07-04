@@ -496,6 +496,7 @@ un problema.\\
 
 \subsection{Problema en broadcast}
 \title{Problema en broadcast}
+\label{subsec:problemabroadcast}
 
 En el apartado anterior se explicaba que la solución que parece más directa es realizar
 un \textit{broadcast}. Pero es una idea que se desecha rápidamente al hacer el siguiente experimento:
@@ -806,8 +807,8 @@ momento 10:42:45.237 (ID:425) y 10:42:47.237 (ID:426). Cuando esto no ocurre, el
 Tras el análisis realizado sobre la estructura de la red, toca hablar de los dos tipos
 de nodos de los que se disponen: director y músico.
 
-\subsection{El dispositivo director}
-\title{El dispositivo director}
+\subsection{Dispositivo director}
+\title{Dispositivo director}
 
 El dispositivo del director tiene que comunicarse con el resto de dispositivos (los
 de los músicos) y con el dispositivo Android. Para enlazar con los otros músicos
@@ -817,6 +818,8 @@ de comunicación que tienen todos los dispositivos móviles (tanto \textit{table
 \textit{smartphones}). Además (ya se estudió al principio de este capítulo), la versión
 4 de Bluetooth tiene mecanismos para ahorro de energía (y como la comunicación va a durar
 poco tiempo, no se necesita más).\\
+
+\subsection{Configuración de la mota director}
 
 
 \subsection{Controlador del dispositivo director}
@@ -833,8 +836,8 @@ La mayoría de versiones de Arduino (Lilypad, por ejemplo), no tienen más de un
 Por ello se utiliza la biblioteca ``Software Serial" \cite{softwareserial} que, mediante software, consigue
 que unos puertos que no son puerto serial, actúen como tal.\\
 
-A continuación se muestra un pseudocódigo de lo que se ha implementado.\\
-\floatname{algorithm}{Algoritmo}
+A continuación se muestra un pseudocódigo de lo que se ha implementado.
+
 \begin{algorithm}
   \begin{algorithmic}[1]
      \State $tiempo\gets 0$
@@ -842,7 +845,7 @@ A continuación se muestra un pseudocódigo de lo que se ha implementado.\\
      \State $leer \gets true$\\
 
      \Function{Envio}{}
-      \If {$ahora - i\geq periodo $}
+      \If {$ahora - tiempo\geq periodo $}
         \State enviarPaquete($i$)
         \State $i \gets i+1(mod(numeroXBee))$
         \State $tiempo \gets ahora$
@@ -853,19 +856,17 @@ A continuación se muestra un pseudocódigo de lo que se ha implementado.\\
     \If{$leer$}
       \If{Hay datos del Bluetooth}
         \State $leer \gets false$
-        \State $tiempo\gets tiempoEntrePulso(leerBluetooth())*4$
+        \State $periodo\gets tiempoEntrePulso(leerBluetooth())*4$
         \State Se generan los paquetes
-        \State Se inicia el timer con la funcion envio
+        \State Se inicia el timer con la funcion Envio
       \EndIf
      \EndIf
     \EndWhile
-  \caption{Algoritmo utilizando por el controlador del director}
   \end{algorithmic}
+  \caption{Algoritmo utilizando por el controlador del director}
 \end{algorithm}
 
-
-
-\begin{enumerate}
+  \begin{enumerate}
   \item Se declara la función que ejecutará el timer. Esta función comprueba cuánto
    tiempo ha pasado desde la última vez que se ejecutó
     \begin{itemize}
@@ -887,6 +888,8 @@ Lo que se acaba de explicar es el algoritmo. En la implementación en Arduino, s
 declarar los pines, inicializar algunas variables... También se desactiva el Bluetooth para
 ahorrar energía.\\
 
+Cuando se ha enviado un paquete a cada dispositivo, se vuelve a empezar (por eso se aplica la función módulo).\\
+
 (*)Esta variable ``leer"\ permite que, una vez que se apaga el Bluetooth, no se vuelva a intentar leer
 (ya que no se conseguirán datos -y la lectura de serial es más lenta- o estos serán erróneos
 -lo que nos llevará a un fallo en el sistema-).\\
@@ -897,7 +900,12 @@ ahorrar energía.\\
 
 Este esquema se puede consultar en la figura \ref{fig:director_esquema}. Falta
 la mota XBee, que iría sobre la shield, y la alimentación que se realizaría mediante un
-dispositivo FTDI-USB.\\
+dispositivo FTDI-USB (ambos no se han incluido para que sea más sencilla la lectura del
+esquema).\\
+
+Para realizar las pruebas se ha utilizado un Arduino UNO por falta de material aunque,
+como se muestra en la figura \ref{fig:director_esquema}, lo deseado es utilizar la
+versión \textit{wearable} de Arduino.
 
 \begin{figure}[!htb]
 \centering
@@ -907,8 +915,33 @@ dispositivo FTDI-USB.\\
 
 \clearpage
 
-\section{Carcasa}
-\title{Carcasa}
+\subsection{Carcasa del dispositivo director}
+\title{Carcasa del dispositivo director}
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=1\textwidth]{./imagenes/carcasa_base_director}
+\caption{Base de la carcasa para el director} \label{fig:carcasa_base_director}
+\end{figure}
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=1\textwidth]{./imagenes/carcasa_tapa}
+\caption{Tapa de la carcasa} \label{fig:carcasa_tapa}
+\end{figure}
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=0.5\textwidth]{./imagenes/carcasa_modelo_director}
+\caption{Modelo 3D de la carcasa} \label{fig:carcasa_modelo}
+\end{figure}
+
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=0.5\textwidth]{./imagenes/carcasa_modelo_director_abajo}
+\caption{Modelo 3D de la carcasa visto desde la parte inferior} \label{fig:carcasa_inferior}
+\end{figure}
 
 La carcasa que se propone tiene dos partes:
 \begin{itemize}
@@ -920,20 +953,104 @@ La carcasa que se propone tiene dos partes:
 
 El hueco que queda libre es para colocar ahí la salida a MiniUSB del FTDI (para conectar la alimentación).\\
 
-\begin{figure}[!htb]
-\centering
-\includegraphics[width=1\textwidth]{./imagenes/carcasa_base}
-\caption{Base de la carcasa} \label{fig:carcasa_base}
-\end{figure}
+\subsection{Dispositivo músico}
+\title{Dispositivo músico}
 
-\begin{figure}[!htb]
-\centering
-\includegraphics[width=1\textwidth]{./imagenes/carcasa_tapa}
-\caption{Tapa de la carcasa} \label{fig:carcasa_tapa}
-\end{figure}
+Solamente necesita comunicarse con el director (a través de la \textit{WSN}). Por otro lado,
+también hay que marcar el pulso al músico (con el micromotor de la figura \ref{fig:micromotor}).
 
-\begin{figure}[!htb]
-\centering
-\includegraphics[width=1\textwidth]{./imagenes/carcasa_modelo}
-\caption{Modelo 3D de la carcasa} \label{fig:carcasa_modelo}
-\end{figure}
+\subsection{Controlador del dispositivo músico}
+\title{Controlador del dispositivo músico}
+Al igual que en el caso del director, se necesita cumplir unos requisitos de tiempo
+bastante fuertes:
+\begin{itemize}
+  \item La lectura de los datos recibidos por XBee debe hacerse rápidamente
+  \item El pulso debe mantenerse de manera local (con el mínimo error posible)
+\end{itemize}
+
+Es de vital importancia que todos lo dispositivos de los músicos estén controlados
+por Arduino que midan el tiempo de igual forma. Es decir, que los \textit{delay,
+timers} y similares funciones midan la misma cantidad de tiempo. Para explicarlo
+mejor se pone el siguiente ejemplo:\\
+supongamos que tenemos dos Arduino ( ya sean del mismo fabricante o de otro). Si en ambos dispositivos
+cargamos el ejemplo de \textit{blink} \cite{arduinoBlink} (es un ejemplo que viene
+en el IDE de Arduino y que permite controlar un led, manteniéndolo encendido durante un segundo
+y dejándolo apagado durante otro), ambos deben mantener la misma cantidad de tiempo
+el led encendido y/o apagado.\\
+
+La afirmación del anterior párrafo parece algo que se deba cumplir, al menos, entre
+Arduino de la misma clase (UNO y derivados, Leonardo y derivados...), pero no es así.
+Tras un experimento con un Arduino UNO (oficial) y una placa DCcduino (compatible con UNO),
+se pudo comprobar que, mientras Arduino UNO se mantenía constante, la placa DCcduino iba a una
+mayor velocidad (en vez de cambiar de estado de encendido a apagado o de apagado a encendido
+cada un segundo, lo hacía a un tiempo sensiblemente menor). Ambas placas se anuncian
+con una velocidad de reloj de 16MHz (el lector puede consultar en \cite{arduinoUNO} las
+especificaciones de la placa Arduino UNO mientras que, para la placa DCcduino, no ha sido
+posible encontrar unas especificaciones propias ya que todas las páginas hacen referencia
+a las de Arduino UNO), algo que parece no ser cierto.\\
+
+Si todos los músicos no tienen el mismo modelo de \textit{timer} (o uno que mida igual),
+la subdivisión que se proponía al final de la subsección \ref{subsec:problemabroadcast},
+no funcionará.\\
+
+
+
+\begin{algorithm}
+  \begin{algorithmic}[1]
+    \State $periodo\gets 500$
+    \State $tiempo\gets 0$
+
+    \Function{Vibrar}{}
+     \If {$ahora - tiempo \geq periodo$}
+       \State activaActuador()
+       \State $tiempo \gets ahora$
+      \Else \If{$ahora - tiempo \geq 300$}
+        \State desactivaActuador()
+         \EndIf
+     \EndIf
+     \EndFunction\\
+
+     \State Se\ inicia\ el\ timer\ con\ la\ función Vibrar
+
+     \While{true}
+     \If{$datosXBee$}
+         \State $periodo\gets tiempoEntrePulso(leerXBee())$
+      \EndIf
+     \EndWhile
+  \end{algorithmic}
+  \caption{Algoritmo utilizando por el controlador del músico}
+\end{algorithm}
+
+\begin{enumerate}
+  \item Se inicia a un periodo de 2000 ms (simplemente para que el actuador pueda comenzar a
+  funcionar)
+  \item Se inicializa el tiempo
+  \item Se declara la función Vibrar
+    \begin{itemize}
+      \item Si ha pasado suficiente tiempo para activar el actuador
+        \begin{enumerate}
+          \item Activar actuador
+          \item Se guarda el momento en el que se activó
+        \end{enumerate}
+      \item Si ha pasado suficiente tiempo para desactivarlo(*), se desactiva
+    \end{itemize}
+  \item Se inicia el timer
+  \item En el bucle
+    \begin{enumerate}
+      \item Lectura del tempo
+      \item Cálculo del tiempo entre pulsos
+    \end{enumerate}
+\end{enumerate}
+
+(*) Este tiempo se ha calculado de forma empírica. Si se inserta un tiempo superior,
+cuando la velocidad de interpretación es de alrededor de los 120 pulsos por minuto,
+el actuador permanece activo siempre (por lo que no se marca el pulso). Para un tiempo
+menor, la vibración puede no ser suficiente o, incluso, el actuador podría no llegar a
+activarse.\\
+
+Se ha utilizado un Arduino Lilypad compatible. Este derivado, es detectado por el IDE de Arduino
+como una placa con una velocidad de 8MHz, sin embargo,
+este derivado funciona a 16MHz (por lo que va al doble de rápido). Si, por ejemplo, pedimos que espere
+1 segundo, esperará 500ms. También afecta al puerto serie: cuando se abre un puerto serial a una velocidad
+de 4800bps, realmente se está abriendo a 9600bps (es por eso que en la implementación en Arduino, se han multiplicado
+los tiempos por 2 y se ha abierto el puerto serie a una velocidad de 4800bps).
