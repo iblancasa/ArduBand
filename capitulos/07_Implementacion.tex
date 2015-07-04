@@ -837,7 +837,7 @@ Por ello se utiliza la biblioteca ``Software Serial" \cite{softwareserial} que, 
 que unos puertos que no son puerto serial, actúen como tal.\\
 
 A continuación se muestra un pseudocódigo de lo que se ha implementado.
-
+\floatname{algorithm}{Algoritmo}
 \begin{algorithm}
   \begin{algorithmic}[1]
      \State $tiempo\gets 0$
@@ -993,8 +993,7 @@ Si todos los músicos no tienen el mismo modelo de \textit{timer} (o uno que mid
 la subdivisión que se proponía al final de la subsección \ref{subsec:problemabroadcast},
 no funcionará.\\
 
-
-
+\floatname{algorithm}{Algoritmo}
 \begin{algorithm}
   \begin{algorithmic}[1]
     \State $periodo\gets 500$
@@ -1053,4 +1052,41 @@ como una placa con una velocidad de 8MHz, sin embargo,
 este derivado funciona a 16MHz (por lo que va al doble de rápido). Si, por ejemplo, pedimos que espere
 1 segundo, esperará 500ms. También afecta al puerto serie: cuando se abre un puerto serial a una velocidad
 de 4800bps, realmente se está abriendo a 9600bps (es por eso que en la implementación en Arduino, se han multiplicado
-los tiempos por 2 y se ha abierto el puerto serie a una velocidad de 4800bps).
+los tiempos por 2 y se ha abierto el puerto serie a una velocidad de 4800bps).\\
+
+\subsection{Esquema de conexionado del dispositivo músico}
+\title{Esquema de conexionado del dipositivo músico}
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=1\textwidth]{./imagenes/musico_esquema}
+\caption{Esquema de conexionado del músico} \label{fig:musico_esquema}
+\end{figure}
+
+
+
+\subsection{Carcasa del dispositivo músico}
+\title{Carcasa del dispositivo músico}
+
+También está compuesto por dos piezas:
+\begin{itemize}
+  \item Carcasa: es igual a la de la figura \ref{fig:carcasa_tapa}.
+  \item Base: es similar a la del director pero tiene un menor tamaño (ya que el espacio
+  de los componentes no es tan grande como el del dispositivo Bluetooth). En la base,
+  de igual forma que está escrito ``Director" en el otro dispositivo, tiene escrito
+  ``Músico".
+\end{itemize}
+
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=1\textwidth]{./imagenes/carcasa_base_musico}
+\caption{Base de la carcasa para el músico} \label{fig:carcasa_base_musico}
+\end{figure}
+
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=0.6\textwidth]{./imagenes/carcasa_modelo_musico}
+\caption{Modelo 3D de la carcasa del músico} \label{fig:carcasa_musico}
+\end{figure}
