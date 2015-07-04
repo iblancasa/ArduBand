@@ -221,6 +221,7 @@ Para conocer más sobre el modo API, el lector puede consultar el capítulo 5 (\
 
 \subsection{XCTU: el software para manipular las motas}
 \title{XCTU: el software para manipular las motas}
+\label{xctu}
 Este software es distribuido gratuitamente por Digi \cite{licenciaXCTU} y se puede descargar desde la página oficial
 de dicha empresa.
 
@@ -819,7 +820,40 @@ de comunicación que tienen todos los dispositivos móviles (tanto \textit{table
 4 de Bluetooth tiene mecanismos para ahorro de energía (y como la comunicación va a durar
 poco tiempo, no se necesita más).\\
 
+
 \subsection{Configuración de la mota director}
+\title{Configuración de la mota director}
+\label{sec:configuracionmotadirector}
+
+En la sección \ref{xctu} se vió un poco sobre la interfaz de XCTU. Ahora vamos a ver cómo
+configurar una mota (para ser más exactos, la mota ``director").\\
+
+En primer lugar será necesario descubrir la mota que tengamos conectada a nuestro ordenador
+(como se dijo en \ref{xctu}, en la parte superior izquierda se utiliza cualquiera de las dos
+opciones para buscar la mota). Después, accedemos al panel de configuración de la derecha y
+seleccionamos ``Update firmware" (figura \ref{fig:configurar_mota_1}).
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=1\textwidth]{./imagenes/configurar_mota_1}
+\caption{Subpanel dentro de la configuración} \label{fig:configurar_mota_1}
+\end{figure}
+
+Seleccionaremos el firmware que queramos instalar y hacemos click en ``Update".
+En nuestro caso vamos a instalar ``ZigBee coordinator API", ya que estamos
+configurando la mota del director.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=1\textwidth]{./imagenes/configurar_mota_1}
+\caption{Subpanel dentro de la configuración} \label{fig:configurar_mota_2}
+\end{figure}
+
+Cuando la instalación finalice, haremos click sobre la restauración de valores de fábrica
+(es el botón que se encuenta a la izquierda de la actualización de firmware en la figura \ref{fig:configurar_mota_1}).\\
+
+Ahora solo faltará insertar un PAN ID, cambiar el modo API a 2, desactivar los pines (D0, D1, D2, D3, D4, D5, P1 y P2
+-para que no consuman recursos-) y escribir los cambios en nuestro XBee.\\
 
 
 \subsection{Controlador del dispositivo director}
@@ -959,6 +993,23 @@ El hueco que queda libre es para colocar ahí la salida a MiniUSB del FTDI (para
 Solamente necesita comunicarse con el director (a través de la \textit{WSN}). Por otro lado,
 también hay que marcar el pulso al músico (con el micromotor de la figura \ref{fig:micromotor}).
 
+\subsection{Configuración de la mota músico}
+\title{Configuración de la mota músico}
+
+La configuración es igual que en el caso de la mota director (como se hizo en la sección
+\ref{sec:configuracionmotadirector}). Lo que cambia es el firmware que se instala, que es el
+``ZigBee End Device API".
+
+Hay que insertar la misma PAN ID que insertásemos en el director o nuestros dispositivos
+no podrán comunicarse.\\
+
+En función del número de músicos de los que dispongamos, podremos hacer una estimación de
+cuánto tiempo máximo se tardará en sincronizarlos y, en función de eso,
+establecer un tiempo para que las motas puedan activar el estado de ahorro energético.
+Es decir, si se sobrepasa el tiempo en el que el director debería haber enviado una
+nueva señal, enviar a ``dormir" las motas, de forma que consman menos energía.
+
+
 \subsection{Controlador del dispositivo músico}
 \title{Controlador del dispositivo músico}
 Al igual que en el caso del director, se necesita cumplir unos requisitos de tiempo
@@ -1062,7 +1113,6 @@ los tiempos por 2 y se ha abierto el puerto serie a una velocidad de 4800bps).\\
 \includegraphics[width=1\textwidth]{./imagenes/musico_esquema}
 \caption{Esquema de conexionado del músico} \label{fig:musico_esquema}
 \end{figure}
-
 
 
 \subsection{Carcasa del dispositivo músico}
