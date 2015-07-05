@@ -26,6 +26,8 @@ la que se trata de implementar en este trabajo), se sigue el una metodología en
   \item Construcción
 \end{enumerate}
 
+Como sistema de control de versiones, se utilizará Git. Para guardar los datos,
+se utilizará el servicio GitHub.
 
 \title{Fases}
 \section{Fases}
@@ -104,10 +106,10 @@ hacer una estimación temporal del proyecto.\\
         \item{Realizar pruebas para conocer si las plataformas son válidas para el proyecto}
       \end{itemize}
     \item{Comunicación entre los actores del sistema}
-    \item{Cálculo de los valores necesarios para mantener el tempo en un actor}
-    \item{Envío del tempo desde el director a los músicos}
-    \item{Posibilidad de cambiar el tempo (por parte del director)}
-    \item{Aplicaciones propias para cambiar el tempo}
+    \item{Cálculo de los valores necesarios para mantener el \textit{tempo} en un actor}
+    \item{Envío del \textit{tempo} desde el director a los músicos}
+    \item{Posibilidad de cambiar el \text{tempo} (por parte del director)}
+    \item{Aplicaciones propias para cambiar el \text{tempo}}
     \item{Tiempo estimado: \textbf{100 horas}}
   \end{itemize}
 \end{itemize}
@@ -173,7 +175,8 @@ desee particiar en el proyecto puede hacerlo realizando aportaciones en los
 Para el desarrollo del proyecto se ha contado con solo una persona, el propio autor de este trabajo.\\
 
 Teniendo en cuenta que para el proyecto se han utilizado alrededor de 4 meses, estaríamos hablando
-de una necesidad de ``1 persona/mes".
+de una necesidad de ``1 persona/mes para un período 4 meses"\ o (si estimamos que el tiempo
+empleado en el proyecto se puede reducir de forma lineal) ``4 personas/mes"\ para 1 mes.
 
 \title{Recursos reutilizables}
 \section{Recursos técnicos reutilizables}
@@ -200,14 +203,14 @@ También se va a desarrollar un dispositivo físico que necesitará un software 
 controlado. Todas las bibliotecas del controlador con licencia libre, también estarán
 disponibles para su uso (en la sección de implementacion, veremos que se utilizará
 Arduino -el cual tiene muchas bibliotecas disponibles- y XBee -existiendo para este
-sistema de comunicación Wireless algunas bibliotecas desarrolladas por la comunidad-).\\
+sistema de comunicación \textit{wireless} algunas bibliotecas desarrolladas por la comunidad-).\\
 
 
 
 \subsection{Recursos hardware reutilizables}
 \title{Recursos hardware reutilizable}
 
-Como se acaba de comentar, se utilizará la plataforma Arduino. Además de poder comprar
+Como se acaba de comentar, se utilizará la plataforma Arduino. Además de comprar
 placas ya fabricadas, existe la posibilidad de crear una propia (es hardware libre y
 los planos y software se encuentran disponibles en GitHub \cite{arduinoRepo}).\\
 
@@ -229,7 +232,7 @@ En esta sección se va a proceder a estimar los costes del proyecto.\\
 
 Gracias a la utilización de software y hardware libre, no es necesario el pago de licencias.\\
 
-El único problema que podría plantearse viene por parte de la empresa Digi al utilizar
+La única incógnita que podría plantearse viene por parte de la empresa Digi al utilizar
 el dispositivo XBee pero, debido a que este dispositivo está pensado para crear otros
 nuevos, no existe problema en cuanto a su redistribución. X-CTU, el software que se va a
 utilizar para la programación de los módulos no tiene licencia libre y se encuentra protegido
@@ -307,7 +310,7 @@ A continuación se listarán los materiales necesarios y su costo aproximado.
   \hline
   \rowcolor[HTML]{9698ED}
   {\bf Material}      & {\bf Precio (\euro)} \\ \hline
-  Arduino*            & 7                \\
+  Arduino            & 7                \\
   XBee                & 25               \\
   Micromotor vibrador & 1,50             \\
   XBee Adapter/shield & 10               \\
@@ -324,7 +327,7 @@ A continuación se listarán los materiales necesarios y su costo aproximado.
 (*)Como Arduino es un proyecto de hardware libre, muchas empresas han decidido
 dedicarse a crear sus propias placas compatibles con las originales pero a un
 precio mucho menor. En este presupuesto se asume que se están utilizando estas
-placas derivadas.\\
+placas compatibles.\\
 
 Al comprar en grandes cantidades, probablemente, el precio de algunos de estos
 materiales se vería reducido.\\
@@ -373,10 +376,10 @@ Ordenador                & 450                  \\
 \end{table}
 
 
-En el caso del dispositivo Android se ha elegido (para el presupuesto) ``Motorola Moto G" por tener
+En el caso del dispositivo Android se ha elegido (para el presupuesto) ``Motorola Moto G"\ por tener
 un precio basante ajustado y soportar la última versión de Android (cuando se escribe este
-trabajo, la última versión es Android 5). Para dispositivo ``Android Wear" (también para el presupuesto)
-se ha elegido ``LG G Watch" (por ser el dispositivo ``Android Wear" más barato del momento
+trabajo, la última versión es Android 5). Para dispositivo ``Android Wear"\ (también para el presupuesto)
+se ha elegido ``LG G Watch"\ (por ser el dispositivo ``Android Wear"\ más barato del momento
 y que, con las funcionalidades de las que dispone, permite llevar a cabo el desarrollo).Esta
 parte del presupuesto hay que tenerla en cuenta, pero podemos pasarla por alto para el proyecto
 (ya que son herramientas básicas y se asume que el desarrollador debe de tenerlas antes de empezar).\\
@@ -384,7 +387,7 @@ parte del presupuesto hay que tenerla en cuenta, pero podemos pasarla por alto p
 \subsection{Recursos humanos}
 \title{Recursos humanos}
 
-Como se ha comentado anteriormente en la sección dedicada a hablar de los recursos humanos disponibles,
+Como se ha referido anteriormente en la sección dedicada a hablar de los recursos humanos disponibles,
 al ser un desarrollo libre, cualquiera que lo desee puede participar. Sin embargo, para llevar a cabo la
 construcción del sistema, es necesario que haya gente trabajando en él. Los cálculos
 se realizarán partiendo de que hay un trabajador con el título de Grado en Ingeniería Informática.\\
@@ -483,8 +486,8 @@ las cantidades relacionadas con Seguridad Social, seguros y similares).\\
 
 \subsection{Otros gastos}
 \title{Otros gastos}
-Teniendo en cuenta que se va a desarrollar una aplicación ``Android" y otra ``Android Wear",
-será necesario pagar la cuota para obtener licencia de desarrollo (25USD, unos 22,5\euro) \cite{desarrollaAndroid}.\\
+Sabiendo que se va a desarrollar una aplicación ``Android"\,
+será necesario pagar la cuota para obtener cuenta de desarrollo (25USD, unos 22,5\euro) \cite{desarrollaAndroid}.\\
 
 
 \subsection{Gasto total}
@@ -512,17 +515,17 @@ También, al comprar al por mayor, el precio de los materiales se vería conside
 reducido.\\
 
 En cuanto a los costos derivados de los recursos humanos, cuanto más dispositivos se produzcan,
-menor será el costo. Es decir, la inversión se verá ``más repartida". También habrá que tener en
+menor será el costo (producción en masa). Es decir, la inversión se verá ``más repartida". También habrá que tener en
 cuenta que, al producir nuevos dispositivos, es tiempo que hay que pagar a la mano de obra
 (pero será tiempo ensamblando el producto, por lo que no se estará gastando tiempo en análisis,
 diseño... -salvo que se desee añadir una nueva funcionalidad-). El coste estático (sin contar herramientas)
-sería de 1426\euro (los costes de cada dispositivo son gastos dinámicos).\\
+sería de 1426\euro\ (los costes de cada dispositivo son gastos dinámicos).\\
 
 \label{sec:ganancia}
 Vamos a hacer un cálculo aproximado de los gastos que quedarían sin cubrir tras vender algunos dispositivos:
 
 \begin{gather*}
-  1.426 + (51 * \textup{Directores} +46.5 \times \textup{Músicos}) = \textup{Gasto material} \\ \\
+  1.426 + (51 \times \textup{Directores} +46.5 \times \textup{Músicos}) = \textup{Gasto material} \\ \\
   \textup{Gasto material} - ((\textup{Beneficio/dispositivo} \times \textup{Total dispositivos}) +\\
   (51 \times \textup{Directores} + 46.5 \times \textup{Músicos})) = \textup{Coste final}
 \end{gather*}
@@ -551,12 +554,12 @@ Nos seguirían faltando por recuperar 426\euro. Si en vez de ser una banda, son 
 Que en este último caso la cifra sea negativa indica ganancia (ya que lo que se están
 calculando son los gastos). Como se ha apuntado unos párrafos antes, esta cifra no es
 del todo real, ya que habría que incluir la mano de obra para desarrollar cada dispositivo
-(aún así, en el segundo caso se seguirían obteniendo beneficios ya que un mismo trabajador
+(aún así, en el segundo caso, probablemente, se seguirían obteniendo beneficios ya que un mismo trabajador
 podría construir muchos dispositivos a lo largo de una jornada laboral).\\
 
 
 Para hacer una estimación del retorno de inversión, vamos a suponer que todos los dispositivos son
-iguales y que todos valen 46.5\euro (precio del dispositivo del músico) y se sigue obteniendo 10\euro
+iguales y que todos valen 46.5\euro\ (precio del dispositivo del músico) y se sigue obteniendo 10\euro\
 de beneficio por dispositivo.
 \begin{gather*}
   1.426 + 48x = Y \\
