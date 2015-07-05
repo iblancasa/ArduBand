@@ -1025,6 +1025,7 @@ nueva señal, enviar a ``dormir" las motas, de forma que consman menos energía.
 
 \subsection{Controlador del dispositivo músico}
 \title{Controlador del dispositivo músico}
+\label{sec:controladormusico}
 Al igual que en el caso del director, se necesita cumplir unos requisitos de tiempo
 bastante fuertes:
 \begin{itemize}
@@ -1151,3 +1152,91 @@ También está compuesto por dos piezas:
 \includegraphics[width=1\textwidth]{./imagenes/carcasa_modelo_musico}
 \caption{Modelo 3D de la carcasa del músico y la parte inferior} \label{fig:carcasa_musico}
 \end{figure}
+
+\clearpage
+
+\section{Aplicaciones}
+\title{Aplicaciones}
+
+En este apartado se va a hablar de las aplicaciones desarrollada para dispositivos móviles.
+Como interfaz entre el director y el sistema, se deseaba crear una aplicación Android que
+siguiese las pautas de diseño de Google.\\
+
+Esta aplicación simplemente debe enviar un caracter entre 0 y 127 de la tabla ASCII \cite{ascii} al dispositivo Bluetooth que
+tiene el dispositivo director de ArduBand.\\
+
+
+Debido a los continuos problemas por parte del SDK Android para conseguir conectar
+al dispositivo móvil con el Bluetooth HC06, se ha procedido a modificar una aplicación
+que funciona como terminal Bluetooth. La aplicación original tiene como nombre y puede verse
+el enlace en \cite{bluetoothOrigin}. La versión modificada para funcionar con ArduBand se
+puede visitar en \cite{bluetoothProvisional}. Esto se puede hacer gracias a que \cite{bluetoothOrigin}
+dispone de licencia Apache (\cite{apacheLicense}), compatible con la de este proyecto.\\
+
+Al abrir la aplicación, son dos elementos los que llaman nuestra atención: un botón y un cuadro
+de texto como los de la figura \ref{fig:protoand1}.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=1\textwidth]{./imagenes/arduband-android-prototipo1}
+\caption{Interfaz de la aplicación Android} \label{fig:protoand1}
+\end{figure}
+
+Primero será necesario emparejar nuestro dispositivo ArduBand con el dispositivo
+móvil, por lo que el usuario tiene que pulsar sobre el logotipo de Bluetooth y seleccionar
+el Bluetooth de ArduBand, en el caso de la figura \ref{fig:protoand2}, es el ``HC06".
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=0.6\textwidth]{./imagenes/arduband-android-prototipo2}
+\caption{Selección de dispositivo} \label{fig:protoand2}
+\end{figure}
+
+Tras esto, el usuario deberá escribir con números el tempo que desea en el campo
+destinado a ello (el máximo es 128). La aplicación se encargará de enviar al usuario
+la información oportuna (en la figura \ref{fig:protoand3} se puede ver cómo, al
+pedir que se marque un tempo de 120 pulsaciones por minuto, el software lo traduce al caracter
+120, que corresponde con la letra ``x").\\
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=1\textwidth]{./imagenes/arduband-android-prototipo3}
+\caption{Envío de tempo} \label{fig:protoand3}
+\end{figure}
+
+Aunque no haya realizado la aplicación completamente, se ha conseguido la funcionalidad básica y,
+por otra parte, se ha trabajado en la interfaz con Material Design, tal como se puede ver en la
+figura \ref{fig:material}.\\
+
+Esta aplicación que quiere que funcione de forma similar a la que se está utilizando como
+prototipo:
+\begin{enumerate}
+  \item Se emparejan los dispositivos Bluetooth
+  \item El director insertar el tempo
+  \item Se envía el tempo
+\end{enumerate}
+
+Donde el usuario inserta un número y la aplicación, internamente, lo transforma en un
+caracter que envía al dispositivo director de ArduBand.\\
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=1\textwidth]{./imagenes/material}
+\caption{Interfaz Material Design} \label{fig:material}
+\end{figure}
+
+De la misma forma, se ha trabajado en la interfaz para dispositivos Android Wear.
+Como no se dispone de un dispositivo físico, no se puede probar la funcionalidad
+Bluetooth y, por ello, no se ha implementado (aunque el funcionamiento es el mismo que
+en el caso de la aplicación móvil).\\
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=0.8\textwidth]{./imagenes/androidwear}
+\caption{Interfaz Android Wear} \label{fig:androidwearUI}
+\end{figure}
+
+Como se puede ver en la figura \ref{fig:androidwearUI}, el usuario se encuentra el
+tempo a insertar en grande. Utilizando los botones, aumenta o disminuye el tempo a
+enviar y, una vez ha decidido qué tempo es el que desea, pulsa sobre el número y
+el tempo es enviado al dispositivo ArduBand.\\
