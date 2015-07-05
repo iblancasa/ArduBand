@@ -19,7 +19,7 @@ marcar el mismo pulso a los músicos.\\
 Cuando la agrupación se encuentra realizando un concierto, el
 esquema de comunicación que se sigue es el mostrado en la figura \ref{fig:modeladoconceptual}
 (donde el nodo rojo es el director y lo morados los músicos). El único flujo de información
-que hay es que que marcan las flechas (el pulso, que sigue un tempo constante). Hay que
+que hay es que que marcan las flechas (el pulso, que sigue un \textit{tempo} constante). Hay que
 aclarar que en este caso, para simplificar, sólo se han dibujado 5 músicos,
 sin embargo, como se vio en la introducción, las bandas suelen contar entre sus filas con
 varias decenas de integrantes.\\
@@ -39,7 +39,7 @@ El flujo de información es el mostrado en la figura \ref{fig:mensajesconceptual
   \end{figure}
 
 
-Es necesario guardar el ``tempo'' (que será establecido por el director) y algún tipo
+Es necesario guardar el \textit{tempo} (que será establecido por el director) y algún tipo
 de idenficación de los músicos, para que el director sepa con quién se tiene que
 comunicar (aunque esto se verá más adelante).\\
 
@@ -73,7 +73,7 @@ tener para satisfacer las necesidades de los usuarios.\\
 \title{Requisitos no funcionales}
 \section{Requisitos no funcionales}
 
-En estea sección se van a describir los distintos requisitos no funcionales del sistema.
+Ahora se especificarán los distintos requisitos no funcionales del sistema.
 Los requisitos no funcionales son aquellos que nos informan de restricciones que debe cumplir
 nuestro sistema.\\
 
@@ -84,15 +84,15 @@ nuestro sistema.\\
     \item[\textbf{RNF.2}] Debe de ser barato: para que el usuario desee utilizar
       el sistema, este debe tener un coste asumible
     \item[\textbf{RNF.3}] La escalabilidad no debe ser un problema: se deben poder añadir
-      muchos dispositivos al sistema y que la funcionalidad no se resienta.
-    \item[\textbf{RNF.4}] Debe permitir que se puedan añadir funciones: para futuras mejoras.
+      muchos dispositivos al sistema y que la funcionalidad no se resienta
+    \item[\textbf{RNF.4}] Debe permitir que se puedan añadir funciones: para futuras mejoras
     \item[\textbf{RNF.5}] El dispositivo que se desarrolle tiene que ser discreto y cómodo:
-      ningún usuario va a querer utilizarlo si se siente mal llevándolo o si es demasiado llamativo.
+      ningún usuario va a querer utilizarlo si se siente mal llevándolo o si es demasiado llamativo
     \item[\textbf{RNF.6}] Bajo consumo energético: se busca aprovechar la batería al máximo
-      (si el dispositivo funciona durante poco tiempo, no habrá usuarios que deseen utilizarlo).
+      (si el dispositivo funciona durante poco tiempo, no habrá usuarios que deseen utilizarlo)
     \item[\textbf{RNF.7}] Sincronización entre los músicos: ya que lo que se busca es dar unidad
       a la interpretación de las distintas obras, el sistema debe cumplir unos requisitos de tiempo
-      importantes (a nivel de milisegundos para que, en caso de haber algo de asincronía, el usuario no lo note).
+      importantes (a nivel de milisegundos para que, en caso de haber algo de asincronía, el usuario no lo note)
     \item[\textbf{RNF.8}] El pulso debe mantenerse constante: el pulso, por definición
       no cambia a lo largo de la obra y debe conseguirse que el usuario lo perciba de forma
       constante
@@ -110,6 +110,6 @@ Estos requisitos indican qué información guarda nuestro sistema.\\
     enviar el tempo una vez que estén sincronizados
     \item[\textbf{RI.2}] Músicos: el director deberá conocer los músicos existentes en la banda
     para saber a quién tiene que comunicarle el tempo. Podría darse el caso de dos
-    agrupaciones musicales que se encontrasen muy próximas y utilizase en sistema:
-    hay que evitar que el pulso de una de las bandas interfiera el de la otra
+    agrupaciones musicales que se encontrasen muy próximas y utilizase el sistema.
+    Hay que evitar que el pulso de una de las bandas interfiera el de la otra
   \end{itemize}
