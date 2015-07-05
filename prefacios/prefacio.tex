@@ -24,26 +24,30 @@ Israel Blancas Álvarez\\
 \noindent{\textbf{Resumen}}\\
 En el presente trabajo, el lector podrá encontrar cómo se ha desarrollado un sistema
 \textit{wearable} que, mediante vibración, facilita a los intérpretes de una banda de
-música seguir el mismo tempo. De esta forma, se ayudará a que todos los miembros del conjunto
+música seguir el mismo \textit{tempo}. De esta forma, se ayudará a que todos los miembros del conjunto
 sigan el mismo pulso y puedan mantenerlo constante durante toda la ejecución.\\
 
-Esta necesidad ha despertado el interés de algunas compañías, que han desarrollado como el
-llamado ``Body Beat", de la marca ``Peterson" que, a pesar de su gran abanico de funciones,
-no ha tenido el éxito esperado en el mercado al tener elevado coste. Un sistema que hiciese las
+Esta necesidad ha despertado el interés de algunas compañías, que han desarrollado sistemas como
+llamado ``Body Beat"\ (de la marca ``Peterson") que, a pesar de su gran abanico de funciones,
+no ha tenido el éxito esperado en el mercado al tener un coste elevado. Un sistema que hiciese las
 veces de metrónomo wireless (característica principal y más atrayente del artículo antes mencionado)
-a un precio menor atraería a muchos más clientes.\\
+a un precio menor, atraería a muchos más clientes.\\
 
 Para que todos los integrantes de la agrupación puedan llevar el mismo pulso, se ha creado una red
-inalámbrica de sensores (WSN) que permite la sincronización de los aparatos que portan todos los músicos.
+inalámbrica de sensores (\textit{WSN}) que permite la sincronización de los aparatos que portan todos los músicos.
 La red de sensores ha sido concebida utilizando la implementación de ZigBee propuesta por la empresa “Digi
 International”, mientras la lógica de los circuitos se ha puesto en manos de la plataforma hardware Arduino
 (utilizándose diversas versiones del mismo).\\
 
-El tipo de red que forman los dispositivos ``XBee ZigBee" es de tipo malla pero, utilizando la configuración
+El tipo de red que forman los dispositivos ``XBee ZigBee"\ es de tipo malla pero, utilizando la configuración
 de las motas, se ha pasado a tener una topología de estrella. Dispone de dos tipos de  \textit{wearables}:
   \begin{itemize}
-  \item Director: su mota juega el papel de ``coordinador" de la red. Es quien crea la red y establece los caminos que deben seguir las comunicaciones que haya en la red. Además de la comunicación con los otros elementos del sistema, tiene la opción de conectar, a través de Bluetooth, con un dispositivo Android.
-  \item Músico: contiene una mota del tipo ``dispositivo final". Simplemente, recibe (del dispositivo ``director") el tempo con el que el micromotor vibrador debe activarse (además, al llegar el paquete con la traza de datos, se sincroniza con el resto de dispositivos de la red, de forma que todos vibren a la vez).
+  \item Director: su mota juega el papel de ``coordinador" de la red. Es quien crea la red y establece los caminos que
+  deben seguir las comunicaciones que haya en la red. Además de la comunicación con los otros elementos del sistema,
+  tiene la opción de conectar, a través de Bluetooth, con un dispositivo Android.
+  \item Músico: contiene una mota del tipo ``dispositivo final". Simplemente, recibe (del dispositivo ``director")
+  el \textit{tempo} con el que el micromotor vibrador debe activarse (además, al llegar el paquete con la traza de datos, se
+  sincroniza con el resto de dispositivos de la red, de forma que todos vibren a la vez).
   \end{itemize}
 
 Como se comentaba cuando se hablaba del dispositivo del director, se puede conectar
@@ -51,14 +55,13 @@ con un dispositivo móvil Android. Es necesario que el director indique el tempo
 sistema debe marcar a los músicos, esta aplicación móvil es la que transfiere al controlador la
 velocidad a la que debe compaginar a los intérpretes (para evitar sobrecargar la red, se hace una
 coordinación cada cierto tiempo -por si hubiera habido retrasos en la organización inicial- y cada
-dispositivo subdivide en función del tempo que se le ha enviado). Buscando facilitar al usuario la utilización
-de esta tecnología, se ha desarrollado tanto una aplicación para teléfonos móviles, como para smartwatches
-que funcionen con el sistema operativo ``Android Wear".\\
+dispositivo, en función del \textit{tempo} que se le ha enviado, mantiene el pulso). Buscando facilitar al usuario la utilización
+de esta tecnología, se ha desarrollado tanto una aplicación para teléfonos móviles.\\
 
-Una vez desarrollada la base del sistema, es posible crear nuevas funcionalidades como la instalación de un
+Una vez creada la base del sistema, es posible crear nuevas funcionalidades (como la instalación de un
 sensor de vibración que permita a los percusionistas obtener retroalimentación para saber si los intérpretes
-están ejecutando la partitura siguiendo el tiempo marcado o la posibilidad de pasar lista (conociendo qué sensores
-se encuentran activos en la red).\\
+están ejecutando la partitura siguiendo el tiempo marcado o la posibilidad de pasar lista -conociendo qué sensores
+se encuentran activos en la red-).\\
 
 \cleardoublepage
 
@@ -113,9 +116,9 @@ star topology. There are two kinds of wearables:
   \end{itemize}
 
 
-Director’s device can be connected to an Android device (which could be a smartphone or a smartwatch,
-because one application has been developed to each one). This application allows director to indicate music’s
-``tempo" and each application was developed using Google’s recommendations about design (Material Design principles).\\
+Director’s device can be connected to an Android device (which could be a smartphone, a tablet or a smartwatch, for example).
+This application allows director to indicate music’s
+``tempo".\\
 
 Taking this base, it is possible to create new functions such as installing a vibration sensors in drums to measure the
 tempo of the band and provide a feedback to the director. Another possibility could be rollcalling at the band (only it
