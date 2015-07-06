@@ -100,7 +100,7 @@ Ya en la introducción de hablaba de Body Beat, de la marca Peterson \cite{bodyb
     Body Beat tiene un tamaño de 4.25" x 3" x 1" (10,795cm x 7,62 cm x 2,54 cm, aproximadamente).
     ArduBand se presenta en dos formatos (teniendo en cuenta las caracasas): director (5,8 cm de diámetro x 3,2cm de altura,
     aproximadamente) y músico (5,8 cm de diámetro y 2,3 de altura, aproximadamente). Si calculamos los tres volúmenes (para facilitar
-    el cálculo, se toma que los dispositivos ArduBand son una aproximación a cilindo -aunque realmente son algo más pequeños-),
+    el cálculo, se toma que los dispositivos ArduBand son una aproximación a cilindo -aunque, realmente es algo menor-),
     Body Beat es de unos 209cm\textsuperscript{3}, el dispositivo director 84.5cm\textsuperscript{3} y el
     músico 60.8cm\textsuperscript{3}. Hay que añadir al volúmen de los dispositivos ArduBand, el de una batería externa. Por
     ejemplo, si adquirimos la que se ha mencionado anteriormente (el modelo \textit{A5 Classic} de \textit{Power Bank}), tenemos
@@ -115,6 +115,14 @@ Ya en la introducción de hablaba de Body Beat, de la marca Peterson \cite{bodyb
     Body Beat dispone de varios sensores/actuadores que consumen energía, mientras que en ArduBand, el número
     de dispositivos es muy reducido (por lo que habrá un menor consumo eléctrico y mayor duración
     de la batería)
+  \item[Utilizar el \textit{watch dog} de Arduino] \hfill \\
+    Es un mecanismo que reinicia un dispositivo en caso que se detecte que se ha producido un bloqueo.
+    Un trabajo de futuro será utilizar este sistema para,
+    en caso de error, que los dispositivos puedan recuperarse solos.
+  \item[\textit{Hardware} propio] \hfill \\
+    Para disminuir el tamaño de los dispositivos, queda como actividad para analizar en un futuro, la posibilidad
+    de crear un \textit{hardware} propio, es decir, una placa integrada que llevase todos los componentes necesarios
+    para hacer funcionar cada dispositivo.
   \item[Otros] \hfill \\
     En caso de ser necesario cambiar algún componente por que se haya estropeado, en Body Beat habría que enviarlo
     al servicio técnico. ArduBand, si consigue establecer una comunidad a su alrededor, un usuario podría reparar
@@ -143,7 +151,7 @@ Algunos trabajos futuros propuestos son:
       Finale -MakeMusic- MuseScore -un proyecto libre de Werner Schweer-).\\
       Teniendo en cuenta la actual duración de las baterías, esto solo sería viable para ensayos.\\
       Dando un paso más, sería interesante introducir ``Google Cardboard" \cite{cardboard} (una estructura
-      para utilizar el teléfono móvil como gafas de realidad aumentada/virtual que dispone de SDK propio)
+      para utilizar el teléfono móvil como gafas de realidad aumentada/virtual que dispone de SDK propio, desarrollado por Google)
       en las bandas de música para visionado de partituras (de nuevo, solo para ensayo)
 
     \item[\textit{Feedback}] \hfill \\
@@ -156,7 +164,7 @@ Algunos trabajos futuros propuestos son:
 
     \item[Utilización de otras plataformas] \hfill \\
       Una vez superados los problemas vistos a lo largo de la memoria, estudiar cambiar algunas de las plataformas
-      elegidas por otras que fueron desestimadas anteriormente es un campo en el que trabajar para obtener mejores
+      elegidas por otras que fueron desestimadas anteriormente, es un campo en el que trabajar para obtener mejores
       resultados. Por ejemplo, en vez de utilizar motas ZigBee, utilizar otras que usen 802.15.4 (para eliminar
       el retardo que se produce debido a que cada paquete tiene que pasar por las capas de 802.15.4 y por las de ZigBee).\\
       La utilización de motas para redes de sensores cuyos diseños tengan una licencia libre o utilicen sistemas
@@ -165,7 +173,7 @@ Algunos trabajos futuros propuestos son:
 
     \item[Creación de aplicaciones para más SO móviles] \hfill \\
       Ya que casi todos los dispositivos móviles disponen de Bluetooth, para llegar al mayor número de usuarios
-      psobible, sería útil el desarrollo de una aplicación para cada uno de los principales sistemas operativos
+      posible, sería útil el desarrollo de una aplicación para cada uno de los principales sistemas operativos
       móviles del mercado. Además, habrá que finalizar la implementación de la aplicación Android que se ha creado
       en este proyecto, utilizando la guía de estilos de Google.
 
@@ -182,7 +190,7 @@ Algunos trabajos futuros propuestos son:
 \title{Posibilidades en el futuro}
 En cuanto al futuro de las tecnologías utilizadas, ya se pudo ver las previsiones
 de la curva de Gartner (figura \ref{fig:curvaG} y \cite{gartnercurve}) que, tanto dispositivos \textit{wearables} como
-aquellos relacionados con el ``Internet de las cosas" (como las redes de sensores), tendrán un gran protagonismo
+aquellos relacionados con el ``Internet de las cosas"\ (como las redes de sensores), tendrán un gran protagonismo
 en nuestra vida. Como consecuencia de ello, los distintos elementos para fabricarlos
 verán reducido su coste (cosa que beneficiará a todos los proyectos, libres o no, que se encuentren trabajando en estos
 campos).\\
@@ -191,7 +199,7 @@ Los dispositivos \textit{wearables} están calando en la sociedad a un ritmo ele
 cualquier necesidad, se puede encontrar un producto que nos ayuda a resolver un problema (y cada vez habrá más).\\
 
 En cuanto a las redes inalámbricas de sensores, son cada vez más las grandes empresas
-de tecnología que apuestan por crear su propio sistema operativo o \textit{hardware}.Que empresas como Google (presentó
+de tecnología que apuestan por crear su propio sistema operativo o \textit{hardware}. Que empresas como Google (presentó
 en 2015 un sistema operativo llamado ``Brillo" \cite{brillo}) o Huawei (por las mismas fechas, anunció LiteOS -diferente
 del proyecto libre LiteOS \cite{liteos}-) nos hace darnos cuenta de la envergadura que
 va a tener esta tecnología en el futuro.\\
@@ -209,11 +217,12 @@ cumplido cada uno:
     de éste capítulo, se ha probado en un entorno real
   \item Utilizar tecnologías libres:
     se ha utilizado software libre para bastantes partes del proyecto, además de Arduino
-    como placa controladora. En la segunda sección anterior se menciona el deseo de utilizar
+    como placa controladora. En la segunda sección de este capítulos, se menciona el deseo de utilizar
     una red inalámbrica de sensores formada por motas cuyo diseño sea libre y que ejecuten un sistema operativo
     también libre (de los cuales no se ha podido disponer por presupuesto)
   \item Bajo consumo energético:
-    gracias a la utilización de una red inalámbrica de sensores, este objetivo ha quedado cubierto
+    gracias a la utilización de una red inalámbrica de sensores (que cuenta con esta característica),
+     este objetivo ha quedado cubierto
   \item Vestible:
     se ha conseguido un dispositivo de pequeño tamaño, que pasa desapercibido y es lo suficientemente
     cómodo como para que el usuario no se sienta incómodo al utilizarlo
@@ -226,7 +235,8 @@ cumplido cada uno:
     que no se cumpliese este objetivo. Aun así, la escalabilidad, al menos hasta cierto nivel, está asegurada
     gracias a la solución que se dió en el apartado \ref{subsec:problemabroadcast}. Si el sistema no consigue
     la escalabilidad deseada, siempre podremos recurrir a alguno de los algoritmos propuestos en ``Synchronization
-    in Wireless Sensor Networks" de ``Erchin Serpedin and Qasim M. Chaudhari" \cite{serpedin}.
+    in Wireless Sensor Networks" de ``Erchin Serpedin and Qasim M. Chaudhari" \cite{serpedin} (muchos de ellos basados
+    en la utilización de sellos de tiempo).
   \item Posibilidad de añadir nuevas funcionalidades
     A lo largo de toda la sección anterior, se han propuesto nuevas funcionalidades y mejoras para llevar
     a cabo a partir de la infraestructura inicial
