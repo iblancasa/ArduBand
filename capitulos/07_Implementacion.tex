@@ -20,9 +20,9 @@ Se ha elegido GPL v3 por los siguientes motivos:
 \title{Red}
 
 En el sistema a desarrollar, ya se ha manifestado la intención de crear distintos
-tipos de dispositivos. También es necesario establecer una comunicación entre ellos,
-es decir, una red. A lo largo de las siguientes secciones iremos viendo cómo se
-ha implementado.\\
+tipos de dispositivos. También hay que establecer una comunicación entre ellos,
+es decir, una red. A lo largo de las siguientes secciones se irá detallando
+cómo se ha llevado a cabo la implementación.\\
 
 \subsection{Topología}
 \title{Topología}
@@ -30,17 +30,18 @@ En primer lugar hay que remitirse a los distintos diagramas que se han ido
 realizando para explicar la estructura propuesta, como el diagrama de despliegue (figura \ref{fig:diagramadespliegue}).\\
 
 Se observa que todos los nodos (músicos) se comunican, única y exclusivamente, con un nodo central (director).
-Es por elo que la topología de nuestra red debe ser una \textbf{topología en estrella}.\\
+Nuestro sistema se ajusta a una \textbf{topología en estrella}.\\
 
 \subsection{Red inalámbrica de sensores}
 \title{Red inalámbrica de sensores}
 
-Para crear la red se va a optar por formar una red inalámbrica de sensores ya que es
-el tipo de infraestructura que cumple con las necesidades del sistema a desarrollar.\\
+Para crear la red se va a optar por desplegar una red inalámbrica de sensores, ya que es
+el tipo de infraestructura que cumple con las necesidades del sistema a desarrollar
+(bajo consumo, pequeño tamaño, bajo coste...).\\
 
 Una red inalámbrica de sensores (\textit{WSN, Wireless Sensor Network}) es aquella formada por un
-conjunto de elementos autónomos cuyo objetivo es el de solucionar una tarea utilizando
-comunicación inalámbrica. Los nodos que forman la red no disponen de alta capacidad funcional
+conjunto de elementos autónomos cuyo objetivo es el de llevar a cabo una tarea utilizando
+comunicación inalámbrica. Los nodos que forman la red no disponen de alta capacidad de procesamiento
 y tienen un costo energético bajo (siendo posible su alimentación a través de baterías de poca capacidad).\\
 
 \begin{figure}[htb]
@@ -58,7 +59,7 @@ utilizaremos uno u otro. Se van a analizar brevemente algunos de los principales
 \begin{description}
   \item[WiFi] \hfill \\
     Basado en el estándar IEEE 802.11. Alta velocidad en transferencia de datos
-    (permite adaptación a la velocidad de transmisión) y seguridad en la red pero
+    (permite adaptación a la velocidad de transmisión) y seguridad en la red, pero
     no dispone de mecanismos para ahorrar energía
   \item[Bluetooth] \hfill \\
     Otro estándar de comunicación entre dispositivos. Permite broadcast, una velocidad
@@ -67,10 +68,11 @@ utilizaremos uno u otro. Se van a analizar brevemente algunos de los principales
   \item[802.15.4] \hfill \\
     Es un estándar propuesto por el IEEE. El ancho de banda es muy pequeño, la latencia
     se sitúa en torno a los 15ms, alcance de entre 10 y 20 metros, permite tener miles
-    de nodos en la red, mecanismos para tener un bajísimo consumo de energía y barato
+    de nodos en la red, mecanismos para tener un bajísimo consumo de energía
   \item[ZigBee] \hfill \\
     Es un estándar desarrollado sobre 802.15.4, lo que quiere decir que añade capas a la
-    propuesta hecha en 802.15.4 (añadiendo algunas funciones)
+    propuesta hecha en 802.15.4 (añadiendo algunas funciones interesantes cuando el conjunto
+    de motas -que así se llama a los dispositivos que se intercomunican- es muy grande)
 \end{description}
 
 Todos estos métodos permiten la topología en estrella.\\
@@ -78,7 +80,7 @@ Todos estos métodos permiten la topología en estrella.\\
 Teniendo en cuenta el análisis anterior se concluye que:
 \begin{itemize}
   \item WiFi queda descartado: aunque existan redes de sensores que utilicen esta tecnología,
-  WiFi no contempla mecanismos para el ahorro de energía. Aunque vaya a ser necesaria una alta velocidad
+  WiFi no contempla mecanismos para el ahorro de energía por sí mismo. Aunque vaya a ser necesaria una alta velocidad
   (debido a los requisitos temporales del sistema), no hace falta tanta como la que
   proporciona este mecanismo de comunicación (por lo que se vería desperdiciada)
   \item Bluetooth se descarta: a través de la capa de aplicación, algunas implementaciones
@@ -88,7 +90,7 @@ Teniendo en cuenta el análisis anterior se concluye que:
   conecta unos auriculares, un manos libres o una smartband a su smartphone, descendiendo el nivel de
   carga de la batería a una velocidad muy alta)
   \item 802.15.4 o ZigBee son la solución: cumplen con casi todos los requisitos.
-  El problema que puede presentarse viene dado por las velocidades de transferencia: aunque no
+  La posible traba tiene que ver con las velocidades de transferencia: aunque no
   se necesite realizar grandes traspasos de información, las comunicaciones deben
   hacerse de la manera más rápida posible. Hay que tener en cuenta que ZigBee está construido a partir
   de 802.15.4, lo que significa que la latencia será mayor (habrá que sumar la de 802.15.4 a la que provoquen
@@ -105,11 +107,11 @@ Teniendo en cuenta el análisis anterior se concluye que:
 \end{figure}
 
 Finalmente se ha elegido trabajar con ZigBee aunque, probablemente, con 802.15.4 sería suficiente (incluso
-mejor al tener una menor latencia). El motivo de esta selección viene determinado porque las motas disponibles
-en el laboratorio son de tipo ZigBee, no habiendo de la otra variedad.\\
+mejor al tener una menor latencia). El motivo de esta selección viene determinado por disponibilidad del material:
+las motas que hay en el laboratorio son de tipo ZigBee, no habiendo de la otra variedad.\\
 
 Para ser más específicos, se va a utilizar el modelo ``XBee 2mW Wire Antenna - Series 2 (ZigBee Mesh)", cuya referencia es
-``XB24-Z7WIT-004" (ID: OUR XBEE2 e IC: 4214A-XBEE2) y que es la implementación de la compañía ``Digi" \cite{productdetaildigi}.
+``XB24-Z7WIT-004" (ID: OUR XBEE2 e IC: 4214A-XBEE2) y que es la implementación de la compañía ``Digi" \cite{productdetaildigi}.\\
 
 
 \begin{figure}[htb]
@@ -177,17 +179,19 @@ En este último punto se nos hablan de dos modos de funcionamiento:
     que se envían al dispositivo a través de serial), el dispositivo solo es capaz de
     comunicarse con la mota cuya dirección MAC corresponde con la de la configuración
     (también pueden enviarse paquetes a todos los dispositivos en caso que la dirección
-    que se haya configurado sea la de broadcast). Esto quiere decir que, en caso que
+    que se haya configurado sea la de \text{broadcast}). Esto quiere decir que, en caso que
     deseemos cambiar el destino de nuestras comunicaciones, tendremos que reconfigurar
     la mota (ya sea enviando comandos AT o utilizando algún software que los envíe
     por nosotros) Es el modo más simple de trabajar con XBee.
  \item[API] \hfill \\
     Este modo permite mucho más. Capacita al desarrollador a:
       \begin{itemize}
-        \item Obtener RSSI (fortaleza de la señal respecto a otro dispositivo),
+        \item Obtener RSSI (fortaleza de la señal respecto a otro dispositivo)
         \item Enviar paquetes a múltiples destinos
         \item Recibir paquetes de distintos tipos
-        \item Activar funciones de integridad de datos, recibir ACK...
+        \item Activar funciones de integridad de datos, recibir ACK... en la capa de aplicación
+          (solo se puede acceder a las funciones de este tipo que se hacen en la capa de aplicación, pero
+          no aquellas que se ejecutan en capas más bajas y que vienen implementadas en el \textit{firmware})
         \item Conocer el estado de la red
       \end{itemize}
 \end{description}
@@ -198,8 +202,8 @@ En este último punto se nos hablan de dos modos de funcionamiento:
 \title{Modo API}
 
 Mientras que en el modo transparente los caracteres que escribamos en el puerto
-serial de XBee serán enviados directamente a la mota destino, en este modo las
-comunicaciones se realizan enviando paquetes con una estructura predefinida.\\
+serial de XBee serán enviados directamente a la mota destino como un paquete de datos, en este modo la semántica
+del paquete variará en función de cómo se haya creado.\\
 
 Existen dos formas de comunicarse con la mota cuando se encuentra en este modo:
 \begin{itemize}
@@ -240,7 +244,7 @@ de dicha empresa.
 
 Para conectar XBee a nuestro ordenador, debemos conectar las patillas de XBee del puerto serial a un
 FTDI (por ejemplo) y con una conexión serial o USB, a nuestro ordenador. Otra posibilidad es obtener
-una placa ``XBee Explorer" como la de la figura \ref{fig:xbeeexplorer}.
+una placa ``XBee Explorer"\ como la de la figura \ref{fig:xbeeexplorer}.
 
 
 \begin{figure}[htb]
@@ -263,8 +267,8 @@ de nuevos dispositivos (izquierda) o distintas acciones sobre la mota (derecha).
 
 Lo primero que tendremos que hacer una vez hayamos conectado nuestra mota al ordenador, será descubrirla con XCTU
 utilizando una de las dos opciones que tenemos arriba a la izquierda (es importante mencionar que, en caso que se nos
-pida resetear la mota y, como es el caso de nuestro modelo, no tengamos un botón para resetear, deberemos unir con un
-cable la patilla \guillemotleft RST\guillemotright con \guillemotleft GND\guillemotright).\\
+pida resetear la mota -como en la figura \ref{fig:xctureset}- y, como es el caso de nuestro modelo, no tengamos un botón para resetear, deberemos unir con un
+cable la patilla ``RST"\ con ``GND").\\
 
 \begin{figure}[!htb]
 \centering
@@ -279,7 +283,7 @@ cambiar el firmware, volver a los ajustes de fábrica, establecer un nombre para
 entrar en suspensión).\\
 
 En el siguiente menú, podremos ver qué es lo que está recibiendo (o enviando) nuestro XBee.
-Se monitoriza el puerto serial (ver figura \ref{fig:interfaz2}).\\
+Se monitoriza el puerto serie (ver figura \ref{fig:interfaz2}).\\
 
 \begin{figure}[!htb]
 \centering
@@ -287,7 +291,7 @@ Se monitoriza el puerto serial (ver figura \ref{fig:interfaz2}).\\
 \caption{Monitorizando el puerto serial (modo API) en XCTU} \label{fig:interfaz2}
 \end{figure}
 
-Finalmente el tercer menú nos brinda algunas opciones relacionadas con la nube de Digi y la posibilidad
+Finalmente, el tercer menú nos brinda algunas opciones relacionadas con la nube de Digi y la posibilidad
 de conocer qué nodos están interconectados en la red (solo disponible si el módulo está en modo API).\\
 
 \subsection{Posible problema de escalabilidad}
@@ -340,7 +344,7 @@ o placa controladora. Se han estudiado dos posibles soluciones:
       \item Programación en alto nivel (Python, Scratch, JavaScript o un derivado de Processing)
       \item Muchas bibliotecas para extender funcionalidad
       \item Existe una versión Wear (Arduino Lilypad, mostrado en la figura \ref{fig:lilypad})
-      \item Shields para XBee (como la que se muestra en la figura \ref{fig:lilypadxbee})
+      \item \textit{Shields} para XBee (como la que se muestra en la figura \ref{fig:lilypadxbee})
     \end{itemize}
     \begin{figure}[!htb]
     \centering
@@ -354,13 +358,11 @@ o placa controladora. Se han estudiado dos posibles soluciones:
     \centering
     \captionsetup{justification=centering}
     \includegraphics[width=0.5\textwidth]{./imagenes/lilypadxbee}
-    \caption{Shield XBee Lilypad\\
+    \caption{\textit{Shield} XBee Lilypad\\
       \scriptsize{Imagen extraída de https://www.faludi.com/ \cite{faludi}}} \label{fig:lilypadxbee}
     \end{figure}
 \end{description}
 
-
-\clearpage
 
 Sabiendo que Arduino se encuentra orientado a un público con una menor formación en electrónica y
 programación (por lo tanto, accesible a una mayor comunidad), se adecua más al objetivo de este proyecto.
@@ -456,7 +458,7 @@ En los capítulos de \ref{cap:Diseno} y \ref{cap:Analisis} se ha ido viendo que 
 que un dispositivo emita un mensaje al resto de nodos de la red. Teniendo en cuenta que el
 sistema se va a implementar como una red, la solución técnica que parece más adecuada
 es realizar un \textit{broadcast} (un nodo envía una trama de datos a una dirección
-especial, llamada dirección de broadcast, y todos los nodos reciben la trama de datos). Al querer
+especial, llamada dirección de \textit{broadcast}, y todos los nodos reciben la trama de datos). Al querer
 realizar una red con topología de estrella, es claro que el dispositivo central de
 la red, y que interconecta al resto, será el que haga las veces de emisor.\\
 
@@ -468,14 +470,14 @@ por defecto (red de tipo malla).
 En las redes formadas por dispositivos XBee tenemos tres tipos de dispositivos:
 \begin{itemize}
   \item Coordinador: debe existir, al menos, uno por red. En caso de haber más, solo uno
-  toma este rol (en caso de haber más de uno, se ponen de acuerdo y solo uno de ellos toma
-  este rol, mientras que el otro pasa a ejercer de router). Se encarga de dirigir la red,
+  toma este rol (en caso de haber más de uno, ``se ponen de acuerdo" y solo uno de ellos toma
+  este rol, mientras que el resto de coordinadores pasan a ejercer de \textit{routers}). Se encarga de dirigir la red,
   estableciendo las rutas que deben seguir los paquetes. Puede comunicarse con todos los nodos
-  \item Router: permite conectar nodos finales u otros routers con el coordinador. Puede
+  \item \textit{Router}: permite conectar nodos finales u otros routers con el coordinador. Puede
   comunicarse solo con el nodo coordinador (y sirve como puente para el traspaso de información
   entre el nodo coordinador y un nodo cualquiera)
   \item Dispositivo final: solo puede enviar información al coordinador (pudiendo utilizar
-  los routers para hacer llegar la trama hasta su destino). Pasan la mayor parte del tiempo
+  los \textit{routers} para hacer llegar la trama hasta su destino). Pasan la mayor parte del tiempo
   durmiendo, es decir, en un estado de bajo consumo energético
 \end{itemize}
 
@@ -493,18 +495,18 @@ En la figura \ref{fig:mesh} podemos ver un ejemplo de red XBee ZigBee.
 \end{itemize}
 
 Teniendo en cuenta los tipos de nodos que tenemos, podemos crear una topología en estrella
-(la que más encaja con nuestro proyecto) a partir de la topología en malla: no tendremos
-disposivios de tipo router. De esta forma evitaremos que haya saltos intermedios entre
-el dispositivo final (músico) y el director.\\
+a partir de la topología en malla: no tendremos
+disposivios de tipo \textit{router}. De esta forma evitaremos que haya saltos intermedios entre
+el dispositivo final (músico) y el director, obligando a los nodos finales a comunicarse directamente
+con el coordinador.\\
 
-Esto puede parecer un inconveniente en bandas largas (no disponemos de routers
+Esto puede parecer un inconveniente en bandas largas (no disponemos de \textit{routers}
 que hagan de puente con dispositivos finales que se encuentren demasiado lejos)
 pero si volvemos a mirar la tabla 1.1 de \cite{faludi}, veremos que el rango
 de alcance se sitúa entre los 40 y 120 metros. Teniendo en cuenta que en la
 formación de una banda de música la separación entre dos filas de músicos es de
-1 metro aproximadamente, en el peor de los casos, estaríamos llegando a 80 metros
-(si situamos el dispositivo en el centro de la banda). Si establecemos una media de
-4 músicos por fila, en una banda de 80 metros de largo tendríamos 320 músicos.
+1 metro aproximadamente, en el peor de los casos, tendríamos una red con unos 80 metros de diámetro.
+Si establecemos una media de 4 músicos por fila, en una banda de 80 metros de largo tendríamos 320 músicos.
 Teniendo en cuenta que la banda de la que se hablaba en la introducción \cite{cigarreras}
 es una de las más numerosas con alrededor de 140 músicos, es claro que esto no es
 un problema.\\
@@ -517,7 +519,7 @@ En el apartado anterior se explicaba que la solución que parece más directa es
 un \textit{broadcast}. Pero es una idea que se desecha rápidamente al hacer el siguiente experimento:
 
 \begin{enumerate}
-  \item Se configura una mota como coordinador (instalándo el firmware oportuno, eligiendo el modo API)
+  \item Se configura una mota como coordinador (instalándo el \textit{firmware} oportuno, eligiendo el modo API)
   \item A esta mota se le inserta la dirección de \textit{broadcast} como
   dirección de destino (0x0 para la DH y 0xFFFF para DL)
   \item Se le inserta un \textit{PAN ID}
@@ -533,8 +535,8 @@ un \textit{broadcast}. Pero es una idea que se desecha rápidamente al hacer el 
 El configurar ambas motas en modo API es por los siguientes motivos:
 \begin{itemize}
   \item Nodo final: XCTU muestra el tiempo de llegada de los paquetes. En modo AT
-    (transparente), no
-  \item Nodo director: para poder modificar los datos del paquete
+    (transparente), no está disponible esta característica
+  \item Nodo director: para poder modificar los datos del paquete que enviamos
 \end{itemize}
 
 Este experimento se ha realizado varias veces. Un ejemplo de lo que ocurre se muestra
@@ -589,7 +591,7 @@ el eje Y se muestra la llegada de un paquete).\\
 \end{figure}
 
 Aunque parece al principio que la recepción de paquetes es regular, después hay un largo
-periodo de tiempo (unos 9 segundos) donde no se recibe nada.\\
+periodo de tiempo (unos 9 segundos, entre los segundos 1 y 10) donde no se recibe nada.\\
 
 Si modificamos el paquete en el nodo director para que no envíe ACK de la capa de
 aplicación (que podría ser el culpable), se obtienen similares resultados. Para modificar el paquete simplemente
@@ -599,7 +601,7 @@ por ejemplo tenemos el siguiente paquete:  \texttt{7E 01 0F 90 00 7D 33 A2 00 40
 deberemos convertirlo en este otro  \texttt{7E 00 0F 90 00 7D 33 A2 00 40 A0 9B EC 00 00 01 78 DC}
 (solo cambia el segundo \textit{byte}).
 
-Este problema podríamos achacarlo a la capa firmware de la mota (que podría contener mecanismos
+Este problema podríamos achacarlo a la capa \textit{firmware} de la mota (que podría contener mecanismos
 para comprobar la integridad de los paquetes y evitar que lleguen trazas corruptas).
 Sin embargo, es demasiado tiempo como para que este sea el problema (además, en una comunicación \text{unicast}
 (con un solo nodo), el problema no existe -como podemos ver en la figura \ref{fig:xctu_comunicacionunoauno}- y en la gráfica
@@ -654,8 +656,8 @@ Sin embargo, es demasiado tiempo como para que este sea el problema (además, en
 
 Cabe destacar que se recibe un paquete más en menos tiempo.\\
 
-El problema viene por la forma en la que está implementado el \textit{broadcast}:
-los nodos se encuentran en una topología de malla y, cada vez que reciben un broadcast,
+El problema viene por la forma en la que está implementado el \textit{broadcast} en las motas:
+los nodos se encuentran en una topología de malla y, cada vez que reciben un \textit{broadcast},
 lo repiten hasta tres veces. Esto no sería un problema si no fuera por que la red
 permite un número máximo de broadcast a la vez. Al llegar a ese límite, la mota
 coordinadora deja de poder seguir enviando paquetes (no solo hasta que terminen los
@@ -670,7 +672,7 @@ pero no en esta, por lo que no es una solución viable.\\
 La solución que se propone es enviar individualmente a cada dispositivo el paquete, es decir,
 hacer un \textit{broadcast} a base de \textit{unicast}. Facilitar esta tarea, es mejor
 utilizar el modo API (en el modo AT se puede, pero habría que estar entrando constantemente
-al modo comando y, a veces, cuando se entra en este modo, la mota necesita ser reinicia -y,
+al modo comando y, a veces, cuando se entra en este modo, la mota necesita ser reinicia manualmente -y,
 al no poder reiniciarla, dejaría de funcionar ese nodo-.)\\
 
 Nace ahora una nueva contrariedad: existe un retardo inevitable (de unos pocos milisegundos)
@@ -685,12 +687,12 @@ Supongamos que hay 50 músicos y cada envío produce un retardo de 15ms. Cuando 
 
 Es un retardo de casi un segundo. Como remedio, se propone lo siguiente: en vez de
 sincronizar siempre todos los nodos, se sincronizan por turnos. Para entenderlo mejor se
-va a recurrir a un poco de notación musical. En la introducción se vió el concepto de \textit{compás}
+va a recurrir a un poco de notación musical. En la introducción se vió el concepto de ``compás"\
 (una forma de separar los pentagramas para facilitar la lectura de la música). En el desarrollo
 del proyecto, se ha tomado que los compases son de 4/4 (esto significa que en un compás se pueden introducir
 cuatro notas negras, que tienen un pulso cada una, es decir, que por cada compás,
-habrá cuatro pulsos). Entoncesen vez de sincronizar a todos los músicos en todos los pulsos,
-a cada pulso se puede sincronizar un músico y su dispositivo, internamente, que mantenga el tempo hasta
+habrá cuatro pulsos). Entonces, en vez de sincronizar a todos los músicos en todos los pulsos,
+a cada pulso se puede sincronizar un músico (uno distinto cada vez) y su dispositivo, internamente, que mantenga el tempo hasta
 que reciba otra señal desde el nodo del director. Esta división puede entenderse mejor viendo
 la figura \ref{fig:sincronotas} donde se sincroniza a un músico distinto en cada pulso.
 
@@ -701,11 +703,12 @@ la figura \ref{fig:sincronotas} donde se sincroniza a un músico distinto en cad
 \end{figure}
 
 En la figura \ref{fig:sincronotas} se está sincronizando a un músico por pulso. En
-la figura del ejemplo habría cuatro músicos (por eso hay cuatro colores).\\
+la figura del ejemplo habría cuatro músicos (cada músico corresponde a un color).\\
 
 Al sincronizarse a un músico en cada pulso y que él mantenga el mismo tempo que los demás,
 la sincronización no se pierde (salvo que, por algún motivo), una recepción tarde más de
-la cuenta.\\
+la cuenta (cuando el sistema vuelva a empezar a sincronizar por el principio, este error quedará
+subsanado).\\
 
 Esto tal vez haga que la red tenga demasiadas tareas y la fiabilidad disminuya. Para
 cubrir este aspecto, no se sincroniza en cada pulso, si no en cada compás (como hay
@@ -721,8 +724,11 @@ En la figura \ref{fig:sincrocompas} se puede ver de forma gráfica.\\
 Cada flecha de un color es un músico sincronizado. Al igual que en el ejemplo anterior,
 deberá mantener el tempo de forma local, hasta que llegue otra señal por parte del director.\\
 
-Que el director envíe constantemente el pulso permite que, en caso que uno de los
+Como se ha dicho, que el director envíe constantemente el pulso permite que, en caso que uno de los
 paquetes haya llegado más tarde de la cuenta, se pueda corregir.\\
+
+Como lo que vamos a medir son pulsos por segundo, la notación de los compases es solo didáctica, es decir
+para explicar de una forma más sencilla cómo se implementa la solución.\\
 
 Para comprobar que funciona, se hace un experimento similar al de los casos anteriores pero,
 esta vez, midiendo tiempos en dos dispositivos receptores.
@@ -809,10 +815,11 @@ vemos que hay en torno a dos segundo de espera entre la llegada de un paquete y 
 -1 segundo para sincronizar al otro XBee y 1 para sincronizar al que estamos monitorizando-).\\
 
 Si examinamos las trazas, se observa cómo hay, en algunas ocasiones, sincronización
-a nivel de milisegundos. También es interesante ver que en muchas ocasiones (como en los
+a nivel de milisegundos (entre las dos trazas). También es interesante ver que en muchas ocasiones (como en los
 paquetes de la traza de la derecha con ID comprendidas entre 423 y 426 -inclusive-) la
 llegada de paquetes es en el mismo milisegundo de segundos distintos, por ejemplo: en el
-momento 10:42:45.237 (ID:425) y 10:42:47.237 (ID:426). Cuando esto no ocurre, el error es asumible.\\
+momento 10:42:45.237 (ID:425) y 10:42:47.237 (ID:426) (dentro de una misma traza).
+Cuando esto no ocurre, el error es asumible.\\
 
 
 
@@ -859,8 +866,8 @@ configurando la mota del director.
 
 \begin{figure}[!htb]
 \centering
-\includegraphics[width=1\textwidth]{./imagenes/configurar_mota_1}
-\caption{Subpanel dentro de la configuración} \label{fig:configurar_mota_2}
+\includegraphics[width=1\textwidth]{./imagenes/configurar_mota_2}
+\caption{Elegir firmware a instalar} \label{fig:configurar_mota_2}
 \end{figure}
 
 Cuando la instalación finalice, haremos click sobre la restauración de valores de fábrica
@@ -875,14 +882,18 @@ Ahora solo faltará insertar un PAN ID, cambiar el modo API a 2, desactivar los 
 
 Para llevar a cabo todo el proceso que se ha ido describiendo, es necesario programar
 la placa Arduino. Teniendo en cuenta que hay que cumplir unos requisitos de tiempo bastante
-fuertes, se ha elegido trabajar con timers. Arduino cuenta con dos timers: uno reservado
-a la ejecución del propio código y otro que puede ser utilizado por el desarrollador.
+fuertes, se ha elegido trabajar con \textit{timers}. Arduino cuenta con dos \textit{timers}: uno reservado
+y otro que puede ser utilizado por el desarrollador.
 La biblioteca ``Timer1" \cite{timeronearduino} facilita la manipulación de esta característica.\\
 
 Por otra parte, es necesaria la utilización de dos puertos serial (uno pra XBee y otro para el Bluetooth).
 La mayoría de versiones de Arduino (Lilypad, por ejemplo), no tienen más de un puerto.
 Por ello se utiliza la biblioteca ``Software Serial" \cite{softwareserial} que, mediante software, consigue
 que unos puertos que no son puerto serial, actúen como tal.\\
+
+Deberán guardarse todas las direcciones MAC de las motas receptoras (ya que debe hacerse un
+\textit{unicast} a cada una). Esto, además, permite que ninguna
+mota que no deba, se introduzca en el sistema (haciendo el proceso de sincronización más lento).\\
 
 A continuación se muestra un pseudocódigo de lo que se ha implementado.
 \floatname{algorithm}{Algoritmo}
@@ -915,7 +926,7 @@ A continuación se muestra un pseudocódigo de lo que se ha implementado.
 \end{algorithm}
 
   \begin{enumerate}
-  \item Se declara la función que ejecutará el timer. Esta función comprueba cuánto
+  \item Se declara la función que ejecutará el \textit{timer}. Esta función comprueba cuánto
    tiempo ha pasado desde la última vez que se ejecutó
     \begin{itemize}
       \item Si ha pasado suficiente, enviará un mensaje al nodo que le toque sincronizar
@@ -926,9 +937,7 @@ A continuación se muestra un pseudocódigo de lo que se ha implementado.
       \item Se calculan los pulsos por segundo, después el tiempo entre pulso y se multiplica
       por 4 (para sincronizar cada 4 pulsos, es decir, cada compás de 4/4)
       \item Se generan los paquetes a enviar
-      \item Se activa el timer (cada medio milisegundo para mantenerlo en activo -aunque haya momentos que se llame
-      al timer para nada, esto provoca que sea más preciso que si lo ajustásemos al tiempo entre pulsos y, de todas formas,
-      va a quedar en el bucle de espera activa, la función ``loop"-).
+      \item Se activa el \textit{timer} (cada medio milisegundo para mantenerlo en activo)
     \end{enumerate}
 \end{enumerate}
 
@@ -936,10 +945,14 @@ Lo que se acaba de explicar es el algoritmo. En la implementación en Arduino, s
 declarar los pines, inicializar algunas variables... También se desactiva el Bluetooth para
 ahorrar energía.\\
 
+Para saber si ha pasado el suficiente tiempo para apagar o encender el actuador, se utiliza el reloj local
+de Arduino (cuenta desde que se encendió la placa).\\
+
 Cuando se ha enviado un paquete a cada dispositivo, se vuelve a empezar (por eso se aplica la función módulo).\\
 
 (*)Esta variable ``leer"\ permite que, una vez que se apaga el Bluetooth, no se vuelva a intentar leer
-(ya que no se conseguirán datos -y la lectura de serial es más lenta- o estos serán erróneos
+(ya que no se conseguirán datos -y Arduino tratará de leer del puerto serie, siendo esta operación
+más lenta que la simple comprobación de un \textit{booleano}- o estos serán erróneos
 -lo que nos llevará a un fallo en el sistema-).\\
 
 
@@ -947,9 +960,9 @@ Cuando se ha enviado un paquete a cada dispositivo, se vuelve a empezar (por eso
 \title{Esquema de conexionado del dispositivo director}
 
 Este esquema se puede consultar en la figura \ref{fig:director_esquema}. Falta
-la mota XBee, que iría sobre la shield, y la alimentación que se realizaría mediante un
-dispositivo FTDI-USB (ambos no se han incluido para que sea más sencilla la lectura del
-esquema).\\
+la mota XBee, que iría sobre la \textit{shield}, y la alimentación (se realizaría mediante una batería conectada a
+un dispositivo FTDI-USB -ambos no se han incluido para que sea más sencilla la lectura del
+esquema-).\\
 
 Para realizar las pruebas se ha utilizado un Arduino UNO por falta de material aunque,
 como se muestra en la figura \ref{fig:director_esquema}, lo deseado es utilizar la
@@ -1021,7 +1034,7 @@ En función del número de músicos de los que dispongamos, podremos hacer una e
 cuánto tiempo máximo se tardará en sincronizarlos y, en función de eso,
 establecer un tiempo para que las motas puedan activar el estado de ahorro energético.
 Es decir, si se sobrepasa el tiempo en el que el director debería haber enviado una
-nueva señal, enviar a ``dormir" las motas, de forma que consman menos energía.
+nueva señal, enviar a ``dormir"\ las motas, de forma que consuman menos energía.
 
 
 \subsection{Controlador del dispositivo músico}
@@ -1035,14 +1048,14 @@ bastante fuertes:
 \end{itemize}
 
 Es de vital importancia que todos lo dispositivos de los músicos estén controlados
-por Arduino que midan el tiempo de igual forma. Es decir, que los \textit{delay,
+por Arduino que midan el tiempo de igual forma (tengan misma frecuencia de reloj). Es decir, que los \textit{delay,
 timers} y similares funciones midan la misma cantidad de tiempo. Para explicarlo
-mejor se pone el siguiente ejemplo:\\
+mejor, se pone el siguiente ejemplo:\\
 supongamos que tenemos dos Arduino ( ya sean del mismo fabricante o de otro). Si en ambos dispositivos
 cargamos el ejemplo de \textit{blink} \cite{arduinoBlink} (es un ejemplo que viene
 en el IDE de Arduino y que permite controlar un led, manteniéndolo encendido durante un segundo
 y dejándolo apagado durante otro), ambos deben mantener la misma cantidad de tiempo
-el led encendido y/o apagado.\\
+el led encendido y/o apagado (no debe producirse ningún \textit{offset}).\\
 
 La afirmación del anterior párrafo parece algo que se deba cumplir, al menos, entre
 Arduino de la misma clase (UNO y derivados, Leonardo y derivados...), pero no es así.
@@ -1053,11 +1066,16 @@ cada un segundo, lo hacía a un tiempo sensiblemente menor). Ambas placas se anu
 con una velocidad de reloj de 16MHz (el lector puede consultar en \cite{arduinoUNO} las
 especificaciones de la placa Arduino UNO mientras que, para la placa DCcduino, no ha sido
 posible encontrar unas especificaciones propias ya que todas las páginas hacen referencia
-a las de Arduino UNO), algo que parece no ser cierto.\\
+a las de Arduino UNO).\\
 
-Si todos los músicos no tienen el mismo modelo de \textit{timer} (o uno que mida igual),
+Si todos los músicos no tienen un reloj que vaya a la misma frecuencia,
 la subdivisión que se proponía al final de la subsección \ref{subsec:problemabroadcast},
 no funcionará.\\
+
+Se utiliza el \textit{timer} para que el sistema siga funcionando (pueda leer en caso)
+de que lleguen datos a través del XBee. Si se usase, por ejemplo, la función \textit{delay},
+la hebra principal quedaría bloqueada y no se estaría leyendo lo más rápido posible
+la información recibida por el puerto serie.\\
 
 \floatname{algorithm}{Algoritmo}
 \begin{algorithm}
@@ -1099,10 +1117,10 @@ no funcionará.\\
         \end{enumerate}
       \item Si ha pasado suficiente tiempo para desactivarlo(*), se desactiva
     \end{itemize}
-  \item Se inicia el timer
+  \item Se inicia el \textit{timer}
   \item En el bucle
     \begin{enumerate}
-      \item Lectura del tempo
+      \item Lectura del \textit{tempo}
       \item Cálculo del tiempo entre pulsos
     \end{enumerate}
 \end{enumerate}
@@ -1115,7 +1133,7 @@ activarse.\\
 
 Se ha utilizado un Arduino Lilypad compatible. Este derivado, es detectado por el IDE de Arduino
 como una placa con una velocidad de 8MHz, sin embargo,
-este derivado funciona a 16MHz (por lo que va al doble de rápido). Si, por ejemplo, pedimos que espere
+la placa funciona a 16MHz (por lo que va al doble de rápido). Si, por ejemplo, pedimos que espere
 1 segundo, esperará 500ms. También afecta al puerto serie: cuando se abre un puerto serial a una velocidad
 de 4800bps, realmente se está abriendo a 9600bps (es por eso que en la implementación en Arduino, se han multiplicado
 los tiempos por 2 y se ha abierto el puerto serie a una velocidad de 4800bps).\\
@@ -1167,7 +1185,7 @@ Esta aplicación simplemente debe enviar un caracter entre 0 y 127 de la tabla A
 tiene el dispositivo director de ArduBand.\\
 
 
-Debido a los continuos problemas por parte del SDK Android para conseguir conectar
+Debido a los continuos problemas por parte del SDK Android \cite{googledevelopers} para conseguir conectar
 al dispositivo móvil con el Bluetooth HC06, se ha procedido a modificar una aplicación
 que funciona como terminal Bluetooth. La aplicación original tiene como nombre y puede verse
 el enlace en \cite{bluetoothOrigin}. La versión modificada para funcionar con ArduBand se
@@ -1193,7 +1211,7 @@ el Bluetooth de ArduBand, en el caso de la figura \ref{fig:protoand2}, es el ``H
 \caption{Selección de dispositivo} \label{fig:protoand2}
 \end{figure}
 
-Tras esto, el usuario deberá escribir con números el tempo que desea en el campo
+Tras esto, el usuario deberá escribir con números el \textit{tempo} que desea en el campo
 destinado a ello (el máximo es 128). La aplicación se encargará de enviar al usuario
 la información oportuna (en la figura \ref{fig:protoand3} se puede ver cómo, al
 pedir que se marque un tempo de 120 pulsaciones por minuto, el software lo traduce al caracter
@@ -1202,7 +1220,7 @@ pedir que se marque un tempo de 120 pulsaciones por minuto, el software lo tradu
 \begin{figure}[!htb]
 \centering
 \includegraphics[width=1\textwidth]{./imagenes/arduband-android-prototipo3}
-\caption{Envío de tempo} \label{fig:protoand3}
+\caption{Envío de \textit{tempo}} \label{fig:protoand3}
 \end{figure}
 
 Aunque no haya realizado la aplicación completamente, se ha conseguido la funcionalidad básica y,
@@ -1213,7 +1231,7 @@ Esta aplicación que quiere que funcione de forma similar a la que se está util
 prototipo:
 \begin{enumerate}
   \item Se emparejan los dispositivos Bluetooth
-  \item El director insertar el tempo
+  \item El director insertar el \textit{tempo}
   \item Se envía el tempo
 \end{enumerate}
 
@@ -1238,6 +1256,6 @@ en el caso de la aplicación móvil).\\
 \end{figure}
 
 Como se puede ver en la figura \ref{fig:androidwearUI}, el usuario se encuentra el
-tempo a insertar en grande. Utilizando los botones, aumenta o disminuye el tempo a
+\textit{tempo} a insertar en grande. Utilizando los botones, aumenta o disminuye el tempo a
 enviar y, una vez ha decidido qué tempo es el que desea, pulsa sobre el número y
-el tempo es enviado al dispositivo ArduBand.\\
+el \textit{tempo} es enviado al dispositivo ArduBand.\\
