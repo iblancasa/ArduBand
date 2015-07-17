@@ -162,13 +162,13 @@ Sus características técnicas (que se pueden consultar en \cite{xbeedatasheet})
   \item 3.3V @ 40mA
   \item Velocidad máxima: 250kbps
   \item 2mW salida (+3dBm)
-  \item 400ft (120m) rango
+  \item Alcance de red de hasta 400ft (120m)
   \item Antena incorporada
   \item Certificado por FCC
-  \item 6 10-bit ADC pines de entrada
+  \item 6 pines de entrada para ADC de 10 bit
   \item 8 pines digitales de entrada/salida
-  \item 128-bit encriptación
-  \item Modo AT o API
+  \item Encriptación de 128-bit
+  \item Modo de funcionamiento AT o API
 \end{itemize}
 
 En este último punto se nos hablan de dos modos de funcionamiento:
@@ -582,7 +582,7 @@ el eje Y se muestra la llegada de un paquete).\\
 \foreach \x in {0,1,2,3,4,5,6,7,8,9,10,11,12}
     \draw (\x cm,1pt) -- (\x cm,-1pt) node[anchor=north] {$\x$};
 
-\node[draw] at (-1,3) {INPUT};
+\node[draw] at (-1,3) {Evento};
 \end{tikzpicture}
 
 
@@ -647,7 +647,7 @@ Sin embargo, es demasiado tiempo como para que este sea el problema (además, en
 \foreach \x in {0,1,2,3,4,5}
     \draw (\x cm,1pt) -- (\x cm,-1pt) node[anchor=north] {$\x$};
 
-\node[draw] at (-1,3) {INPUT};
+\node[draw] at (-1,3) {Evento};
 \end{tikzpicture}
 
 \caption{Representación temporal de la llegada de paquetes utilizando \textit{unicast}\\
@@ -746,7 +746,7 @@ esta vez, midiendo tiempos en dos dispositivos receptores.
   \captionsetup{justification=centering}
   \resizebox{0.9\textwidth}{!}{
   \begin{tikzpicture}
-  \draw[latex-latex, thin, draw=gray] (-1,0)--(6,0) node [right] {$x$};
+  \draw[latex-latex, thin, draw=gray] (-1,0)--(16,0) node [right] {$x$};
   \draw[latex-latex, thin, draw=gray] (0,-1)--(0,4) node [above] {$y$};
 
 
@@ -799,7 +799,7 @@ esta vez, midiendo tiempos en dos dispositivos receptores.
   \foreach \x in {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17}
       \draw (\x cm,1pt) -- (\x cm,-1pt) node[anchor=north] {$\x$};
 
-  \node[draw] at (-1,3) {INPUT};
+  \node[draw] at (-1,3) {Evento};
   \end{tikzpicture}
   }
 

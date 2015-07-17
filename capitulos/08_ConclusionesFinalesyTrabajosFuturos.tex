@@ -115,14 +115,6 @@ Ya en la introducción de hablaba de Body Beat, de la marca Peterson \cite{bodyb
     Body Beat dispone de varios sensores/actuadores que consumen energía, mientras que en ArduBand, el número
     de dispositivos es muy reducido (por lo que habrá un menor consumo eléctrico y mayor duración
     de la batería)
-  \item[Utilizar el \textit{watch dog} de Arduino] \hfill \\
-    Es un mecanismo que reinicia un dispositivo en caso que se detecte que se ha producido un bloqueo.
-    Un trabajo de futuro será utilizar este sistema para,
-    en caso de error, que los dispositivos puedan recuperarse solos.
-  \item[\textit{Hardware} propio] \hfill \\
-    Para disminuir el tamaño de los dispositivos, queda como actividad para analizar en un futuro, la posibilidad
-    de crear un \textit{hardware} propio, es decir, una placa integrada que llevase todos los componentes necesarios
-    para hacer funcionar cada dispositivo.
   \item[Otros] \hfill \\
     En caso de ser necesario cambiar algún componente por que se haya estropeado, en Body Beat habría que enviarlo
     al servicio técnico. ArduBand, si consigue establecer una comunidad a su alrededor, un usuario podría reparar
@@ -162,6 +154,15 @@ Algunos trabajos futuros propuestos son:
       Si, se consiguiera además, medir esta variable en cada músico, la aplicación de técnicas de gamificación
       sería un punto a tener en cuenta para motivar a los músicos a mejorar
 
+    \item[Utilizar el \textit{watch dog} de Arduino] \hfill \\
+      Es un mecanismo que reinicia un dispositivo en caso que se detecte que se ha producido un bloqueo.
+      Un trabajo de futuro será utilizar este sistema para,
+      en caso de error, que los dispositivos puedan recuperarse solos.
+    \item[\textit{Hardware} propio] \hfill \\
+      Para disminuir el tamaño de los dispositivos, queda como actividad para analizar en un futuro, la posibilidad
+      de crear un \textit{hardware} propio, es decir, una placa integrada que llevase todos los componentes necesarios
+      para hacer funcionar cada dispositivo.
+
     \item[Utilización de otras plataformas] \hfill \\
       Una vez superados los problemas vistos a lo largo de la memoria, estudiar cambiar algunas de las plataformas
       elegidas por otras que fueron desestimadas anteriormente, es un campo en el que trabajar para obtener mejores
@@ -169,13 +170,15 @@ Algunos trabajos futuros propuestos son:
       el retardo que se produce debido a que cada paquete tiene que pasar por las capas de 802.15.4 y por las de ZigBee).\\
       La utilización de motas para redes de sensores cuyos diseños tengan una licencia libre o utilicen sistemas
       operativos de código abierto (como TinyOS o Contiki) es algo que habrá que investigar, ya que se quieren
-      utilizar plataformas abiertas para este desarrollo.
+      utilizar plataformas abiertas para este desarrollo.\\
+      Otra posibilidad sería cambiar la placa controladora por otra, como la Intel Curie (de un tamaño más reducido
+      que la utilizada y con Bluetooth integrado, entre otras muchas características)\\
 
     \item[Creación de aplicaciones para más SO móviles] \hfill \\
       Ya que casi todos los dispositivos móviles disponen de Bluetooth, para llegar al mayor número de usuarios
       posible, sería útil el desarrollo de una aplicación para cada uno de los principales sistemas operativos
       móviles del mercado. Además, habrá que finalizar la implementación de la aplicación Android que se ha creado
-      en este proyecto, utilizando la guía de estilos de Google.
+      en este proyecto, utilizando la guía de estilos de Google
 
      \item[Mejorar fiabilidad de la red y facilitar su uso] \hfill \\
       Que el usuario pueda añadir nuevos dispositivos de tipo músico de una forma sencilla, es uno de los
@@ -195,14 +198,16 @@ en nuestra vida. Como consecuencia de ello, los distintos elementos para fabrica
 verán reducido su coste (cosa que beneficiará a todos los proyectos, libres o no, que se encuentren trabajando en estos
 campos).\\
 
-Los dispositivos \textit{wearables} están calando en la sociedad a un ritmo elevado. Para casi
-cualquier necesidad, se puede encontrar un producto que nos ayuda a resolver un problema (y cada vez habrá más).\\
-
 En cuanto a las redes inalámbricas de sensores, son cada vez más las grandes empresas
 de tecnología que apuestan por crear su propio sistema operativo o \textit{hardware}. Que empresas como Google (presentó
 en 2015 un sistema operativo llamado ``Brillo" \cite{brillo}) o Huawei (por las mismas fechas, anunció LiteOS -diferente
 del proyecto libre LiteOS \cite{liteos}-) nos hace darnos cuenta de la envergadura que
 va a tener esta tecnología en el futuro.\\
+
+Los dispositivos \textit{wearables} están calando en la sociedad a un ritmo elevado. Para casi
+cualquier necesidad, se puede encontrar un producto que nos ayuda a resolver un problema (y cada vez habrá más).
+En este campo también hay empresas de primer nivel, como Intel que están incentivando el desarrollo
+de proyectos ``vestibles"\ (como el certamen \textit{Make It Wearable} \url{https://makeit.intel.com/}).\\
 
 
 \section{Evaluación de objetivos superados}
@@ -236,7 +241,7 @@ cumplido cada uno:
     gracias a la solución que se dió en el apartado \ref{subsec:problemabroadcast}. Si el sistema no consigue
     la escalabilidad deseada, siempre podremos recurrir a alguno de los algoritmos propuestos en ``Synchronization
     in Wireless Sensor Networks" de ``Erchin Serpedin and Qasim M. Chaudhari" \cite{serpedin} (muchos de ellos basados
-    en la utilización de sellos de tiempo).
+    en la utilización de sellos de tiempo)
   \item Posibilidad de añadir nuevas funcionalidades
     A lo largo de toda la sección anterior, se han propuesto nuevas funcionalidades y mejoras para llevar
     a cabo a partir de la infraestructura inicial
